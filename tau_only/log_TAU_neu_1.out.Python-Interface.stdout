@@ -1203,7 +1203,7 @@ Mainloop on level 1:
 !          9|  1.69e+01|  7.85e+00|  5.05e-13|  1.31e+01|  5.91e+01|  8.29e-04|  1.15e+03|   2.66e-03|  -2.00e-03|  -2.25e-03|  3.62e+00|  1.63e+00| -4.40e-07| -1.67e-02| -2.84e+02|  5.51e-03|  6.45e+01|  6.0e+00|   1.96839e-01|
 !         10|  1.28e+01|  5.70e+00|  5.34e-13|  1.15e+01|  4.54e+01|  5.32e-04|  8.71e+02|   5.08e-03|  -1.79e-19|  -2.92e-03|  3.56e+00|  1.51e+00| -4.19e-07| -1.64e-02| -2.77e+02|  5.01e-03|  6.89e+01|  6.0e+00|   1.96839e-01|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Elapsed Time for the last 10 inner iterations   5.377   7.363 seconds (wallclock in solver and total user time, respectively).
+ Elapsed Time for the last 10 inner iterations   4.114   5.908 seconds (wallclock in solver and total user time, respectively).
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         Time|      Rrho|    Rrhovx|    Rrhovy|    Rrhovz|     RrhoE|   Rrhonue|  Max-Rrho| X-max-Rrho| Y-max-Rrho| Z-max-Rrho|    C-lift|    C-drag|   C-sidef|      C-mx|      C-my|      C-mz|    Max-y+|  Angle-a|    MF(OUTLET)|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1231,8 +1231,8 @@ Total moment coefficients (body fitted system [tau])
  name-group    3          MEMBRANE      -0.016395768599       -276.675604062     0.00501102283251                  100
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Wallclock runtime in mainloop: 5.4 seconds
-      cpu runtime in mainloop: 5.3 seconds
+Wallclock runtime in mainloop: 4.1 seconds
+      cpu runtime in mainloop: 4.1 seconds
 Wallclock time for exchange of pointdata: 0.000 seconds (min/avg/max 0.000/0.000/0.000 over all domains)
 Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.pval.unsteady_i=1_t=5.000e-03> written
 Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03> written
@@ -1241,12 +1241,6 @@ Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Out
   Tecplot parameter ---------------------------------------------: -
                                                     Tecplot title: interfaceData.dat
                                    Tecplot ascii output precision: 6
-Buffer field data in stream <pltdata_field>
-Write root dataset-list 'name' in tecplot-zones to file '/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.MEMBRANE_i=1_t=5.000e-03.plt'
-  Variables .........: "x" "y" "z" "cp"
-  Writing zone: MEMBRANE with 194 elements... done
-tecplot done
-
 
 Transition module done
 free preprocessing data
