@@ -51,13 +51,13 @@ DataSetList = PyDataSet.DataSetList()
 
 grid = Para.get_para_value("Primary grid filename") # Primary grid filename
 #n_outer = int(Para.get_para_value('Unsteady physical time steps'))
-surfaces = ["MEMBRANE"]
 
 #------------------------------------------------------------------
 # Prep + DataSet
 #-------------------------------------------------------------------
-Prep.run(write_dualgrid=1,free_primgrid=False) # Read Parameter file with Para already done
-                                                    # preprocessing to create dual grid structure
+# Read Parameter file with Para already done
+# preprocessing to create dual grid structure
+Prep.run(write_dualgrid=1,free_primgrid=False)
 
 tau_parallel_sync()
 #-----------------------------------------------------------------
@@ -67,40 +67,29 @@ this_step_out=0
 n_outer_in=1 # Number of iterations for one coupling iteration
 n_outer_out=1
 fluidIter=50
-for this_step_out in range(n_outer_out):
-  this_step=0
+this_step=0
 
-  Solver.init(verbose = 1, reset_steps = True, n_time_steps = 1) # flow solver  print "time step check out = %d"% this_step_out
-  Solver.outer_loop()
-  Solver.output()
-  tau_plt_init_tecplot_params(para_path_mod)
-  tau_solver_write_output_conditional()
-  tau_parallel_sync()
-  if tau_mpi_rank() == 0:
-    print 'Solve ok'
-  tau_parallel_sync()
-  time.sleep(20)
+Solver.init(verbose = 1, reset_steps = True, n_time_steps = 1) # flow solver  print "time step check out = %d"% this_step_out
+Solver.outer_loop()
+Solver.output()
+tau_plt_init_tecplot_params(para_path_mod)
+tau_solver_write_output_conditional()
+tau_parallel_sync()
+print 'Solve ok'
+tau_parallel_sync()
+time.sleep(20)
 
-  DataSetList.write_output()
+DataSetList.write_output()
 
-  tau_parallel_sync()
-  Solver.finalize()
-  tau_free_dualgrid()
-  tau_free_prims()
-  Para.free_parameters()
+tau_parallel_sync()
+Solver.finalize()
+tau_free_dualgrid()
+tau_free_prims()
+Para.free_parameters()
 
 DataSetList.free_data()
 
 '''
-      Functions.meshDeformation(NodesNr,nodes,dispTau,dispTauOld)
-      print "deformationstart"
-
-      for i in xrange(0,3*NodesNr):
-          dispTauOld[i]=dispTau[i]
-
-      print "afterDeformation"
-
-
       Solver.output()
       Solver.finalize()
       tau_free_dualgrid()
