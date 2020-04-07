@@ -24,7 +24,7 @@ Casename=airfoil_Structured
 #*********************************
 Unsteady_physical_time_steps=200
 Unsteady_inner_iterations_per_time_step=100
-n_outer_out=3
+n_outer_out=2
 fluidIter=100
 Maximal_step_number=200
 Minimum_residual=1e-16
