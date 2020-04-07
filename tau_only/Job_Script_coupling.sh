@@ -22,10 +22,10 @@ Work_Dir=/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only
 Casename=airfoil_Structured
 
 #*********************************
-Unsteady_physical_time_steps=200
-Unsteady_inner_iterations_per_time_step=100
+Unsteady_physical_time_steps=3
+Unsteady_inner_iterations_per_time_step=2
 n_outer_out=1
-fluidIter=100
+fluidIter=50
 Maximal_step_number=200
 Minimum_residual=1e-16
 Step_size=0.005
