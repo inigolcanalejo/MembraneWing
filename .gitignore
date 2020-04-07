@@ -1,6 +1,6 @@
 dualgrid*
 tau_only/Outputs/*
-airfoil_Structured.cnt.mod
+airfoil_Structured.cntl.mod
 log_TAU_neu_1.out.Python-Interface.stdout
 # Byte-compiled / optimized / DLL files
 __pycache__/
