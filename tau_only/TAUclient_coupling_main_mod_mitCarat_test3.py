@@ -59,14 +59,6 @@ surfaces = ["MEMBRANE"]
 Prep.run(write_dualgrid=1,free_primgrid=False) # Read Parameter file with Para already done
                                                     # preprocessing to create dual grid structure
 
-# DS = PyDataSet.DataSet(dataset_identifier = "name", output_functions = "surface",dataset_type ="surface",surf_def  = "name",surf_zone_list  = surfaces)
-# for i in range(0, len(surfaces)):
-#     DS.define_output(output_name       = surfaces[i],
-# 			output_period     = 1,
-#                         output_variables  = ["cp"],
-#                         output_gather     = 1)
-
-# DataSetList.store_dataset(DS)
 tau_parallel_sync()
 #-----------------------------------------------------------------
 # solve
