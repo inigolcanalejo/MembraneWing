@@ -24,9 +24,6 @@ Para = PyPara.Parafile(para_path_mod)
 Prep = PyPrep.Preprocessing(para_path_mod)
 Solver = PySolv.Solver(para_path_mod)
 
-grid = Para.get_para_value("Primary grid filename") # Primary grid filename
-#n_outer = int(Para.get_para_value('Unsteady physical time steps'))
-
 # Prep + DataSet
 # Read Parameter file with Para already done
 # preprocessing to create dual grid structure
