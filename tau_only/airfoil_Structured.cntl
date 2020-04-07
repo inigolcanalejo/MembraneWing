@@ -10,7 +10,7 @@
 
             Markers: 1
                Type: farfield
-        Angle alpha (degree): TBD
+        Angle alpha (degree): 6
          Angle beta: 0
                Name: INLET
  block end
@@ -75,9 +75,9 @@
  Files/IO --------------------------------------------------------: -
                                                                   : -
                                          Boundary mapping filename: (thisfile)
-                                             Primary grid filename: TBD
+                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid
                                                                   : -
-                                               Output files prefix: TBD
+                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol
                                                Restart-data prefix: (none)
                                                                   : -
                                    Surface output description file: (thisfile)
@@ -164,8 +164,8 @@
                                                                   : -
  Timestepping Start/Stop -----------------------------------------: -
                                                                   : -
-                                          Maximal time step number: TBD
-					          Minimum residual: TBD
+                                          Maximal time step number: 200
+					          Minimum residual: 1e-16
 							          : -
  Output options --------------------------------------------------: -
                                                                   : -
@@ -221,11 +221,11 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
 				            Unsteady time stepping: dual
                     Unsteady activate inner iteration output (0/1): 1
                              Unsteady show pseudo time steps (0/1): 1
-                                  Unsteady physical time step size: TBD
+                                  Unsteady physical time step size: 0.005
                                      Unsteady physical time offset: 0
                              Unsteady computational time step size: -1
-                                      Unsteady physical time steps: TBD
-                           Unsteady inner iterations per time step: TBD
+                                      Unsteady physical time steps: 3
+                           Unsteady inner iterations per time step: 2
                   Minimum number of inner iterations per time step: 1
                                     Unsteady implicit scheme order: 2
                                       Unsteady extrapolation order: 0

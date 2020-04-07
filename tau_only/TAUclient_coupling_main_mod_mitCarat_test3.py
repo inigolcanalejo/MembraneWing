@@ -31,7 +31,7 @@ import math as m
 import os
 
 sys.path.append('/home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq')
-sys.path.append('TBD')
+sys.path.append('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only')
 sys.path.append('/home/inigo/software/pyEmpire/EMPIRE-Core/Empire')
 
 # import modules for TAU
@@ -71,7 +71,7 @@ if (rank == 0):
 
 #-------------------------------------------------------------------------------
 # Definition of the parameter file
-para_path='TBD'
+para_path='/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl'
 ioname = 'test2'
 TAU_path = '/home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/'
 #-------------------------------------------------------------------------------
@@ -115,15 +115,15 @@ tau_parallel_sync()
 #-----------------------------------------------------------------
 this_step_out=0
 n_outer_in=1 # Number of iterations for one coupling iteration
-n_outer_out=TBD
-fluidIter=TBD
+n_outer_out=1
+fluidIter=50
 for this_step_out in range(n_outer_out):
   this_step=0
 
   if this_step_out==1:
-    search_text = 'Primary grid filename: TBD'
-    replace_text = 'Primary grid filename: TBD.def.' + str(this_step_out)
-    for line in fileinput.input('TBD',inplace=1):
+    search_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid'
+    replace_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.' + str(this_step_out)
+    for line in fileinput.input('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl',inplace=1):
       line = line.replace(search_text, replace_text)
       sys.stdout.write(line)
     Para = PyPara.Parafile(para_path_mod)
@@ -134,9 +134,9 @@ for this_step_out in range(n_outer_out):
     print "step1"
 
   if this_step_out>1:
-    search_text = 'Primary grid filename: TBD.def.' + str(this_step_out-1)
-    replace_text = 'Primary grid filename: TBD.def.' + str(this_step_out)
-    for line in fileinput.input('TBD',inplace=1):
+    search_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.' + str(this_step_out-1)
+    replace_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.' + str(this_step_out)
+    for line in fileinput.input('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl',inplace=1):
       line = line.replace(search_text, replace_text)
       sys.stdout.write(line)
     Para = PyPara.Parafile(para_path_mod)
