@@ -1,0 +1,15 @@
+FORMAT
+type: ensight gold
+GEOMETRY
+model: airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.geo
+VARIABLE
+scalar per node: density   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.density
+scalar per node: pressure   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.pressure
+scalar per node: cp   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.cp
+scalar per node: cfx   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.cfx
+scalar per node: cfy   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.cfy
+scalar per node: cfz   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.cfz
+scalar per node: yplus   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.yplus
+scalar per node: fnormal_x   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.fnormal_x
+scalar per node: fnormal_y   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.fnormal_y
+scalar per node: fnormal_z   airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03.fnormal_z
