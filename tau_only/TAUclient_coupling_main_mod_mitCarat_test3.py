@@ -70,32 +70,6 @@ fluidIter=50
 for this_step_out in range(n_outer_out):
   this_step=0
 
-  if this_step_out==1:
-    search_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid'
-    replace_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.' + str(this_step_out)
-    for line in fileinput.input('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl',inplace=1):
-      line = line.replace(search_text, replace_text)
-      sys.stdout.write(line)
-    Para = PyPara.Parafile(para_path_mod)
-    Prep = PyPrep.Preprocessing(para_path_mod)
-    grid = Para.get_para_value("Primary grid filename") # Primary grid filename
-    Prep.run(write_dualgrid=False, free_primgrid=False) # Read Parameter file with Para already done
-    print this_step_out
-    print "step1"
-
-  if this_step_out>1:
-    search_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.' + str(this_step_out-1)
-    replace_text = 'Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.' + str(this_step_out)
-    for line in fileinput.input('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl',inplace=1):
-      line = line.replace(search_text, replace_text)
-      sys.stdout.write(line)
-    Para = PyPara.Parafile(para_path_mod)
-    Prep = PyPrep.Preprocessing(para_path_mod)
-    grid = Para.get_para_value("Primary grid filename") # Primary grid filename
-    Prep.run(write_dualgrid=False, free_primgrid=False) # Read Parameter file with Para already done
-    print grid
-###
-
   Solver.init(verbose = 1, reset_steps = True, n_time_steps = 1) # flow solver  print "time step check out = %d"% this_step_out
   Solver.outer_loop()
   Solver.output()
