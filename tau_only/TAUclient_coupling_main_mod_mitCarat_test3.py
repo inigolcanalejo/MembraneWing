@@ -11,6 +11,6 @@ Solver = PySolv.Solver(para_path)
 
 Solver.init(verbose = 1, reset_steps = True, n_time_steps = 1)
 Solver.outer_loop()
-# Solver.output()
+Solver.output()
 Solver.finalize()
 Para.free_parameters()
