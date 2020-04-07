@@ -4,10 +4,6 @@
 import time
 import shutil
 import sys
-
-sys.path.append('/home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq')
-sys.path.append('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only')
-
 # import modules for TAU
 import PyPara
 import PyPrep
