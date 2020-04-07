@@ -361,9 +361,9 @@ Chimera component output (Tecplot, Ensight Gold) (0/1): 0
  Updates
  -----------------------------------------------------
 
-    solver at Tue Apr  7 14:14:30 2020
+    solver at Tue Apr  7 14:27:53 2020
                                               Restart-data prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.pval.unsteady_i=1_t=5.000e-03
                                             Reset flow statistics: (none)
 
-    solver at Tue Apr  7 14:14:30 2020
+    solver at Tue Apr  7 14:27:53 2020
                                           Surface output filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03
