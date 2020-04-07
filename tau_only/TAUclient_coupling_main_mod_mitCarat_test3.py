@@ -29,11 +29,5 @@ Prep.run(write_dualgrid=0,free_primgrid=False)
 Solver.init(verbose = 1, reset_steps = True, n_time_steps = 1) # flow solver  print "time step check out = %d"% this_step_out
 Solver.outer_loop()
 # Solver.output()
-tau_plt_init_tecplot_params(para_path_mod)
-tau_solver_write_output_conditional()
-print 'Solve ok'
-
 Solver.finalize()
-tau_free_dualgrid()
-tau_free_prims()
 Para.free_parameters()
