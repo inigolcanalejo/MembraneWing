@@ -1,24 +1,24 @@
-# 
-# . /etc/profile 
+#
+# . /etc/profile
 # . /etc/profile.d/modules.sh
-# 
+#
 # module unload mpi.intel
 # module unload intel
 # module load intel/15.0
 # module load mpi.ompi/1.8/intel
 # module load mpi4py/1.3.1
 # module load tempdir/1.0
-# module unload gcc    
-# module load cmake/3.4     
+# module unload gcc
+# module load cmake/3.4
 # module load mkl/11.3
-# module load geos/3.3.3 
-# module load  obspy/0.9.2     
+# module load geos/3.3.3
+# module load  obspy/0.9.2
 # module unload python
 # module load python/2.7.6
 
 #Definition
 
-Work_Dir=/home/inigo/simulations/membranProjekt/Ploetz_FSI_instationaer_U20_AOA6
+Work_Dir=/home/inigo/simulations/membranProjekt/tau_only
 Casename=airfoil_Structured
 
 #*********************************
@@ -80,14 +80,14 @@ sed 's|'"Boundary mapping filename: TBD"'|'"Boundary mapping filename: $Para_Pat
 sed 's|'"Restart-data prefix: TBD"'|'"Restart-data prefix: $Work_Dir/Ergebnisse/Outputs/airfoilSol.pval.unsteady_i=200_t=1.00000e+00"'|g' -i /$Tautoplt
 #**********************************
 
-mkdir Outputs 
+mkdir Outputs
 
 #FSI beginnen
 
 
 source /home/inigo/software/pyEmpire/EMPIRE-Core/etc/bashrc.sh ICC
 
-#cd /home/inigo/software/TAU/Ploetz_FSI_instationaer_U20_AOA6/
+#cd /home/inigo/software/TAU/tau_only/
 
 mpirun -n 1  /home/inigo/software/carat/src/carat CARAT/caratInput_FSI > log_Carat_neu_1 &
 mpirun -n 9  /home/inigo/software/TAU/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq/tau.py TAUclient_coupling_main_mod3.py airfoil_Structured.cntl log_TAU_neu_1.out

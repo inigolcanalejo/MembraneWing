@@ -75,9 +75,9 @@
  Files/IO --------------------------------------------------------: -
                                                                   : -
                                          Boundary mapping filename: (thisfile)
-                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Mesh/airfoil_Structured_scaliert.grid
+                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid
                                                                   : -
-                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Outputs/airfoilSol
+                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol
                                                Restart-data prefix: (none)
                                                                   : -
                                    Surface output description file: (thisfile)
@@ -169,7 +169,7 @@
 							          : -
  Output options --------------------------------------------------: -
                                                                   : -
-                                                     Output period: 200                                                     
+                                                     Output period: 200
                                                      Field output values: v_p_rho_cp_Ptot_mach_vort_Nk_heli_Hn_l2_Q_velgrad
                                                                   : -
                                              Surface output period: 200
@@ -185,7 +185,7 @@
                                     Monitoring significant figures: 3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_2_3
                                                                   : -
                              Extended coefficient monitoring (0/1): 0
-                                                                  : -							         
+                                                                  : -
                                          Global monitoring (0/1/2): 1
                         Enable logfile output on all domains (0/1): 0
                                                                   : -
@@ -194,7 +194,7 @@
  Relaxation ------------------------------------------------------: -
                                                                   : -
                                                  Relaxation solver: Backward_Euler
-                                  Hold static velocity field (0/1): 0                                                         
+                                  Hold static velocity field (0/1): 0
                                                                   : -
  Backward Euler --------------------------------------------------: -
                                                                   : -
@@ -267,7 +267,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                 Central convective turbulence flux: Average_of_flux
                                  2nd order dissipation coefficient: 0.5
                          Inverse 4th order dissipation coefficient: 64
-                            Version of cell stretching coefficient: TAU                       
+                            Version of cell stretching coefficient: TAU
                              Use modified dissipation for 2D (0/1): 0
                                                                   : -
  Matrix Dissipation ----------------------------------------------: -
@@ -299,7 +299,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                                                   : -
 
 ###########################################################################################
- 
+
   -----------------------------------------------------
  Parameters for RBF surface deflection generation in netcdf format
  -----------------------------------------------------
@@ -362,20 +362,20 @@ Chimera component output (Tecplot, Ensight Gold) (0/1): 0
  -----------------------------------------------------
 
     solver at Tue Apr  7 13:23:02 2020
-                                              Restart-data prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Outputs/airfoilSol.pval.unsteady_i=1_t=5.000e-03
+                                              Restart-data prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.pval.unsteady_i=1_t=5.000e-03
                                             Reset flow statistics: (none)
 
     solver at Tue Apr  7 13:23:02 2020
-                                          Surface output filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Outputs/airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03
+                                          Surface output filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03
 
     deformation at Tue Apr  7 13:23:45 2020
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Mesh/airfoil_Structured_scaliert.grid.def.1
+                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.1
 
     solver at Tue Apr  7 13:26:17 2020
-                                              Restart-data prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Outputs/airfoilSol.pval.unsteady_i=2_t=1.000e-02
+                                              Restart-data prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.pval.unsteady_i=2_t=1.000e-02
 
     solver at Tue Apr  7 13:26:18 2020
-                                          Surface output filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Outputs/airfoilSol.surface.pval.unsteady_i=2_t=1.000e-02
+                                          Surface output filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.surface.pval.unsteady_i=2_t=1.000e-02
 
     deformation at Tue Apr  7 13:26:59 2020
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Mesh/airfoil_Structured_scaliert.grid.def.2
+                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.2

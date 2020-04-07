@@ -18,13 +18,13 @@
 
 #Definition
 
-Work_Dir=/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6
+Work_Dir=/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only
 Casename=airfoil_Structured
 
 #*********************************
 Unsteady_physical_time_steps=200
 Unsteady_inner_iterations_per_time_step=100
-n_outer_out=2
+n_outer_out=1
 fluidIter=100
 Maximal_step_number=200
 Minimum_residual=1e-16
@@ -87,7 +87,7 @@ mkdir Outputs
 
 #source /home/inigo/software/pyEmpire/EMPIRE-Core/etc/bashrc.sh ICC
 
-#cd /home/inigo/software/TAU/Ploetz_FSI_instationaer_U20_AOA6/
+#cd /home/inigo/software/TAU/tau_only/
 
 mpirun -n 1  /home/inigo/software/carat/src/carat CARAT/caratInput_FSI > log_Carat_neu_1 &
 

@@ -1,7 +1,7 @@
   Files/IO ------------------------------------------------------: -
-                                            Primary grid filename: /gpfs/work/pr86fi/di73jef/TAU/Ploetz_FSI_instationaer_U20_AOA6/Mesh/airfoil_Structured_scaliert.grid.def.200
-                                        Boundary mapping filename: /gpfs/work/pr86fi/di73jef/TAU/Ploetz_FSI_instationaer_U20_AOA6/airfoil_Structured.cntl
-                                              Restart-data prefix: /gpfs/work/pr86fi/di73jef/TAU/Ploetz_FSI_instationaer_U20_AOA6/Ergebnisse/Outputs/airfoilSol.pval.unsteady_i=200_t=1.00000e+00
+                                            Primary grid filename: /gpfs/work/pr86fi/di73jef/TAU/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.200
+                                        Boundary mapping filename: /gpfs/work/pr86fi/di73jef/TAU/tau_only/airfoil_Structured.cntl
+                                              Restart-data prefix: /gpfs/work/pr86fi/di73jef/TAU/tau_only/Ergebnisse/Outputs/airfoilSol.pval.unsteady_i=200_t=1.00000e+00
                                   2D offset vector (0 / x=1,y=2,z=3): 0
   Bounding Box --------------------------------------------------: -
                                  Bounding x coordinate range (3D): (none)
@@ -43,9 +43,9 @@
                                           BDF field format (8/16): 8
                                           BDF coordinate frame CP: (none)
                           BDF basic coordinate frame for frame CP: (none)
-                          BDF points defining coordinate frame CP: 0 0 0 0 0 1 1 0 1 
+                          BDF points defining coordinate frame CP: 0 0 0 0 0 1 1 0 1
                                           BDF coordinate frame CD: (none)
                           BDF basic coordinate frame for frame CD: (none)
-                          BDF points defining coordinate frame CD: 0 0 0 0 0 1 1 0 1 
+                          BDF points defining coordinate frame CD: 0 0 0 0 0 1 1 0 1
                                           BDF scale data entry ID: (none)
-                                      BDF scale reference lengths: 1 1 1 
+                                      BDF scale reference lengths: 1 1 1
