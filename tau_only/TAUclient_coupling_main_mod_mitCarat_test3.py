@@ -4,31 +4,14 @@
 import time
 import shutil
 import sys
-import array
-import string
-import scipy
-import fileinput
-import sys
-import subprocess
-import time
-import numpy as np
-import matplotlib.pylab as plt
-from distutils.version import StrictVersion
-import scipy
-from scipy.io import netcdf
-import math as m
-import os
 
 sys.path.append('/home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq')
 sys.path.append('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only')
 
 # import modules for TAU
 import PyPara
-import PyDeform
 import PyPrep
-import PySurfDeflect
 import PySolv
-import PyDataSet
 from tau_python import *
 
 # Definition of the parameter file
