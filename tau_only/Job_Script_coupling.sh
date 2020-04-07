@@ -82,7 +82,7 @@ mpirun -n 1  /home/inigo/software/carat/src/carat CARAT/caratInput_FSI > log_Car
 
 sleep 10s
 
-mpirun -n 1  python /home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq/tau.py TAUclient_coupling_main_mod_mitCarat_test3.py airfoil_Structured.cntl log_TAU_neu_1.out
+mpirun -n 1  python /home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq/tau.py run_tau.py airfoil_Structured.cntl log_TAU_neu_1.out
 
 #**************************************
 
