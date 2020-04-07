@@ -4,280 +4,6 @@ DLR Tau-Code, Python-Interface, Version 03/15/2005 compiled on Oct 12 2016 (from
 Executing script <TAUclient_coupling_main_mod_mitCarat_test3.py>
 
 
-Implemented boundary treatments:
---------------------------------
-  axisymmetry wedge plane                    
-  symmetry plane                             
-  axisymmetry axis                           
-  farfield                                   
-  supersonic inflow                          
-  supersonic outflow                         
-  reservoir-pressure inflow                  
-  exit-pressure outflow                      
-  dirichlet                                  
-  euler wall                                 
-  sharp edge                                 
-  viscous wall                               
-  engine exhaust                             
-  engine inflow                              
-  heat exchanger inflow                      
-  heat exchanger outflow                     
-  actuator exhaust                           
-  actuator inflow                            
-  chimera                                    
-  actuation                                  
-  mirror plane                               
-  periodic plane                             
-
-Implemented grid metrics:
-  Cell_Vertex                               
-  Cell_Centered                             
-
-Implemented types of agglomeration: 
-  private                                   
-  MGridGen                                  
-  Directional_MGridGen                      
-
-Reading parameter file '/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod'
-
-Preprocessor parameters:
-  Files/IO ------------------------------------------------------: -
-                                        Boundary mapping filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid
-                                                      Grid prefix: dualgrid
-                                                  Old grid prefix: (none)
-                                         Parent input file prefix: (none)
-                                        Parent output file prefix: (none)
-                                    Output MG agglomeration (0/1): 0
-                                                                 : -
-                                       Read partitioning filename: (none)
-                                             Write graph filename: (none)
-  Parameter -----------------------------------------------------: -
-                                       Number of multigrid levels: 3
-                                                     Output level: 25
-                                                      Grid metric: Cell_Vertex
-  Runtime optimisation ------------------------------------------: -
-                            Cache-coloring (0/max_faces in color): 100000
-                                     Bandwidth optimisation (0/1): 1
-                               2D offset vector (0 / x=1,y=2,z=3): 0
-                                      Compute lusgs mapping (0/1): 1
-  Agglomeration -------------------------------------------------: -
-                                            Type of agglomeration: private
-                                                                 : -
-                                            Agglomeration version: 0
-                                     Enhanced agglomeration (0/1): 0
-                                              Point fusing reward: 1.2
-                                       Structured grid coarsening: 0
-                                      Surface agglomeration ratio: 0
-                                   Wallnormal agglomeration ratio: 0
-                                                                 : -
-                                  Type of coarsening for MGridGen: 4
-                                  Type of refinement for MGridGen: 6
-                        Minsize for the coarse graph for MGridGen: 1
-                        Maxsize for the coarse graph for MGridGen: 4
-  Extras --------------------------------------------------------: -
-                                       Sharp edge angle (degrees): 0
-                                 Control volume edge weight (0/1): 1
-                                          Consider wall roughness: global
-                                            Global wall roughness: 0
-                                               Roughness filename: (none)
-                                    Compute exact whirlflux (0/1): 0
-                                                Axisymmetry (0/1): 0
-                                      Axisymmetry axial direction: 1 0 0 
-                                     Axisymmetry radial direction: 0 0 1 
-                                            Project wall distance: 0
-                                                Line search (0/1): 0
-                                    Write lines into a file (0/1): 0
-                             Threshold parameter for aspect ratio: 4
-  Partitioning --------------------------------------------------: -
-                                                Number of domains: 1
-                                          Smooth partitions (0/1): 0
-                                      Type of partitioning (name): zoltan
-  Theta not for Tau ---------------------------------------------: -
-                    Preprocessing for incompressible solver (0/1): 0
-                                 Output shifted points grid (0/1): 0
-                Correct metric for boundary control volumes (0/1): 1
-               Project boundary control volumes coordinates (0/1): 1
-                   Translation factor for shifted boundary points: 1
-                                       Compute parent faces (0/1): 0
-  Logfile control -----------------------------------------------: -
-                       Enable logfile output on all domains (0/1): 0
------------------------------------------------------
-Reading boundary mapping: file '/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod'
-
-Preprocessor boundary parameters
-  ---------------------------------------------------------------: -
-                                                              Map: 0
-                                                             Type: symmetry plane
-                                                          Subtype: 
-                                                          Markers: 3
-                                                         Partname: 
-                                                             Name: SYM1
-                                               Multigrid priority: 0
-  block end
-  ---------------------------------------------------------------: -
-                                                              Map: 1
-                                                             Type: farfield
-                                                          Subtype: 
-                                                          Markers: 1
-                                                         Partname: 
-                                                             Name: INLET
-                                               Multigrid priority: 0
-  block end
-  ---------------------------------------------------------------: -
-                                                              Map: 2
-                                                             Type: exit-pressure outflow
-                                                          Subtype: 
-                                                          Markers: 2
-                                                         Partname: 
-                                                             Name: OUTLET
-                                               Multigrid priority: 0
-  block end
-  ---------------------------------------------------------------: -
-                                                              Map: 3
-                                                             Type: viscous wall
-                                                          Subtype: turbulent
-                                          Constant wall roughness: 0
-                                                          Markers: 13
-                                                         Partname: 
-                                                             Name: MEMBRANE
-                                               Multigrid priority: 1
-  block end
-  ---------------------------------------------------------------: -
-                                                              Map: 4
-                                                             Type: symmetry plane
-                                                          Subtype: 
-                                                          Markers: 4
-                                                         Partname: 
-                                                             Name: SYM2
-                                               Multigrid priority: 0
-  block end
------------------------------------------------------
-Boundary mapping for this grid:        treatment-name: map  triangles/quads
-                                       symmetry plane:   0   39776
-                                             farfield:   1   452
-                                exit-pressure outflow:   2   176
-                                         viscous wall:   3   194
-                                       symmetry plane:   4   39776
------------------------------------------------------
-Computing dual grid
-  for the cell vertex grid metric
-Computing multigrid level 2
-Computing multigrid level 3
-Computing face neighbors for grid level 1
-  Structured grid detected
-  159872 ngbfaces
-  400226 neighbor cells searched in structured grid
-  face neighbors for limit angle of 25 degrees:
-    inner-line faces 157918
-    edge-line faces  1954
-    isolated faces 40241
-Computing face neighbors for grid level 2
-  Structured grid detected
-  38850 ngbfaces
-  99782 neighbor cells searched in structured grid
-  face neighbors for limit angle of 25 degrees:
-    inner-line faces 37866
-    edge-line faces  984
-    isolated faces 11041
-Computing face neighbors for grid level 3
-  Structured grid detected
-  9856 ngbfaces
-  25026 neighbor cells searched in structured grid
-  face neighbors for limit angle of 25 degrees:
-    inner-line faces 9273
-    edge-line faces  583
-    isolated faces 2657
-Wall distances for grid level 1
-  Updates in loop: 72327 6558 2974 2401 2030 1896 1782 1697 1624 1530 1446 1400 1346 1272 1170 1946 1852 1654 1482 1341 1277 1048 871 740 574 418 234 22 8 8 6 6 6 0
-Wall distances for grid level 2
-  Updates in loop: 18498 4921 3840 3113 2604 2181 1831 1506 1208 968 680 562 460 384 298 226 182 154 108 80 32 8 2 0
-Wall distances for grid level 3
-  Updates in loop: 4317 982 687 470 306 182 124 86 50 36 18 2 0
-Near-points for boundary-faces of viscous wall on level 1:       2 differ from normal-points
-Near-points for boundary-faces of viscous wall on level 2:       6 differ from normal-points
-Near-points for boundary-faces of viscous wall on level 3:       6 differ from normal-points
-Check dual grids
------------------------------------------------------
-    Multigrid level 1
-    points ................................: 80374
-    faces .................................: 200113
-    min point neighbors ...................: 3
-    max point neighbors ...................: 6
-    volume ................................: 0.0111339
-    max. inner surface integral ...........: No inner points exist !
-    max. boundary surface integral ........: 5.80313e-14
-    at point / position ...................: 45104 (0.225498 1.31928e-20 0.000215456)
-    min, max surface ratio ................: 1 1
-    faces in              symmetry plane ..: 40187
-    faces in              symmetry plane ..: 40187
-    faces in                    farfield ..: 906
-    faces in       exit-pressure outflow ..: 354
-    faces in                viscous wall ..: 388
------------------------------------------------------
-    Multigrid level 2
-    points ................................: 19994
-    faces .................................: 49891
-    min point neighbors ...................: 3
-    max point neighbors ...................: 71
-    max point children ....................: 137
-    volume ................................: 0.0111339
-    max. inner surface integral ...........: No inner points exist !
-    max. boundary surface integral ........: 5.62678e-14
-    at point / position ...................: 1038 (0.225499 -6.62701e-21 -0.000108227)
-    min, max surface ratio ................: 1 1
-    faces in              symmetry plane ..: 9997
-    faces in              symmetry plane ..: 9997
-    faces in                    farfield ..: 140
-    faces in       exit-pressure outflow ..: 180
-    faces in                viscous wall ..: 192
------------------------------------------------------
-    Multigrid level 3
-    points ................................: 4976
-    faces .................................: 12513
-    min point neighbors ...................: 3
-    max point neighbors ...................: 45
-    max point children ....................: 62
-    volume ................................: 0.0111339
-    max. inner surface integral ...........: No inner points exist !
-    max. boundary surface integral ........: 4.30154e-14
-    at point / position ...................: 421 (0.226047 -0.002 0.000269326)
-    min, max surface ratio ................: 1 1
-    faces in              symmetry plane ..: 2504
-    faces in              symmetry plane ..: 2472
-    faces in                    farfield ..: 64
-    faces in       exit-pressure outflow ..: 32
-    faces in                viscous wall ..: 96
------------------------------------------------------
-Domain decomposition
-
-Bandwidth optimisation on level 1
-
-Bandwidth optimisation on level 2
-
-Bandwidth optimisation on level 3
------------------------------------------------------
-Coloring and sorting the inner faces
-  fngb-dimension 200113, all faces 200113
-  inner-line faces 157918
-  edge-line faces  1954 (0 inner 1954 at bdry)
-  isolated faces   40241
-  2325 colors, max. faces in color 323
-  fngb-dimension 49891, all faces 49891
-  inner-line faces 37866
-  edge-line faces  984 (0 inner 984 at bdry)
-  isolated faces   11041
-  679 colors, max. faces in color 272
-  fngb-dimension 12513, all faces 12513
-  inner-line faces 9273
-  edge-line faces  583 (0 inner 583 at bdry)
-  isolated faces   2657
-  201 colors, max. faces in color 199
-LUSGS mapping on level 1
-LUSGS mapping on level 2
-LUSGS mapping on level 3
-free preprocessing data
-
 Signal handling
   Signal 15: Write data & exit after time step
   Signal 12: Write data after time step
@@ -784,12 +510,12 @@ are indicated by an "X" in the second column:
 Solver parameters:
   Files/IO ------------------------------------------------------: -
                                               Restart-data prefix: (none)
-                                        Boundary mapping filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod
+                                        Boundary mapping filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl
                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol
-                                  Profile output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod
-                                    Plane output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod
-                                  Surface output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod
-                                    Field output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod
+                                  Profile output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl
+                                    Plane output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl
+                                  Surface output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl
+                                    Field output description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl
                                                                  : -
                                  Automatic parameter update (0/1): 1
                             Automatic parameter update mode (0/1): 0
@@ -1046,6 +772,10 @@ Profile parameters:
                                           Compute flow statistics: (none)
                                             Reset flow statistics: mean_variance_meanvelgrad
                               Moving average sampling window size: 0
+  Dualgrid-IO parameters ----------------------------------------: -
+                                                      Grid prefix: dualgrid
+                                        Boundary mapping filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl
+                                       Number of multigrid levels: 3
   Memory management ---------------------------------------------: -
                                             Increase memory (0/1): 1
   APSIM parameters ----------------------------------------------: -
@@ -1056,7 +786,7 @@ Profile parameters:
                                             Project wall distance: 0
                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid
   Transition module parameters ----------------------------------: -
-                               Transition module description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl.mod
+                               Transition module description file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl
                              Set transition at solver start (0/1): 0
                                     Transition prescription (0/1): 0
                                       Transition prediction (0/1): 0
@@ -1168,6 +898,11 @@ Active transition management: Limit production in laminar flagged regions
 Active initialization type: walldist
 
 Cauchy convergence control not active
+
+-----------------------------------------------------
+Read grid 'dualgrid_domain_0_grid_1' ...
+Read grid 'dualgrid_domain_0_grid_2' ...
+Read grid 'dualgrid_domain_0_grid_3' ...
 High memory initialisation to reduce CPU-time
 
 Initializing UNSTEADY run from SCRATCH.
@@ -1197,17 +932,12 @@ Mainloop on level 1:
 !          9|  1.69e+01|  7.85e+00|  5.05e-13|  1.31e+01|  5.91e+01|  8.29e-04|  1.15e+03|   2.66e-03|  -2.00e-03|  -2.25e-03|  3.62e+00|  1.63e+00| -4.40e-07| -1.67e-02| -2.84e+02|  5.51e-03|  6.45e+01|  6.0e+00|   1.96839e-01|
 !         10|  1.28e+01|  5.70e+00|  5.34e-13|  1.15e+01|  4.54e+01|  5.32e-04|  8.71e+02|   5.08e-03|  -1.79e-19|  -2.92e-03|  3.56e+00|  1.51e+00| -4.19e-07| -1.64e-02| -2.77e+02|  5.01e-03|  6.89e+01|  6.0e+00|   1.96839e-01|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Elapsed Time for the last 10 inner iterations   5.181   6.901 seconds (wallclock in solver and total user time, respectively).
+ Elapsed Time for the last 10 inner iterations   3.786   3.895 seconds (wallclock in solver and total user time, respectively).
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         Time|      Rrho|    Rrhovx|    Rrhovy|    Rrhovz|     RrhoE|   Rrhonue|  Max-Rrho| X-max-Rrho| Y-max-Rrho| Z-max-Rrho|    C-lift|    C-drag|   C-sidef|      C-mx|      C-my|      C-mz|    Max-y+|  Angle-a|    MF(OUTLET)|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | 5.000e-03|  1.28e+01|  5.70e+00|  5.34e-13|  1.15e+01|  4.54e+01|  5.32e-04|  8.71e+02|   5.08e-03|  -1.79e-19|  -2.92e-03|  3.56e+00|  1.51e+00| -4.19e-07| -1.64e-02| -2.77e+02|  5.01e-03|  6.89e+01|  6.0e+00|   1.96839e-01|
 
-  Tecplot parameter ---------------------------------------------: -
-                                                    Tecplot title: interfaceData.dat
-                                   Tecplot ascii output precision: 6
-
 Transition module done
-free preprocessing data
 
 Transition module done
