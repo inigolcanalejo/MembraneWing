@@ -42,3 +42,6 @@ EMPIRE_INFO: sendDataField_Mtest1
 	Sending data field (myMeshCarat: displacementsCarat) to [TAUclient] ... 
 EMPIRE_INFO: clinetName ping meshName: myMeshCarat
 	Receiving data field (myMeshCarat: forcesCarat) from [TAUclient] ... 
+--------------------------------------------------------------------------
+mpirun noticed that process rank 0 with PID 24730 on node roompc-n42 exited on signal 9 (Killed).
+--------------------------------------------------------------------------

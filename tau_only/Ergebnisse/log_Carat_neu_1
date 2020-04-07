@@ -6,7 +6,7 @@
 |_____|_|  |_|_|  |___|_| \_\_____|  \____\___/      |___/_|_| |_| |_|\__,_|_|\__,_|\__|_|\___/|_| |_|
 
 
-EMPIRE_INFO: Connecting to Control :: TAUclient via port :: 4177199104.0;tcp://129.187.141.175:34981+4177199105.0;tcp://129.187.141.175:39115:300
+EMPIRE_INFO: Connecting to Control :: TAUclient via port :: 3997368320.0;tcp://129.187.141.175:57883+3997368321.0;tcp://129.187.141.175:54163:300
 EMPIRE_INFO: Connected to Control :: TAUclient
 
 ==================================================
@@ -26,13 +26,6 @@ EMPIRE_INFO: SendFEMesh_Mtest
 EMPIRE_INFO: ClientCode::sendFEMesh_0 
 EMPIRE_INFO: TAUclient
 EMPIRE_INFO: Sending Mesh (myMeshCarat) from [ping]  to [TAUclient] ...
-EMPIRE_INFO: clinetName ping meshName: myMeshCarat
-	Receiving data field (myMeshCarat: forcesCarat) from [TAUclient] ... 
-current loadFactor is 0
-Mesh is assumed to be quadratic with 12.6491*12.6491 nodes
-EMPIRE_INFO: clinetName ping meshName: myMeshCarat
-EMPIRE_INFO: sendDataField_Mtest1 
-	Sending data field (myMeshCarat: displacementsCarat) to [TAUclient] ... 
 EMPIRE_INFO: clinetName ping meshName: myMeshCarat
 	Receiving data field (myMeshCarat: forcesCarat) from [TAUclient] ... 
 current loadFactor is 0
