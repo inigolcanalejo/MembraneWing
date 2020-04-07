@@ -75,7 +75,7 @@
  Files/IO --------------------------------------------------------: -
                                                                   : -
                                          Boundary mapping filename: (thisfile)
-                                             Primary grid filename: /gpfs/work/pr86fi/di73jef/TAU/Ploetz_FSI_instationaer_U20_AOA6/Mesh/airfoil_Structured_scaliert.grid.def.200
+                                             Primary grid filename: /gpfs/work/pr86fi/di73jef/TAU/tau_only/Mesh/airfoil_Structured_scaliert.grid.def.200
                                                                   : -
                                                Output files prefix: TBD
                                                Restart-data prefix: (none)
@@ -169,7 +169,7 @@
 							          : -
  Output options --------------------------------------------------: -
                                                                   : -
-                                                     Output period: 200                                                     
+                                                     Output period: 200
                                                      Field output values: v_p_rho_cp_Ptot_mach_vort_Nk_heli_Hn_l2_Q_velgrad
                                                                   : -
                                              Surface output period: 200
@@ -185,7 +185,7 @@
                                     Monitoring significant figures: 3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_3_2_3
                                                                   : -
                              Extended coefficient monitoring (0/1): 0
-                                                                  : -							         
+                                                                  : -
                                          Global monitoring (0/1/2): 1
                         Enable logfile output on all domains (0/1): 0
                                                                   : -
@@ -194,7 +194,7 @@
  Relaxation ------------------------------------------------------: -
                                                                   : -
                                                  Relaxation solver: Backward_Euler
-                                  Hold static velocity field (0/1): 0                                                         
+                                  Hold static velocity field (0/1): 0
                                                                   : -
  Backward Euler --------------------------------------------------: -
                                                                   : -
@@ -267,7 +267,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                 Central convective turbulence flux: Average_of_flux
                                  2nd order dissipation coefficient: 0.5
                          Inverse 4th order dissipation coefficient: 64
-                            Version of cell stretching coefficient: TAU                       
+                            Version of cell stretching coefficient: TAU
                              Use modified dissipation for 2D (0/1): 0
                                                                   : -
  Matrix Dissipation ----------------------------------------------: -
@@ -299,7 +299,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                                                   : -
 
 ###########################################################################################
- 
+
   -----------------------------------------------------
  Parameters for RBF surface deflection generation in netcdf format
  -----------------------------------------------------

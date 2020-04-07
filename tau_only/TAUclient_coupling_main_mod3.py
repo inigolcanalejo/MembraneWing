@@ -56,7 +56,7 @@ import PyDeform
 import PyPrep
 import PySurfDeflect
 import PySolv
-import PyDataSet 
+import PyDataSet
 from tau_python import tau_mpi_rank
 from tau_python import tau_mpi_nranks
 from tau_python import *
@@ -124,7 +124,7 @@ n_outer_out=2
 #outputInterval = 5
 fluidIter=TBD
 for this_step_out in range(n_outer_out):
-  
+
   if this_step_out==1:
     search_text = 'Primary grid filename: TBD'
     replace_text = 'Primary grid filename: TBD.def.' + str(this_step_out)
@@ -132,7 +132,7 @@ for this_step_out in range(n_outer_out):
       line = line.replace(search_text, replace_text)
       sys.stdout.write(line)
     Para = PyPara.Parafile(para_path_mod)
-    Prep = PyPrep.Preprocessing(para_path_mod)     
+    Prep = PyPrep.Preprocessing(para_path_mod)
     grid = Para.get_para_value("Primary grid filename") # Primary grid filename
     Prep.run(write_dualgrid=False, free_primgrid=False) # Read Parameter file with Para already done
     print this_step_out
@@ -152,16 +152,16 @@ for this_step_out in range(n_outer_out):
 
   Solver.init(verbose = 1, reset_steps = True, n_time_steps = 1) # flow solver  print "time step check out = %d"% this_step_out
   print "time step check out = %d"% this_step_out
-  
+
   Solver.outer_loop() # flow solver
-  tau_plt_init_tecplot_params(para_path)  
+  tau_plt_init_tecplot_params(para_path)
   tau_solver_write_output_conditional()
   DataSetList.write_output()
-   
-  List_file = Functions.findFile('/home/inigo/simulations/membranProjekt/Ploetz_FSI_instationaer_U20_AOA6/Outputs/*.plt')
+
+  List_file = Functions.findFile('/home/inigo/simulations/membranProjekt/tau_only/Outputs/*.plt')
   print List_file
   print this_step_out
-  fname = Functions.findFname(List_file,this_step_out,'/home/inigo/simulations/membranProjekt/Ploetz_FSI_instationaer_U20_AOA6/Outputs/')
+  fname = Functions.findFname(List_file,this_step_out,'/home/inigo/simulations/membranProjekt/tau_only/Outputs/')
   print fname
   # Read pressure distribution from file
   NodesNr,ElemsNr,X,Y,Z,P,elemTable=Functions.readPressure(this_step_out,fname)
@@ -170,21 +170,21 @@ for this_step_out in range(n_outer_out):
   f = open('xpNode', 'w')
   for i in xrange(0,NodesNr):
     f.write('%d\t%f\t%f\t%f\t%f\n'%(i,X[i],Y[i],Z[i],P[i]))
-  f.close()  
+  f.close()
   f = open('ElemTable', 'w')
   for i in xrange(0,ElemsNr):
     f.write('%d\t%f\t%f\t%f\t%f\n'%(i,elemTable[i,0],elemTable[i,1],elemTable[i,2],elemTable[i,3]))
   f.close()
  ##P[i]=0
-    
-      
-    
+
+
+
   # Interface Mesh_Fluid side
   nodes,nodesID,elems,numNodesPerElem=Functions.interfaceMeshFluid(NodesNr,ElemsNr,elemTable,X,Y,Z)
- 
-  if (this_step_out==0):  
+
+  if (this_step_out==0):
     TAUclient.setMesh('myMeshTau', NodesNr, ElemsNr, nodes, nodesID, numNodesPerElem, elems,'TAUclient')
- 
+
   # calculating cp at the center of each interface element
   pCell=Functions.calcpCell(ElemsNr,P,X,elemTable)
 
@@ -196,18 +196,18 @@ for this_step_out in range(n_outer_out):
   ####################################
   #       forece Mapping		 ###
   ####################################
-  
+
   forcesCaratNP=np.zeros(3*numNodesCaratMesh)
   ping.setDataField('forcesCarat',forcesCaratNP);
-  fC = ping.dataField('forcesCarat')  
-  TAUclient.setDataField('forcesTau',forcesTauNP)  
+  fC = ping.dataField('forcesCarat')
+  TAUclient.setDataField('forcesTau',forcesTauNP)
   fT=TAUclient.dataField('forcesTau')
   mapperName1 = 'mapperForce'+str(this_step_out+1)
-  
+
   mapper = FEMapper.FEMapper(mapperName1,'Mortar',TAUclient,'myMeshTau',ping,'myMeshCarat', isDual, oppSurfNormal, enforceConsistency)
-    
+
   mapper.doConsistentMapping(TAUclient,fT, ping, fC)
-  
+
   ping.sendDataField('forcesCarat','ping')
   print "forceMappingDone"
   ####################################
@@ -219,27 +219,27 @@ for this_step_out in range(n_outer_out):
   displacementTauNP=np.zeros(3*NodesNr)
   TAUclient.setDataField('displacementsTau',displacementTauNP);
   dT = TAUclient.dataField('displacementsTau')
-  
+
   mapperName2 = 'mapperDisp'+str(this_step_out+1)
   mapper = FEMapper.FEMapper(mapperName2,'Mortar',ping,'myMeshCarat',TAUclient,'myMeshTau', isDual, oppSurfNormal, enforceConsistency)
-  
+
   mapper.doConsistentMapping(ping,dC, TAUclient, dT)
   print "displacementMappingDone"
   dispTau = TAUclient.dataField('displacementsTau').array
   if(this_step_out==0):
     dispTauOld=np.zeros(3*NodesNr)
-  
- 
+
+
   Functions.meshDeformation(NodesNr,nodes,dispTau,dispTauOld)
   print "deformationstart"
-  
+
   for i in xrange(0,3*NodesNr):
     dispTauOld[i]=dispTau[i]
-    
+
   print "afterDeformation"
-  
- 
-  Solver.output() 
+
+
+  Solver.output()
   Solver.finalize()
   tau_free_dualgrid()
   tau_free_prims()

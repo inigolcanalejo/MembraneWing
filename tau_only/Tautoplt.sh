@@ -1,5 +1,5 @@
 #Definition
-Work_Dir=/home/inigo/simulations/membranProjekt/works/works180718/Ploetz_FSI_instationaer_U20_AOA6
+Work_Dir=/home/inigo/simulations/membranProjekt/works/works180718/tau_only
 Casename=airfoil_Structured
 
 #*********************************

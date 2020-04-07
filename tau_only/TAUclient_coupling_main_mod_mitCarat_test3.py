@@ -163,9 +163,9 @@ for this_step_out in range(n_outer_out):
   tau_parallel_sync()
 
   if tau_mpi_rank() == 0:
-    List_file = Functions.findFile('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/Outputs/*.plt')
+    List_file = Functions.findFile('/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/*.plt')
     print List_file
-    fname = Functions.findFname(List_file,'/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6',this_step_out)
+    fname = Functions.findFname(List_file,'/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only',this_step_out)
     print fname
     it = Functions.numberLines(fname)
 
