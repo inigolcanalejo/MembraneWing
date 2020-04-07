@@ -1,15 +1,5 @@
 # -*- coding: utf-8 -*-
 #!/usr/bin/python
-#*******************************************************************************
-# $Revision: $
-# $Date: $
-# $Author: $
-#******************************************************************************/
-#
-#******************************************************************************/
-#*******************************************************************************
-# import modules & load objects used below
-#*******************************************************************************
 
 import time
 import shutil
@@ -45,20 +35,8 @@ from tau_python import *
 from tau_python import tau_msg
 rank = tau_mpi_rank()
 
-isDual=False
-oppSurfNormal1=True
-oppSurfNormal2=True
-enforceConsistency1=0
-enforceConsistency2=0
-
-#-------------------------------------------------------------------------------
 # Definition of the parameter file
 para_path='/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/airfoil_Structured.cntl'
-ioname = 'test2'
-TAU_path = '/home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/'
-#-------------------------------------------------------------------------------
-# Don't modify original parafile. That is optional.
-#-------------------------------------------------------------------------------
 para_path_mod = para_path + ".mod"
 shutil.copy(para_path, para_path_mod)
 
@@ -74,8 +52,6 @@ DataSetList = PyDataSet.DataSetList()
 grid = Para.get_para_value("Primary grid filename") # Primary grid filename
 #n_outer = int(Para.get_para_value('Unsteady physical time steps'))
 surfaces = ["MEMBRANE"]
-deformfile = Para.get_para_value('RBF basis coordinates and deflections filename')
-
 
 #------------------------------------------------------------------
 # Prep + DataSet
@@ -83,14 +59,14 @@ deformfile = Para.get_para_value('RBF basis coordinates and deflections filename
 Prep.run(write_dualgrid=1,free_primgrid=False) # Read Parameter file with Para already done
                                                     # preprocessing to create dual grid structure
 
-DS = PyDataSet.DataSet(dataset_identifier = "name", output_functions = "surface",dataset_type ="surface",surf_def  = "name",surf_zone_list  = surfaces)
-for i in range(0, len(surfaces)):
-    DS.define_output(output_name       = surfaces[i],
-			output_period     = 1,
-                        output_variables  = ["cp"],
-                        output_gather     = 1)
+# DS = PyDataSet.DataSet(dataset_identifier = "name", output_functions = "surface",dataset_type ="surface",surf_def  = "name",surf_zone_list  = surfaces)
+# for i in range(0, len(surfaces)):
+#     DS.define_output(output_name       = surfaces[i],
+# 			output_period     = 1,
+#                         output_variables  = ["cp"],
+#                         output_gather     = 1)
 
-DataSetList.store_dataset(DS)
+# DataSetList.store_dataset(DS)
 tau_parallel_sync()
 #-----------------------------------------------------------------
 # solve
