@@ -43,7 +43,7 @@ Reading parameter file 'airfoil_Structured.cntl.mod'
 Preprocessor parameters:
   Files/IO ------------------------------------------------------: -
                                         Boundary mapping filename: airfoil_Structured.cntl.mod
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid
+                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
                                                       Grid prefix: dualgrid
                                                   Old grid prefix: (none)
                                          Parent input file prefix: (none)
@@ -785,7 +785,7 @@ Solver parameters:
   Files/IO ------------------------------------------------------: -
                                               Restart-data prefix: (none)
                                         Boundary mapping filename: airfoil_Structured.cntl.mod
-                                              Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol
+                                              Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol
                                   Profile output description file: airfoil_Structured.cntl.mod
                                     Plane output description file: airfoil_Structured.cntl.mod
                                   Surface output description file: airfoil_Structured.cntl.mod
@@ -967,7 +967,7 @@ Perform SG start up steps (fine grid) every unsteady timestep (0/1): 0
                             Factor for dynamic Cauchy convergence: 0.05
   Chimera -------------------------------------------------------: -
                                2D offset vector (0 / x=1,y=2,z=3): 0
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid
+                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
                           Suppress error on orphaned points (0/1): 0
                       Apply Chimera nearest neighbor search (0/1): 0
                      Extend valid Chimera nearest neighbors (0/1): 0
@@ -1054,7 +1054,7 @@ Profile parameters:
   Nearest wall data parameters ----------------------------------: -
                                   Compute nearest wall data (0/1): 0
                                             Project wall distance: 0
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Mesh/airfoil_Structured_scaliert.grid
+                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
   Transition module parameters ----------------------------------: -
                                Transition module description file: airfoil_Structured.cntl.mod
                              Set transition at solver start (0/1): 0
@@ -1197,7 +1197,7 @@ Mainloop on level 1:
 !          9|  1.69e+01|  7.85e+00|  5.05e-13|  1.31e+01|  5.91e+01|  8.29e-04|  1.15e+03|   2.66e-03|  -2.00e-03|  -2.25e-03|  3.62e+00|  1.63e+00| -4.40e-07| -1.67e-02| -2.84e+02|  5.51e-03|  6.45e+01|  6.0e+00|   1.96839e-01|
 !         10|  1.28e+01|  5.70e+00|  5.34e-13|  1.15e+01|  4.54e+01|  5.32e-04|  8.71e+02|   5.08e-03|  -1.79e-19|  -2.92e-03|  3.56e+00|  1.51e+00| -4.19e-07| -1.64e-02| -2.77e+02|  5.01e-03|  6.89e+01|  6.0e+00|   1.96839e-01|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Elapsed Time for the last 10 inner iterations   3.765   4.690 seconds (wallclock in solver and total user time, respectively).
+ Elapsed Time for the last 10 inner iterations   4.063   5.176 seconds (wallclock in solver and total user time, respectively).
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         Time|      Rrho|    Rrhovx|    Rrhovy|    Rrhovz|     RrhoE|   Rrhonue|  Max-Rrho| X-max-Rrho| Y-max-Rrho| Z-max-Rrho|    C-lift|    C-drag|   C-sidef|      C-mx|      C-my|      C-mz|    Max-y+|  Angle-a|    MF(OUTLET)|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1225,12 +1225,12 @@ Total moment coefficients (body fitted system [tau])
  name-group    3          MEMBRANE      -0.016395768599       -276.675604062     0.00501102283251                  100
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-Wallclock runtime in mainloop: 3.8 seconds
-      cpu runtime in mainloop: 3.8 seconds
+Wallclock runtime in mainloop: 4.1 seconds
+      cpu runtime in mainloop: 4.1 seconds
 Wallclock time for exchange of pointdata: 0.000 seconds (min/avg/max 0.000/0.000/0.000 over all domains)
-Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.pval.unsteady_i=1_t=5.000e-03> written
-Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03> written
-Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/tau_only/Outputs/airfoilSol.monitor.pval.unsteady.dat> written
+Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol.pval.unsteady_i=1_t=5.000e-03> written
+Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03> written
+Output file </media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol.monitor.pval.unsteady.dat> written
 
 Transition module done
 
