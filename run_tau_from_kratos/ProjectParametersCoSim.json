@@ -15,16 +15,17 @@
         "coupling_sequence":
         [
             {
-                "name": "fluid",
+                "name": "TAU",
                 "output_data_list": [],
                 "input_data_list": []
             }
         ],
         "solvers" :
         {
-            "fluid":
+            "TAU":
             {
                 "type" : "solver_wrappers.external.tau_wrapper",
+                "echo_level": 3,
                 "solver_wrapper_settings" : {
                     "start_external_solver": true,
                     "external_solver_start_command": "python",
