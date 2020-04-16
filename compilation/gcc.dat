@@ -1,0 +1,35 @@
+cd build_build
+/home/piquee/work/Softwares/gcc-9.3.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/work/piquee/Softwares/gcc-9.3 --enable-checking=release --enable-languages=c,c++,fortran --disable-multilib --program-suffix=-9.3
+
+/home/piquee/work/Softwares/gcc-9.3.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/work/piquee/Softwares/gcc-9.3 --enable-checking=release --enable-languages=c,c++,fortran
+
+/home/piquee/work/Softwares/gcc-5.4.0/configure -v --build=x86_64-linux-gnu --host=x86_64-linux-gnu --target=x86_64-linux-gnu --prefix=/work/piquee/Softwares/gcc-5.4.0-install --enable-checking=release --enable-languages=c,c++,fortran --disable-multilib --program-suffix=-5.4
+
+../gcc-5.4.0/configure -v --prefix=/work/piquee/Softwares/gcc-5.4.0-install --enable-checking=release --enable-languages=c,c++,fortran --enable-threads=posix --disable-multilib --enable-shared --with-abi=m64
+
+/home/piquee/work/Softwares/gcc-5.4.0/configure --prefix=/work/piquee/Softwares/gcc-5.4.0-install \
+    --enable-bootstrap \
+    --enable-shared \
+    --enable-threads=posix \
+    --enable-checking=release \
+    --with-system-zlib \
+    --enable-__cxa_atexit \
+    --disable-libunwind-exceptions \
+    --enable-linker-build-id \
+    --enable-languages=c,c++,lto \
+    --disable-vtable-verify \
+    --with-default-libstdcxx-abi=new \
+    --enable-libstdcxx-debug  \
+    --without-included-gettext  \
+    --enable-plugin \
+    --disable-initfini-array \
+    --disable-libgcj \
+    --enable-plugin  \
+    --disable-multilib \
+    --with-tune=generic \
+    --build=${build_target} \
+    --target=${build_target} \
+    --host=${build_target} \
+    --with-pkgversion="$packageversion"
+    
+export BOOST_ROOT=${BOOST_ROOT:-"/work/piquee/Softwares/boost_1_72_0"}
