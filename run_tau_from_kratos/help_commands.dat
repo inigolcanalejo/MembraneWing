@@ -1,0 +1,1 @@
+python /work/piquee/Softwares/TAU/TAU_2016.2/2016.2.0/bin/py_turb1eq/tau.py /work/piquee/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/TauSolver.py airfoil_Structured.cntl log_TAU.out 
