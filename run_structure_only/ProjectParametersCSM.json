@@ -10,7 +10,7 @@
         "solver_type"                     : "Static",
         "model_part_name"                 : "Structure",
         "domain_size"                     : 3,
-        "echo_level"                      : 0,
+        "echo_level"                      : 1,
         "analysis_type"                   : "non_linear",
         "model_import_settings"           : {
             "input_type"     : "mdpa",
@@ -30,7 +30,10 @@
         "residual_absolute_tolerance"     : 1e-9,
         "max_iteration"                   : 10,
         "rotation_dofs"                   : false,
-        "volumetric_strain_dofs"          : false
+        "volumetric_strain_dofs"          : false,
+        "linear_solver_settings"          : {
+            "verbosity"                      : 2
+        }
     },
     "processes"        : {
         "constraints_process_list" : [{
@@ -44,6 +47,18 @@
                 "constrained"     : [true,true,true],
                 "value"           : [0.0,0.0,0.0]
             }
+        },
+        {
+            "python_module" : "assign_vector_variable_process",
+            "kratos_module" : "KratosMultiphysics",
+            "process_name"  : "AssignVectorVariableProcess",
+            "Parameters"    : {
+                "model_part_name" : "Structure",
+                "variable_name"   : "DISPLACEMENT",
+                "interval"        : [0.0,"End"],
+                "constrained"     : [false,true,false],
+                "value"           : [null,0.0,null]
+            }
         }],
         "loads_process_list"       : [{
             "python_module" : "assign_scalar_variable_to_conditions_process",
@@ -53,7 +68,7 @@
                 "model_part_name" : "Structure.SurfacePressure3D_Upper_Membrane",
                 "variable_name"   : "POSITIVE_FACE_PRESSURE",
                 "interval"        : [0.0,"End"],
-                "value"           : 100.0
+                "value"           : 0.0
             }
         },{
             "python_module" : "assign_scalar_variable_to_conditions_process",
@@ -63,7 +78,7 @@
                 "model_part_name" : "Structure.SurfacePressure3D_Lower_Membrane",
                 "variable_name"   : "POSITIVE_FACE_PRESSURE",
                 "interval"        : [0.0,"End"],
-                "value"           : 100.0
+                "value"           : 0.0
             }
         }],
         "list_other_processes"     : [{
