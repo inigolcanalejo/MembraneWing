@@ -33,9 +33,18 @@
                     "tau_input_file":"airfoil_Structured.cntl",
                     "tau_log_file": "log_TAU.out",
                     "controlling_external_solver": true,
-                    "main_model_part_name": "fluid_interface"
+                    "main_model_part_name": "Fluid",
+                    "model_parts_recv" : {
+                        "Fluid.Interface"    : "Membrane"
+                    }
                 },
-                "data" : {},
+                "data" : {
+                    "Interface" : {
+                        "model_part_name"   : "Fluid.Interface",
+                        "dimension" : 3,
+                        "variable_name" : "DISPLACEMENT"
+                    }
+                },
                 "io_settings" : {
                     "type" : "tau_io",
                     "echo_level": 2
