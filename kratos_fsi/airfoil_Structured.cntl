@@ -75,9 +75,9 @@
  Files/IO --------------------------------------------------------: -
                                                                   : -
                                          Boundary mapping filename: (thisfile)
-                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
+                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi/Mesh/airfoil_Structured_scaliert.grid
                                                                   : -
-                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol
+                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi/Outputs/airfoilSol
                                                Restart-data prefix: (none)
                                                                   : -
                                    Surface output description file: (thisfile)
@@ -224,7 +224,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                   Unsteady physical time step size: 0.005
                                      Unsteady physical time offset: 0
                              Unsteady computational time step size: -1
-                                      Unsteady physical time steps: 1
+                                      Unsteady physical time steps: 2
                            Unsteady inner iterations per time step: 10
                   Minimum number of inner iterations per time step: 10
                                     Unsteady implicit scheme order: 2
