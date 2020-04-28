@@ -4,7 +4,7 @@
         "parallel_type" : "OpenMP",
         "echo_level"    : 1,
         "start_time"    : 0.0,
-        "end_time"      : 1.0
+        "end_time"      : 0.015
     },
     "solver_settings"  : {
         "solver_type"                     : "Static",
@@ -20,7 +20,7 @@
             "materials_filename" : "StructuralMaterials.json"
         },
         "time_stepping"                   : {
-            "time_step" : 100.0
+            "time_step" : 0.005
         },
         "line_search"                     : false,
         "convergence_criterion"           : "residual_criterion",
