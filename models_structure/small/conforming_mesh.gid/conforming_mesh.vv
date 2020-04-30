@@ -1,0 +1,33 @@
+BeginZE /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/models_structure/small/conforming_mesh.gid/conforming_mesh.vv
+   x -0.0300064347684383392 0.280388832092285156
+   y 0.164027869701385498 -0.163196280598640442
+   z -0.378124326467514038 0.36817660927772522
+   e 0.124383494257926941
+   v -0.385413467148835232 0.0945073581213032449 0.297982472945091503
+   r -0.868176977590845778
+   m 0.804549634456634521 0.444554239511489868 -0.393791139125823975 0 -0.5902518630027771 0.52532583475112915 -0.612891137599945068 0 -0.0655946880578994751 0.725537300109863281 0.685049653053283691 0 0 0 0 1
+   c 0.10446050763130188 -0.00100000004749745131 0.00497385719791054726
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 1
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/models_structure/small/conforming_mesh.gid/conforming_mesh.vv
+

@@ -1,6 +1,6 @@
 {
     "problem_data"     : {
-        "problem_name"  : "structure_small_model",
+        "problem_name"  : "conforming_mesh",
         "parallel_type" : "OpenMP",
         "echo_level"    : 1,
         "start_time"    : 0.0,
@@ -14,7 +14,7 @@
         "analysis_type"                   : "non_linear",
         "model_import_settings"           : {
             "input_type"     : "mdpa",
-            "input_filename" : "structure_small_model"
+            "input_filename" : "conforming_mesh"
         },
         "material_import_settings"        : {
             "materials_filename" : "StructuralMaterials.json"
@@ -97,7 +97,7 @@
             "help"          : "This process writes postprocessing files for GiD",
             "Parameters"    : {
                 "model_part_name"        : "Structure",
-                "output_name"            : "structure_small_model",
+                "output_name"            : "conforming_mesh",
                 "postprocess_parameters" : {
                     "result_file_configuration" : {
                         "gidpost_flags"               : {
