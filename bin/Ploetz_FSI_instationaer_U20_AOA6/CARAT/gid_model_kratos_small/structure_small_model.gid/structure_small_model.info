@@ -1,0 +1,104 @@
+ |  /           |
+ ' /   __| _` | __|  _ \   __|
+ . \  |   (   | |   (   |\__ \
+_|\_\_|  \__,_|\__|\___/ ____/
+           Multi-Physics 7.1.0-b871c8f-Release
+Compiled with OpenMP support.
+Maximum OpenMP threads: 1.
+Importing    KratosStructuralMechanicsApplication 
+    KRATOS   ___|  |                   |                   |
+           \___ \  __|  __| |   |  __| __| |   |  __| _` | |
+                 | |   |    |   | (    |   |   | |   (   | |
+           _____/ \__|_|   \__,_|\___|\__|\__,_|_|  \__,_|_| MECHANICS
+Initializing KratosStructuralMechanicsApplication...
+::[MechanicalSolver]:: : Construction finished 
+::[StaticMechanicalSolver]:: : Construction finished 
+::[MechanicalSolver]:: : Variables ADDED 
+::[PythonSolver]::: Reading model part. 
+::[PythonSolver]::: Reading model part from file: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/Ploetz_FSI_instationaer_U20_AOA6/CARAT/gid_model_kratos_small/structure_small_model.gid/structure_small_model.mdpa 
+ModelPartIO:   [Reading Nodes    : 122 nodes read]
+ModelPartIO:   [Reading Elements : 61 elements read] [Type: MembraneElement3D4N]
+ModelPartIO:   [Reading Conditions : 20 conditions read] [Type: SurfaceLoadCondition3D4N]
+ModelPartIO:   [Reading Conditions : 20 conditions read] [Type: SurfaceLoadCondition3D4N]
+ModelPartIO:   [Total Lines Read : 628]
+::[PythonSolver]::: Finished reading model part from mdpa file. 
+ModelPart: -Structure- model part
+    Buffer Size : 1
+    Number of tables : 0
+    Number of sub model parts : 4
+    Current solution step index : 0
+    DOMAIN_SIZE : 3
+    IS_RESTARTED : 0
+
+    Number of Geometries  : 0
+    Mesh 0 :
+        Number of Nodes       : 122
+        Number of Properties  : 1
+        Number of Elements    : 61
+        Number of Conditions  : 40
+        Number of Constraints : 0
+
+    -DISPLACEMENT_Leading_Trailing_Edge- model part
+        Number of tables : 0
+        Number of sub model parts : 0
+
+        Number of Geometries  : 0
+        Mesh 0 :
+            Number of Nodes       : 46
+            Number of Properties  : 0
+            Number of Elements    : 0
+            Number of Conditions  : 0
+            Number of Constraints : 0
+    -Parts_Membrane_Structure- model part
+        Number of tables : 0
+        Number of sub model parts : 0
+
+        Number of Geometries  : 0
+        Mesh 0 :
+            Number of Nodes       : 122
+            Number of Properties  : 0
+            Number of Elements    : 61
+            Number of Conditions  : 0
+            Number of Constraints : 0
+    -SurfacePressure3D_Lower_Membrane- model part
+        Number of tables : 0
+        Number of sub model parts : 0
+
+        Number of Geometries  : 0
+        Mesh 0 :
+            Number of Nodes       : 42
+            Number of Properties  : 0
+            Number of Elements    : 0
+            Number of Conditions  : 20
+            Number of Constraints : 0
+    -SurfacePressure3D_Upper_Membrane- model part
+        Number of tables : 0
+        Number of sub model parts : 0
+
+        Number of Geometries  : 0
+        Mesh 0 :
+            Number of Nodes       : 42
+            Number of Properties  : 0
+            Number of Elements    : 0
+            Number of Conditions  : 20
+            Number of Constraints : 0
+ 
+::[PythonSolver]:: : Finished reading model part. 
+Read materials: Started
+Read materials: Finished
+::[MechanicalSolver]:: : Constitutive law was successfully imported. 
+::[MechanicalSolver]::: ModelPart prepared for Solver. 
+::[MechanicalSolver]:: : DOF's ADDED 
+[WARNING] VtkOutput: Modelpart "Structure" has both elements and conditions.
+Giving precedence to elements and writing only elements!
+::[MechanicalSolver]:: : Initializing ... 
+::[MechanicalSolver]:: No linear solver was specified, using fastest available solver: 
+Importing    EigenSolversApplication 
+Initializing KratosEigenSolversApplication...
+Linear-Solver-Factory: Creating "pardiso_lu" as fastest available direct solver 
+::[MechanicalSolver]:: : Finished initialization. 
+::[KSM Simulation]:: : Analysis -START-  
+::[KSM Simulation]:: : STEP:  1 
+::[KSM Simulation]:: : TIME:  1.1 
+::[KSM Simulation]:: : Analysis -END-  
+KRATOS TERMINATED CORRECTLY

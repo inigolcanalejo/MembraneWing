@@ -1,8 +1,16 @@
 
-DLR Tau-Code, Python-Interface, Version 03/15/2005 compiled on Oct 12 2016 (from 19618 [libs: 19618])
+DLR Tau-Code, Python-Interface, Version Release.2016.2.0 compiled on Feb  2 2017 (from exported [libs: exported])
 
-Executing script </home/inigo/software/kratosMerge/Kratos/bin/Release/KratosMultiphysics/CoSimulationApplication/solver_wrappers/../helpers/tau_solver.py>
+Executing script </work/piquee/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/TauSolver.py>
 
+
+**************************************************
+* Initial TAU Mesh at time <module 'time' from '/opt/rh/python27/root/usr/lib64/python2.7/lib-dynload/timemodule.so'>
+**************************************************
+
+**************************************************
+* Start Preprocessing at time <module 'time' from '/opt/rh/python27/root/usr/lib64/python2.7/lib-dynload/timemodule.so'>
+**************************************************
 
 Implemented boundary treatments:
 --------------------------------
@@ -43,12 +51,9 @@ Reading parameter file 'airfoil_Structured.cntl.mod'
 Preprocessor parameters:
   Files/IO ------------------------------------------------------: -
                                         Boundary mapping filename: airfoil_Structured.cntl.mod
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
+                                            Primary grid filename: /work/piquee/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
                                                       Grid prefix: dualgrid
                                                   Old grid prefix: (none)
-                                         Parent input file prefix: (none)
-                                        Parent output file prefix: (none)
-                                    Output MG agglomeration (0/1): 0
                                                                  : -
                                        Read partitioning filename: (none)
                                              Write graph filename: (none)
@@ -91,7 +96,6 @@ Preprocessor parameters:
                              Threshold parameter for aspect ratio: 4
   Partitioning --------------------------------------------------: -
                                                 Number of domains: 1
-                                          Smooth partitions (0/1): 0
                                       Type of partitioning (name): zoltan
   Theta not for Tau ---------------------------------------------: -
                     Preprocessing for incompressible solver (0/1): 0
@@ -278,6 +282,14 @@ LUSGS mapping on level 2
 LUSGS mapping on level 3
 free preprocessing data
 
+**************************************************
+* Stop Preprocessing at time <module 'time' from '/opt/rh/python27/root/usr/lib64/python2.7/lib-dynload/timemodule.so'>
+**************************************************
+
+**************************************************
+* Initialize Solver at time <module 'time' from '/opt/rh/python27/root/usr/lib64/python2.7/lib-dynload/timemodule.so'>
+**************************************************
+
 Signal handling
   Signal 15: Write data & exit after time step
   Signal 12: Write data after time step
@@ -321,7 +333,6 @@ Implemented initialization types:
 
 Implemented SA boundary conditions:
   smooth
-  rough_mixed
   rough
 
 Implemented vortical correction functions:
@@ -341,22 +352,15 @@ Implemented linear relaxation solvers:
 Implemented inviscid flux discretization types:
   Upwind
   Central
-  Mixed
 
 Implemented upwind fluxes:
   Van_Leer
   AUSMDV
   AUSMP
-  AUSMPWP
-  AUSMPUP
   Roe
   AUSM_Van_Leer
   EFM
   MAPS+
-
-Implemented reconstruction methods:
-  Green_Gauss                               
-  Least_square                              
 
 Implemented central dissipation fluxes:
   Scalar_dissipation                        
@@ -382,7 +386,6 @@ Implemented versions of cell stretching coefficient:
 Implemented smoothers:
   Point_explicit                            
   Upwind_implicit                           
-  Implicit                                  
 
 Implemented grid movement types:
           static: Grid does not move
@@ -394,7 +397,6 @@ Implemented unsteady time stepping schemes:
           (none): Unsteady time stepping is off
             dual: Dual time stepping scheme
           global: Global time stepping scheme
-        adaptive: Adaptive time stepping scheme
 
 Implemented functions for computation of flow statistics:
             mean: compute mean values of rho, u, v, w, p, mue_turb, mue_lam
@@ -411,21 +413,20 @@ Implemented "Field output values":
           apsimP for output of the apsim pressure
             temp for output of the temperature
             mach for output of the Mach number
-            mean for output of the field mean values
+            mean for output of the mean flow variables
      meanvelgrad for output of the mean velocity gradient
         meanturb for output of the mean turbulence values
         mean-des for output of the mean des values
-         mean-cp for output of the field mean cp values
+         mean-cp for output of the mean and rms pressure coefficient
  residual-stress for output of the residual turbulent stresses
-        variance for output of the field variance values
+        variance for output of the variances of flow variables
            imach for output of the isentropic Mach number
          muetmue for output of the ratio muet mue
    rs-boussinesq for output of the specific Reynolds stresses (Boussinesq)
-          rs-qcr for output of the QCR contribution to specific Reynolds stresses
              des for output of the length +(des),-(Rans)
       turbfilter for output of the LES/DES filter widths
       test-iddes for output of the output for testing iddes
-         rotcorr for output of the rotational  correction
+         rotcorr for output of the rotational correction indicators
              sas for output of the Von Karman Length  
       divergence for output of the divergence of vel
         testgrad for output of the test gradients
@@ -473,7 +474,6 @@ Implemented "Field output values":
         momentum for output of the momentum
                H for output of the total enthalpy
             rhoE for output of the density times total energy
-           mgind for output of the multigrid indicator
           Kn-rho for output of the Knudsen number (gradrho)
         Kn-tau-q for output of the Knudsen number (stress, heat flux)
              mfp for output of the mean free path
@@ -481,9 +481,9 @@ Implemented "Field output values":
            blank for output of the chimera blanked points
           ipzone for output of the chimera interpolated points
         notfound for output of the chimera points not found
-            hole for output of the chimera holecut
-         holeold for output of the old chimera holecut
-        holeoold for output of the oold chimera holecut
+            hole for output of the chimera blanking state
+         holeold for output of the old chimera blanking state
+        holeoold for output of the oold chimera blanking state
 
 -----------------------------------------------------
 Implemented "Surface output values":
@@ -494,7 +494,7 @@ Implemented "Surface output values":
                p for output of the pressure
             temp for output of the temperature
             mean for output of the mean flow variables
-         mean-cp for output of the mean and rms pressure coeff
+         mean-cp for output of the mean and rms pressure coefficient
          mean-cf for output of the mean skin friction
         variance for output of the variances of flow variables
             mach for output of the Mach number
@@ -571,7 +571,7 @@ Implemented "Plane output values":
               cp for output of the pressure coeff
             Ptot for output of the total pressure
               pl for output of the pressure loss
-         entropy for output of the surface entropy
+         entropy for output of the normalized entropy difference
               cf for output of the skin friction
            cfxyz for output of the skin friction vector
            cfabs for output of the abs. skin friction
@@ -778,14 +778,13 @@ are indicated by an "X" in the second column:
   Freqdom-Cmy-Phase       Freqdom: Phase shift of CM_Y
   Freqdom-Cmz-Amp         Freqdom: Amplitude shift of CM_Z
   Freqdom-Cmz-Phase       Freqdom: Phase shift of CM_Z
-  Impl-cfl                Implicit CFL number
 -----------------------------------------------------
 
 Solver parameters:
   Files/IO ------------------------------------------------------: -
                                               Restart-data prefix: (none)
                                         Boundary mapping filename: airfoil_Structured.cntl.mod
-                                              Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol
+                                              Output files prefix: /work/piquee/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol
                                   Profile output description file: airfoil_Structured.cntl.mod
                                     Plane output description file: airfoil_Structured.cntl.mod
                                   Surface output description file: airfoil_Structured.cntl.mod
@@ -907,8 +906,6 @@ Perform SG start up steps (fine grid) every unsteady timestep (0/1): 0
                                         CFL number (coarse grids): 2
                                         CFL number (large grad p): 2
                                        Time step smoothing factor: 0
-                                       Time step computing method: Minimum_of_eigenvalues
-                               Viscous time step weighting factor: 4
   Smoother ------------------------------------------------------: -
                                                 Residual smoother: Point_explicit
                                               Correction smoother: Point_explicit
@@ -952,9 +949,7 @@ Perform SG start up steps (fine grid) every unsteady timestep (0/1): 0
                                             EARSM expansion order: 1
                                    Vortical flow correction (0/1): 0
                                    Turbulence initialization type: walldist
-                                             SAS correction (0/1): 0
                                   Vortex generator modeling (0/1): 0
-                                              QCR extension (0/1): 0
   SA models -----------------------------------------------------: -
                                                  SA model version: SA-neg
                                        SA boundary condition type: smooth
@@ -966,13 +961,11 @@ Perform SG start up steps (fine grid) every unsteady timestep (0/1): 0
                          Number of samples for Cauchy convergence: 20
                             Factor for dynamic Cauchy convergence: 0.05
   Chimera -------------------------------------------------------: -
-                               2D offset vector (0 / x=1,y=2,z=3): 0
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
+                                            Primary grid filename: /work/piquee/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
                           Suppress error on orphaned points (0/1): 0
                       Apply Chimera nearest neighbor search (0/1): 0
                      Extend valid Chimera nearest neighbors (0/1): 0
     Smooth interpolation data for Chimera nearest neighbors (0/1): 0
-                                   Apply Chimera adaptation (0/1): 0
                               Apply Chimera wall projection (0/1): 0
                                     Mismatch of overlapping walls: 0
                        Remove overlap for loads integration (0/1): 0
@@ -980,8 +973,6 @@ Perform SG start up steps (fine grid) every unsteady timestep (0/1): 0
                                      Surface kink detection angle: 30
                            Surface kink detection angle tolerance: 15
                                  Chimera new implementation (0/1): 1
-                                   Chimera debugging output (0/1): 0
-                              Chimera debugging wall output (0/1): 0
                         Apply Chimera automatic holecutting (0/1): 0
                      Apply Chimera automatic shrink overlap (0/1): 0
                            Chimera automatic shrink maximum value: 15
@@ -1023,18 +1014,12 @@ Profile parameters:
                                     Unsteady physical time offset: 0
                             Unsteady computational time step size: -1
                                Unsteady normalized time step size: -1
-                                     Unsteady physical time steps: 1
-                          Unsteady inner iterations per time step: 10
+                                     Unsteady physical time steps: 3
+                          Unsteady inner iterations per time step: 20
                  Minimum number of inner iterations per time step: 10
                                    Unsteady implicit scheme order: 2
                                      Unsteady extrapolation order: 0
                                Compute harmonics on surface (0/1): 1
-                                         Physical simulation time: -1
-                                                 Runge-Kutta type: SDIRK
-                                       Time step adaptation (0/1): 1
-                                   Time step adaptation tolerance: 5e-05
-                                  Time step adaptation controller: proportional-integral
-                                 Use time step size limiter (0/1): 1
   Moving grid ---------------------------------------------------: -
                                             Type of grid movement: static
                                       Motion description filename: (none)
@@ -1054,7 +1039,7 @@ Profile parameters:
   Nearest wall data parameters ----------------------------------: -
                                   Compute nearest wall data (0/1): 0
                                             Project wall distance: 0
-                                            Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
+                                            Primary grid filename: /work/piquee/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
   Transition module parameters ----------------------------------: -
                                Transition module description file: airfoil_Structured.cntl.mod
                              Set transition at solver start (0/1): 0
@@ -1154,7 +1139,10 @@ Solver boundary parameter:
                                              Heat flux evaluation: gradient
                                        Heat flux correction (0/1): 0
                                                       Temperature: 293.15
+                                             Prescribed heat flux: 0
                                                        Emissivity: 0.8
+                                            Reservoir temperature: 293.15
+                                           Conduction coefficient: 0
 
 -----------------------------------------------------
 Active turbulence model: Spalart Allmaras model
@@ -1196,13 +1184,23 @@ Mainloop on level 1:
 !          8|  1.99e+01|  1.20e+01|  9.06e-13|  1.57e+01|  7.00e+01|  1.36e-03|  1.34e+03|   1.51e-03|  -1.06e-19|  -1.73e-03|  3.70e+00|  1.70e+00| -4.39e-07| -1.71e-02| -2.86e+02|  5.81e-03|  5.99e+01|  6.0e+00|   1.96839e-01|
 !          9|  1.69e+01|  7.85e+00|  5.05e-13|  1.31e+01|  5.91e+01|  8.29e-04|  1.15e+03|   2.66e-03|  -2.00e-03|  -2.25e-03|  3.62e+00|  1.63e+00| -4.40e-07| -1.67e-02| -2.84e+02|  5.51e-03|  6.45e+01|  6.0e+00|   1.96839e-01|
 !         10|  1.28e+01|  5.70e+00|  5.34e-13|  1.15e+01|  4.54e+01|  5.32e-04|  8.71e+02|   5.08e-03|  -1.79e-19|  -2.92e-03|  3.56e+00|  1.51e+00| -4.19e-07| -1.64e-02| -2.77e+02|  5.01e-03|  6.89e+01|  6.0e+00|   1.96839e-01|
+!         11|  1.07e+01|  4.80e+00|  3.84e-13|  8.81e+00|  3.84e+01|  3.62e-04|  7.49e+02|   5.09e-04|  -2.00e-03|  -9.86e-04|  3.55e+00|  1.39e+00| -3.96e-07| -1.63e-02| -2.70e+02|  4.51e-03|  7.27e+01|  6.0e+00|   1.96839e-01|
+!         12|  9.40e+00|  4.28e+00|  2.37e-13|  6.92e+00|  3.33e+01|  2.65e-04|  7.12e+02|  -1.82e-05|   9.33e-21|   1.52e-04|  3.53e+00|  1.28e+00| -3.76e-07| -1.62e-02| -2.63e+02|  4.03e-03|  7.58e+01|  6.0e+00|   1.96839e-01|
+!         13|  8.35e+00|  3.90e+00|  1.65e-13|  6.15e+00|  2.94e+01|  2.09e-04|  6.91e+02|  -1.82e-05|   9.33e-21|   1.52e-04|  3.50e+00|  1.18e+00| -3.55e-07| -1.60e-02| -2.57e+02|  3.59e-03|  7.79e+01|  6.0e+00|   1.96839e-01|
+!         14|  8.01e+00|  3.70e+00|  1.34e-13|  5.70e+00|  2.81e+01|  1.74e-04|  5.80e+02|  -1.82e-05|   9.33e-21|   1.52e-04|  3.46e+00|  1.09e+00| -3.35e-07| -1.58e-02| -2.50e+02|  3.20e-03|  7.91e+01|  6.0e+00|   1.96839e-01|
+!         15|  8.07e+00|  3.54e+00|  1.22e-13|  5.41e+00|  2.83e+01|  1.51e-04|  5.27e+02|   6.54e-04|  -2.00e-03|   3.21e-03|  3.43e+00|  1.01e+00| -3.14e-07| -1.57e-02| -2.43e+02|  2.89e-03|  7.97e+01|  6.0e+00|   1.96839e-01|
+!         16|  8.44e+00|  3.45e+00|  1.12e-13|  5.07e+00|  2.96e+01|  1.36e-04|  5.59e+02|   1.51e-03|  -1.06e-19|  -1.73e-03|  3.40e+00|  9.51e-01| -2.92e-07| -1.55e-02| -2.37e+02|  2.63e-03|  8.01e+01|  6.0e+00|   1.96839e-01|
+!         17|  8.99e+00|  3.40e+00|  1.12e-13|  4.69e+00|  3.14e+01|  1.26e-04|  6.84e+02|   1.51e-03|  -1.06e-19|  -1.73e-03|  3.37e+00|  8.96e-01| -2.71e-07| -1.53e-02| -2.30e+02|  2.40e-03|  8.05e+01|  6.0e+00|   1.96839e-01|
+!         18|  9.11e+00|  3.33e+00|  1.17e-13|  4.39e+00|  3.18e+01|  1.19e-04|  7.30e+02|   1.51e-03|  -1.06e-19|  -1.73e-03|  3.33e+00|  8.44e-01| -2.49e-07| -1.51e-02| -2.24e+02|  2.19e-03|  8.09e+01|  6.0e+00|   1.96839e-01|
+!         19|  8.86e+00|  3.23e+00|  1.16e-13|  4.12e+00|  3.09e+01|  1.13e-04|  7.12e+02|   1.51e-03|  -1.06e-19|  -1.73e-03|  3.28e+00|  7.95e-01| -2.28e-07| -1.49e-02| -2.18e+02|  1.99e-03|  8.10e+01|  6.0e+00|   1.96839e-01|
+!         20|  8.43e+00|  3.13e+00|  1.09e-13|  3.88e+00|  2.93e+01|  1.09e-04|  6.47e+02|   1.51e-03|  -1.06e-19|  -1.73e-03|  3.24e+00|  7.49e-01| -2.08e-07| -1.47e-02| -2.12e+02|  1.81e-03|  8.08e+01|  6.0e+00|   1.96839e-01|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
- Elapsed Time for the last 10 inner iterations   3.863   4.821 seconds (wallclock in solver and total user time, respectively).
+ Elapsed Time for the last 20 inner iterations  11.919  13.641 seconds (wallclock in solver and total user time, respectively).
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
         Time|      Rrho|    Rrhovx|    Rrhovy|    Rrhovz|     RrhoE|   Rrhonue|  Max-Rrho| X-max-Rrho| Y-max-Rrho| Z-max-Rrho|    C-lift|    C-drag|   C-sidef|      C-mx|      C-my|      C-mz|    Max-y+|  Angle-a|    MF(OUTLET)|
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| 5.000e-03|  1.28e+01|  5.70e+00|  5.34e-13|  1.15e+01|  4.54e+01|  5.32e-04|  8.71e+02|   5.08e-03|  -1.79e-19|  -2.92e-03|  3.56e+00|  1.51e+00| -4.19e-07| -1.64e-02| -2.77e+02|  5.01e-03|  6.89e+01|  6.0e+00|   1.96839e-01|
-10 inner loops not converged
+| 5.000e-03|  8.43e+00|  3.13e+00|  1.09e-13|  3.88e+00|  2.93e+01|  1.09e-04|  6.47e+02|   1.51e-03|  -1.06e-19|  -1.73e-03|  3.24e+00|  7.49e-01| -2.08e-07| -1.47e-02| -2.12e+02|  1.81e-03|  8.08e+01|  6.0e+00|   1.96839e-01|
+20 inner loops not converged
 
 Integral values on boundaries
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -1210,5 +1208,40 @@ Total force coefficients (aerodynamic system)
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
   Surface-Part              Name                CLift                CDrag               CSideF              Area[%]
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-     Overall Sum                          3.56328471015        1.50587275786   -4.19252162675e-07                  100
-  bdry-part    3          MEMBRANE        3.56328471015        1
+     Overall Sum                          3.24176827823       0.748840713598   -2.08434969197e-07                  100
+  bdry-part    3          MEMBRANE        3.24176827823       0.748840713598   -2.08434969197e-07                  100
+ name-group    3          MEMBRANE        3.24176827823       0.748840713598   -2.08434969197e-07                  100
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Total moment coefficients (body fitted system [tau])
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  Surface-Part              Name                 CM_x                 CM_y                 CM_z              Area[%]
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+     Overall Sum                       -0.0146973144376       -212.281033363     0.00180857534656                  100
+  bdry-part    3          MEMBRANE     -0.0146973144376       -212.281033363     0.00180857534656                  100
+ name-group    3          MEMBRANE     -0.0146973144376       -212.281033363     0.00180857534656                  100
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Wallclock runtime in mainloop: 11.9 seconds
+      cpu runtime in mainloop: 11.9 seconds
+Wallclock time for exchange of pointdata: 0.000 seconds (min/avg/max 0.000/0.000/0.000 over all domains)
+Output file </work/piquee/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol.pval.unsteady_i=1_t=5.000e-03> written
+Output file </work/piquee/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol.surface.pval.unsteady_i=1_t=5.000e-03> written
+Output file </work/piquee/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol.monitor.pval.unsteady.dat> written
+
+  Tecplot parameter ---------------------------------------------: -
+                                                    Tecplot title: interfaceData.dat
+                                   Tecplot ascii output precision: 6
+
+**************************************************
+* Start Writting Solution Data at time <module 'time' from '/opt/rh/python27/root/usr/lib64/python2.7/lib-dynload/timemodule.so'>
+**************************************************
+
+**************************************************
+* Stop Writting Solution Data at time <module 'time' from '/opt/rh/python27/root/usr/lib64/python2.7/lib-dynload/timemodule.so'>
+**************************************************
+
+Transition module done
+
+Received 'exit' command
