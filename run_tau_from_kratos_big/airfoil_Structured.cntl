@@ -2,27 +2,7 @@
  BOUNDARY MAPPING
  -----------------------------------------------------
 
-            Markers: 3
-               Type: symmetry plane
-               Name: SYM1
- block end
- ---------------------------
-
-            Markers: 1
-               Type: farfield
-        Angle alpha (degree): 6
-         Angle beta: 0
-               Name: INLET
- block end
- ---------------------------
-
             Markers: 2
-               Type: exit-pressure outflow
-               Name: OUTLET
- block end
- ---------------------------
-
-            Markers: 13
                Type: viscous wall
                Name: MEMBRANE
             Subtype: turbulent
@@ -31,7 +11,27 @@
  block end
  ---------------------------
 
+            Markers: 3
+               Type: farfield
+        Angle alpha (degree): 6
+      Sideslip angle (degree): 0
+               Name: INLET
+ block end
+ ---------------------------
+
             Markers: 4
+               Type: exit-pressure outflow
+               Name: OUTLET
+ block end
+ ---------------------------
+
+            Markers: 5
+               Type: symmetry plane
+               Name: SYM1
+ block end
+ ---------------------------
+
+            Markers: 6
                Type: symmetry plane
                Name: SYM2
  block end
@@ -40,9 +40,9 @@
  Geometry --------------------------------------------------------: -
                                                                   : -
                                                         Grid scale: 1
-                                           Reference relation area: 0.00045
-                              Reference length (pitching momentum): 0.002
-                        Reference length (rolling/yawing momentum): 0.225
+                                           Reference relation area: 0.005
+                              Reference length (pitching momentum): 0.01
+                        Reference length (rolling/yawing momentum): 0.5
                                                Origin coordinate x: 0
                                                Origin coordinate y: 0
                                                Origin coordinate z: 0
@@ -50,8 +50,8 @@
  References ------------------------------------------------------: -
                                                                   : -
                                              Reference temperature: 293.15
-                                                   Reynolds length: 0.225
-                                             Reference Mach number: 0.11658
+                                                   Reynolds length: 0.5
+                                             Reference Mach number: 0.0583
                                                                   : -
  Perfect gas thermodynamic ---------------------------------------: -
                                                                   : -
@@ -60,7 +60,7 @@
                                                                   : -
  Transport coefficients ------------------------------------------: -
                                                                   : -
-                                                   Reynolds number: 613699.8287
+                                                   Reynolds number: 6.5e05
                                                     Prandtl number: 0.72
                                                Sutherland constant: 110.4
                                     Sutherland reference viscosity: 1.716e-05
@@ -75,9 +75,9 @@
  Files/IO --------------------------------------------------------: -
                                                                   : -
                                          Boundary mapping filename: (thisfile)
-                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Mesh/airfoil_Structured_scaliert.grid
-                                                                  : -
-                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos/Outputs/airfoilSol
+                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos_big/Mesh/airfoil_Structured_scaliert.grid
+                                                       Grid prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos_big/Mesh/dg
+                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos_big/Outputs/airfoilSol
                                                Restart-data prefix: (none)
                                                                   : -
                                    Surface output description file: (thisfile)
@@ -109,12 +109,12 @@
                                                                   : -
  Partitioning ----------------------------------------------------: -
                                                                   : -
-                                       Type of partitioning (name): zoltan
+                                       Type of partitioning (name): private
                             Use parallel initial partitioner (0/1): 0
                                                                   : -
- #MPI--------------------------------------------------------------: -
- #                                      MPI-rank optimization (0/1): 1
- #                                     Number of CPU-cores per node: 28
+# MPI--------------------------------------------------------------: -
+#                                       MPI-rank optimization (0/1): 1
+#                                     Number of CPU-cores per node: 28
                                                                   : -
 ###########################################################################################
                                                                   : -
@@ -137,6 +137,8 @@
                                                Point fusing reward: 1.2
                                         Structured grid coarsening: 0
                                                                   : -
+                 Logfile control ---------------------------------: -
+                        Enable logfile output on all domains (0/1): 1
 ###########################################################################################
                                                                   : -
  Multigrid -------------------------------------------------------: -
@@ -156,7 +158,7 @@
  Full multigrid --------------------------------------------------: -
                                                                   : -
                                              Multigrid start level: 1
-                           Maximal time step number (coarse grids): 100
+                           Maximal time step number (coarse grids): 30
                                    Minimum residual (coarse grids): 0.001
                    Full multigrid central scheme first-order (0/1): 1
                                                                   : -
@@ -164,13 +166,13 @@
                                                                   : -
  Timestepping Start/Stop -----------------------------------------: -
                                                                   : -
-                                          Maximal time step number: 200
-					          Minimum residual: 1e-10
+                                          Maximal time step number: 2000
+					          Minimum residual: 1e-16
 							          : -
  Output options --------------------------------------------------: -
                                                                   : -
                                                      Output period: 200
-                                                     Field output values: v_p_rho_cp_Ptot_mach_vort_Nk_heli_Hn_l2_Q_velgrad
+                                               Field output values: v_p_rho_cp_Ptot_mach_vort_Nk_heli_Hn_l2_Q_velgrad
                                                                   : -
                                              Surface output period: 200
                                              Surface output values: p_rho_cp_cfxyz_yplus_fnormal
@@ -199,7 +201,7 @@
  Backward Euler --------------------------------------------------: -
                                                                   : -
                                                      Linear solver: Lusgs
-                                     Implicit overrelaxation omega: 1
+                                     Implicit overrelaxation omega: 1.5
                                       Implicit overrelaxation beta: 1
                   Turbulence model equations eigenvalue correction: 0.15
                                                                   : -
@@ -210,9 +212,9 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                                                   : -
  Timestepsize ----------------------------------------------------: -
                                                                   : -
-                                                        CFL number: 4
-                                         CFL number (coarse grids): 2
-                                         CFL number (large grad p): 2bashrc.sh
+                                                        CFL number: 8
+                                         CFL number (coarse grids): 4
+                                         CFL number (large grad p): 4
                                                                   : -
                                         Time step smoothing factor: 0
                                                                   : -
@@ -224,9 +226,9 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                   Unsteady physical time step size: 0.005
                                      Unsteady physical time offset: 0
                              Unsteady computational time step size: -1
-                                      Unsteady physical time steps: 2
-                           Unsteady inner iterations per time step: 10
-                  Minimum number of inner iterations per time step: 10
+                                      Unsteady physical time steps: 15
+                           Unsteady inner iterations per time step: 20
+                  Minimum number of inner iterations per time step: 1
                                     Unsteady implicit scheme order: 2
                                       Unsteady extrapolation order: 0
                        Compute harmonics of global forces (0/1..n): 0
@@ -267,7 +269,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                 Central convective turbulence flux: Average_of_flux
                                  2nd order dissipation coefficient: 0.5
                          Inverse 4th order dissipation coefficient: 64
-                            Version of cell stretching coefficient: TAU
+                            Version of cell stretching coefficient: HyperFlex
                              Use modified dissipation for 2D (0/1): 0
                                                                   : -
  Matrix Dissipation ----------------------------------------------: -
@@ -305,7 +307,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
  -----------------------------------------------------
                              #Modal amplitude filename: genericpitch
                                      Deformation type: RBF
-                               Modal boundary markers: 13
+                               Modal boundary markers: 2
                     Modal maximum x rotation (degree): 0.0
                     Modal maximum y rotation (degree): 0.0
                     Modal maximum z rotation (degree): 0.0
@@ -320,25 +322,18 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
       Parameters for RBF deformation -----------------:
                                   RBF number of groups: 1
      Parameters for RBF group start ------------------:
-                          RBF markers specifying group: 13
+                          RBF markers specifying group: 2
         RBF basis coordinates and deflections filename: interface_deformfile.nc
                                RBF surface format name: netcdf
                             RBF walldistances filename: walldistances_matrix
                                        RBF matrix name: RBF_matrix
                                               RBF name: volume-spline
-                                RBF radius full weight: 10
-                                RBF radius zero weight: 100
+                                RBF radius full weight: 0.5
+                                RBF radius zero weight: 1
                 RBF maximum number of base points used: 100
   group end
 
 ###########################################################################################
-
- -----------------------------------------------------
-  Surface output
- -----------------------------------------------------
-            #Surface output period: 1
-  #Surface output description file: (thisfile)
-           # Surface output values: cp_mach_p_rho_cfxyz_yplus_fnormal
 
  -----------------------------------------------------
      Output Control ----------------------------------: -
@@ -356,3 +351,7 @@ Chimera component output (Tecplot, Ensight Gold) (0/1): 0
  -----------------------------------------------------
   Field output description file: (thisfile)
   Field output values: cp_mach_visc
+
+ -----------------------------------------------------
+ Updates
+ -----------------------------------------------------
