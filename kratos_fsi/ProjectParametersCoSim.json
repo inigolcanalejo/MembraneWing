@@ -2,7 +2,7 @@
     "problem_data" :
     {
         "start_time" : 0.0,
-        "end_time" : 0.015,
+        "end_time" : 0.005,
         "echo_level" : 2,
         "print_colors" : true,
         "parallel_type" : "OpenMP"
@@ -23,8 +23,8 @@
         [
             {
                 "name": "TAU",
-                "output_data_list": [],
-                "input_data_list": []
+                "input_data_list": [],
+                "output_data_list": []
             },
             {
                 "name": "structure",
@@ -74,7 +74,7 @@
                     "Interface_force" : {
                         "model_part_name"   : "Fluid.Interface",
                         "dimension" : 3,
-                        "variable_name" : "FORCE"
+                        "variable_name" : "REACTION"
                     }
                 }
             },

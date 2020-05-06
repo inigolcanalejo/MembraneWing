@@ -46,6 +46,18 @@
             }
         }],
         "loads_process_list"       : [{
+            "python_module" : "assign_vector_by_direction_to_condition_process",
+            "kratos_module" : "KratosMultiphysics",
+            "check"         : "DirectorVectorNonZero direction",
+            "process_name"  : "AssignVectorByDirectionToConditionProcess",
+            "Parameters"    : {
+                "model_part_name" : "Structure.PointLoad3D_PointLoad",
+                "variable_name"   : "POINT_LOAD",
+                "interval"        : [0.0,"End"],
+                "modulus"         : 1.0,
+                "direction"       : [0,2,3]
+            }
+        },{
             "python_module" : "assign_scalar_variable_to_conditions_process",
             "kratos_module" : "KratosMultiphysics",
             "process_name"  : "AssignScalarVariableToConditionProcess",
