@@ -1,0 +1,33 @@
+BeginZE /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/models_structure/big/test4.gid/test4.vv
+   x -0.243287757039070129 0.726209521293640137
+   y 0.315486133098602295 -0.342569291591644287
+   z -0.294322401285171509 0.282999426126480103
+   e 0.276444435119628906
+   v 0.797928191763040529 0.0181840973100464848 0.434344225078035717
+   r 0.417522494646860365
+   m 0.622028887271881104 -0.333677768707275391 0.708335518836975098 0 0.391716182231903076 -0.650688588619232178 -0.65050959587097168 0 0.677966475486755371 0.6821022629737854 -0.274040132761001587 0 0 0 0 1
+   c 0.26032567024230957 0.00499999988824129105 0.00566149922087788582
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/models_structure/big/test4.gid/test4.vv
+
