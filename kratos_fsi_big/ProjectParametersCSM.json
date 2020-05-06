@@ -4,7 +4,7 @@
         "parallel_type" : "OpenMP",
         "echo_level"    : 1,
         "start_time"    : 0.0,
-        "end_time"      : 0.005
+        "end_time"      : 0.015
     },
     "solver_settings"  : {
         "solver_type"                     : "Static",
@@ -60,18 +60,6 @@
             }
         }],
         "loads_process_list"       : [{
-            "python_module" : "assign_vector_by_direction_to_condition_process",
-            "kratos_module" : "KratosMultiphysics",
-            "check"         : "DirectorVectorNonZero direction",
-            "process_name"  : "AssignVectorByDirectionToConditionProcess",
-            "Parameters"    : {
-                "model_part_name" : "Structure.PointLoad3D_PointLoad",
-                "variable_name"   : "POINT_LOAD",
-                "interval"        : [0.0,"End"],
-                "modulus"         : 0.0,
-                "direction"       : [0.0,0.0,1.0]
-            }
-        },{
             "python_module" : "assign_scalar_variable_to_conditions_process",
             "kratos_module" : "KratosMultiphysics",
             "process_name"  : "AssignScalarVariableToConditionProcess",
@@ -79,7 +67,7 @@
                 "model_part_name" : "Structure.SurfacePressure3D_Upper_Membrane",
                 "variable_name"   : "POSITIVE_FACE_PRESSURE",
                 "interval"        : [0.0,"End"],
-                "value"           : 100.0
+                "value"           : 0.0
             }
         },{
             "python_module" : "assign_scalar_variable_to_conditions_process",
@@ -89,7 +77,7 @@
                 "model_part_name" : "Structure.SurfacePressure3D_Lower_Membrane",
                 "variable_name"   : "POSITIVE_FACE_PRESSURE",
                 "interval"        : [0.0,"End"],
-                "value"           : 100.0
+                "value"           : 0.0
             }
         }],
         "list_other_processes"     : [{
@@ -128,7 +116,7 @@
                         "node_output"                 : false,
                         "skin_output"                 : false,
                         "plane_output"                : [],
-                        "nodal_results"               : ["DISPLACEMENT","REACTION"],
+                        "nodal_results"               : ["DISPLACEMENT","REACTION","POINT_LOAD"],
                         "gauss_point_results"         : [],
                         "nodal_nonhistorical_results" : []
                     },
