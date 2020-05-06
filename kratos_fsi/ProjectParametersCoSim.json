@@ -34,7 +34,7 @@
                         "from_solver"      : "TAU",
                         "from_solver_data" : "Interface_force",
                         "data_transfer_operator" : "mapper",
-                        "data_transfer_operator_options" : ["swap_sign"]
+                        "data_transfer_operator_options" : []
                     }
                 ],
                 "output_data_list": [
