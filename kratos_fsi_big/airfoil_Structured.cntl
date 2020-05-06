@@ -75,9 +75,9 @@
  Files/IO --------------------------------------------------------: -
                                                                   : -
                                          Boundary mapping filename: (thisfile)
-                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big/Mesh/airfoil_Structured_scaliert.grid
-                                                       Grid prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big/Mesh/dg
-                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big/Outputs/airfoilSol
+                                             Primary grid filename: /work/piquee/MembraneWing/kratos_fsi_big/Mesh/airfoil_Structured_scaliert.grid
+                                                       Grid prefix: /work/piquee/MembraneWing/kratos_fsi_big/Mesh/dg
+                                               Output files prefix: /work/piquee/MembraneWing/kratos_fsi_big/Outputs/airfoilSol
                                                Restart-data prefix: (none)
                                                                   : -
                                    Surface output description file: (thisfile)
