@@ -4,7 +4,7 @@
         "parallel_type" : "OpenMP",
         "echo_level"    : 1,
         "start_time"    : 0.0,
-        "end_time"      : 0.015
+        "end_time"      : 0.005
     },
     "solver_settings"  : {
         "solver_type"                     : "Static",
@@ -56,27 +56,7 @@
                 "value"           : [null,0.0,null]
             }
         }],
-        "loads_process_list"       : [{
-            "python_module" : "assign_scalar_variable_to_conditions_process",
-            "kratos_module" : "KratosMultiphysics",
-            "process_name"  : "AssignScalarVariableToConditionProcess",
-            "Parameters"    : {
-                "model_part_name" : "Structure.SurfacePressure3D_Upper_Membrane",
-                "variable_name"   : "POSITIVE_FACE_PRESSURE",
-                "interval"        : [0.0,"End"],
-                "value"           : 0.0
-            }
-        },{
-            "python_module" : "assign_scalar_variable_to_conditions_process",
-            "kratos_module" : "KratosMultiphysics",
-            "process_name"  : "AssignScalarVariableToConditionProcess",
-            "Parameters"    : {
-                "model_part_name" : "Structure.SurfacePressure3D_Lower_Membrane",
-                "variable_name"   : "POSITIVE_FACE_PRESSURE",
-                "interval"        : [0.0,"End"],
-                "value"           : 0.0
-            }
-        }],
+        "loads_process_list"       : [],
         "list_other_processes"     : [{
             "python_module" : "project_vector_on_surface_process",
             "kratos_module" : "StructuralMechanicsApplication",
