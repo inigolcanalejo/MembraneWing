@@ -1,0 +1,26 @@
+Traceback (most recent call last):
+  File "MainKratos.py", line 18, in <module>
+    simulation.Run()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/analysis_stage.py", line 49, in Run
+    self.Initialize()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/StructuralMechanicsApplication/structural_mechanics_analysis.py", line 53, in Initialize
+    super(StructuralMechanicsAnalysis, self).Initialize()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/analysis_stage.py", line 90, in Initialize
+    self._GetSolver().Initialize()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/StructuralMechanicsApplication/structural_mechanics_solver.py", line 209, in Initialize
+    mechanical_solution_strategy = self.get_mechanical_solution_strategy()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/StructuralMechanicsApplication/structural_mechanics_solver.py", line 317, in get_mechanical_solution_strategy
+    self._mechanical_solution_strategy = self._create_mechanical_solution_strategy()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/StructuralMechanicsApplication/structural_mechanics_solver.py", line 460, in _create_mechanical_solution_strategy
+    mechanical_solution_strategy = self._create_newton_raphson_strategy()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/StructuralMechanicsApplication/structural_mechanics_solver.py", line 486, in _create_newton_raphson_strategy
+    linear_solver = self.get_linear_solver()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/StructuralMechanicsApplication/structural_mechanics_solver.py", line 300, in get_linear_solver
+    self._linear_solver = self._create_linear_solver()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/StructuralMechanicsApplication/structural_mechanics_solver.py", line 435, in _create_linear_solver
+    return linear_solver_factory.CreateFastestAvailableDirectLinearSolver()
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/python_linear_solver_factory.py", line 39, in CreateFastestAvailableDirectLinearSolver
+    from KratosMultiphysics import EigenSolversApplication
+  File "/home/inigo/software/gid14.1.8d-x64/./problemtypes/kratos.gid/exec/Kratos/KratosMultiphysics/EigenSolversApplication/__init__.py", line 17, in <module>
+    from KratosEigenSolversApplication import *
+ImportError: libmkl_rt.so: cannot open shared object file: No such file or directory
