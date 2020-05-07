@@ -1,7 +1,7 @@
                                             Primary grid filename: 
-Primary grid filename:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi/Mesh/airfoil_Structured_scaliert.grid.def.2 
-Boundary mapping filename:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi/airfoil_Structured.cntl.mod 
-Restart-data prefix:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi/Outputs/airfoilSol.pval.unsteady_i=3_t=1.500e-02 
+Primary grid filename:/work/piquee/MembraneWing/kratos_fsi/Mesh/airfoil_Structured_scaliert.grid.def.2 
+Boundary mapping filename:/work/piquee/MembraneWing/kratos_fsi/airfoil_Structured.cntl.mod 
+Restart-data prefix:/work/piquee/MembraneWing/kratos_fsi/Outputs/airfoilSol.pval.unsteady_i=3_t=1.500e-02 
   Bounding Box --------------------------------------------------: -
                                  Bounding x coordinate range (3D): (none)
                                  Bounding y coordinate range (3D): (none)

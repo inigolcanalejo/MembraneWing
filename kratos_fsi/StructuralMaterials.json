@@ -8,7 +8,7 @@
             },
             "Variables"        : {
                 "THICKNESS"               : 0.00048,
-                "PRESTRESS_VECTOR"        : [42000.0,42000.0,0],
+                "PRESTRESS_VECTOR"        : [1000.0,1000.0,0],
                 "DENSITY"                 : 1.0,
                 "YOUNG_MODULUS"           : 2.1e6,
                 "POISSON_RATIO"           : 0.0
