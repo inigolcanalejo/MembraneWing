@@ -355,3 +355,6 @@ Chimera component output (Tecplot, Ensight Gold) (0/1): 0
  -----------------------------------------------------
  Updates
  -----------------------------------------------------
+
+Restart-data prefix: /work/piquee/MembraneWing/kratos_fsi_big/Outputs/Rigid/sol.medium.Alpha.06.pval.unsteady_i=200_t=1.00000e+00
+Surface output filename: /work/piquee/MembraneWing/kratos_fsi_big/Outputs/Rigid/sol.medium.Alpha.06.surface.pval.unsteady_i=200_t=1.00000e+00 
