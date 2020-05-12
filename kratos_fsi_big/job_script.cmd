@@ -17,7 +17,7 @@
 #SBATCH --get-user-env
 #SBATCH --account=pn69ni
 
-#SBATCH --partition= <jobsize>
+#SBATCH --partition=general
 #Number of nodes and MPI tasks per node:
 #SBATCH --nodes= 1
 #SBATCH --ntasks= 28
