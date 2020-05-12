@@ -1,28 +1,32 @@
 #!/bin/bash
-#
-#@ job_type = MPICH
-#@ network.MPI = sn_all,not_shared,us
-#
-#@ class = micro
-#@ wall_clock_limit = 48:00:00
-#
-#@ node = 1
-#@ total_tasks = 28
-#
-#@ job_name = airfoil_Structured_AOA6
-#@ initialdir = /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big
-#
-#@ output = $(home)/JobFiles/job$(jobid).out
-#@ error = $(home)/JobFiles/job$(jobid).err
-#
-#@ island_count = 1
-#
-#@ notification=always
-#@ notify_user=julie.piquee@aer.mw.tum.de
-#
-#@ queue
-. /etc/profile
-. /etc/profile.d/modules.sh
+#Job Name and Files (also --job-name)
+#SBATCH -J airfoil_Structured_AOA6
+#Output and error (also --output, --error):
+#SBATCH -o ./%x.%j.out
+#SBATCH -e ./%x.%j.err
+#Initial working directory (also --chdir):
+#SBATCH -D /hppfs/work/pn69ni/di73jef3/Simulations/MembraneWing/kratos_fsi_big
+#Notification and type
+#SBATCH --mail-type=BEGIN,END,FAIL
+#SBATCH --mail-user= julie.piquee@aer.mw.tum.de
+# Wall clock limit:
+#SBATCH --time=48:00:00
+#SBATCH --no-requeue
+#Setup of execution environment
+#SBATCH --export=NONE
+#SBATCH --get-user-env
+#SBATCH --account=pn69ni
+
+#SBATCH --partition= <jobsize>
+#Number of nodes and MPI tasks per node:
+#SBATCH --nodes= 1
+#SBATCH --ntasks= 28
+#SBATCH --exclude=i01r01c01s01
+#SBATCH --exclude=i01r10c05s07
+#SBATCH --exclude=i04r01c03s12
+#SBATCH --exclude=i04r04c06s07
+#SBATCH --exclude=i08r08c03s02
+#SBATCH --exclude=i01r07c01s01
 
 module unload mpi.intel
 module load mpi.intel
@@ -39,7 +43,7 @@ module unload python
 
 #Definition
 
-Work_Dir=/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big
+Work_Dir=/hppfs/work/pn69ni/di73jef3/Simulations/MembraneWing/kratos_fsi_big
 Casename=airfoil_Structured
 
 #*********************************
@@ -63,7 +67,7 @@ Funct=$Work_Dir/Functions_mod4.py
 Tautoplt=$Work_Dir/Tautoplt.cntl
 #*********************************
 
-cd /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big
+cd /hppfs/work/pn69ni/di73jef3/Simulations/MembraneWing/kratos_fsi_big
 rm -r -f Output_Files
 rm -r -f Ergebnisse
 
@@ -108,18 +112,25 @@ rm -r -f Ergebnisse
 
 mkdir Outputs
 
+if [[ ":$PYTHONPATH:" != *":/hppfs/work/pn69ni/di73jef3/Softwares/Kratos/bin/Release:"* ]]; then
+    export PYTHONPATH=/hppfs/work/pn69ni/di73jef3/Softwares/Kratos/bin/Release:$PYTHONPATH
+    export LD_LIBRARY_PATH=/hppfs/work/pn69ni/di73jef3/Softwares/Kratos/bin/Release/libs:$LD_LIBRARY_PATH
+    echo "adding /hppfs/work/pn69ni/di73jef3/Softwares/Kratos/bin/Release to PYTHONPATH"
+    echo "adding /hppfs/work/pn69ni/di73jef3/Softwares/Kratos/bin/Release/libs to LD_LIBRARY_PATH"
+fi
+echo "adding paths finished"
+
 #FSI beginnen
 
-# module load python/3.5_intel
+module load python/3.5_intel
 python3 MainKratosCoSim.py &
-# module unload python/3.5_intel
+module unload python/3.5_intel
 
-#sleep 10s
+sleep 10s
 
-# module load python/2.7_intel
-# mpirun -np 1  /home/hpc/pr27ce/di73jef2/TAU/TAU_INTEL_2016_1_0/bin/py_turb1eq/tau.py /gpfs/work/pr27ce/di73jef2/TAU/JPiquee/2D_Fall/WKA_Modell_Neu/AOA6_U20/TAUclient_coupling_main_mod_mitCarat_test4.py /gpfs/work/pr27ce/di73jef2/TAU/JPiquee/2D_Fall/WKA_Modell_Neu/AOA6_U20/airfoil_Structured.cntl log_TAU_neu_1.out use_mpi
-python /home/inigo/software/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq/tau.py /home/inigo/software/kratosMerge/Kratos/applications/CoSimulationApplication/python_scripts/helpers/TauSolver.py airfoil_Structured.cntl log_TAU.out
-# module unload python/2.7_intel
+module load python/2.7_intel
+mpirun -np 1   /hppfs/work/pn69ni/di73jef3/Softwares/TAU/taudir_release.2018.1.0_TMC_impi_1.6_netcdf_4_SPMUC_python_likeHW/bin/py_turb1eq/tau.py /hppfs/work/pn69ni/di73jef3/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/TauSolver.py airfoil_Structured.cntl log_TAU.out use_mpi
+module unload python/2.7_intel
 
 #**************************************
 
@@ -185,5 +196,3 @@ mv $Work_Dir/Outputs $Work_Dir/Ergebnisse
 #sed 's|'"Primary grid filename: $Grid_File.def.200"'|'"Primary grid filename: TBD"'|g' -i /$Tautoplt
 #sed 's|'"Boundary mapping filename: $Para_Path"'|'"Boundary mapping filename: TBD"'|g' -i /$Tautoplt
 #sed 's|'"Restart-data prefix: $Work_Dir/Ergebnisse/Outputs/airfoilSol.pval.unsteady_i=200_t=1.00000e+00"'|'"Restart-data prefix: TBD"'|g' -i /$Tautoplt
-
-
