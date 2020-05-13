@@ -15,7 +15,7 @@
 #Setup of execution environment
 #SBATCH --export=NONE
 #SBATCH --get-user-env
-#SBATCH --account=pn69ni
+#SBATCH --account=di73jef3
 
 #SBATCH --partition=general
 #Number of nodes and MPI tasks per node:
