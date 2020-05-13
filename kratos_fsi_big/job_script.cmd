@@ -15,8 +15,9 @@
 #Setup of execution environment
 #SBATCH --export=NONE
 #SBATCH --get-user-env
-#SBATCH --account=di73jef3
-
+#SBATCH --account=pn69ni
+#constraints are optional
+#--constraint="scratch&work"
 #SBATCH --partition=general
 #Number of nodes and MPI tasks per node:
 #SBATCH --nodes= 1
@@ -129,7 +130,7 @@ module unload python/3.5_intel
 sleep 10s
 
 module load python/2.7_intel
-mpirun -np 1   /hppfs/work/pn69ni/di73jef3/Softwares/TAU/taudir_release.2018.1.0_TMC_impi_1.6_netcdf_4_SPMUC_python_likeHW/bin/py_turb1eq/tau.py /hppfs/work/pn69ni/di73jef3/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/TauSolver.py airfoil_Structured.cntl log_TAU.out use_mpi
+mpirun -np 1 /hppfs/work/pn69ni/di73jef3/Softwares/TAU/taudir_release.2018.1.0_TMC_impi_1.6_netcdf_4_SPMUC_python_likeHW/bin/py_turb1eq/tau.py /hppfs/work/pn69ni/di73jef3/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/TauSolver.py airfoil_Structured.cntl log_TAU.out use_mpi
 module unload python/2.7_intel
 
 #**************************************
