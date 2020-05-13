@@ -8,7 +8,7 @@
 #SBATCH -D /hppfs/work/pn69ni/di73jef3/Simulations/MembraneWing/kratos_fsi_big
 #Notification and type
 #SBATCH --mail-type=BEGIN,END,FAIL
-#SBATCH --mail-user= julie.piquee@aer.mw.tum.de
+#SBATCH --mail-user=julie.piquee@aer.mw.tum.de
 # Wall clock limit:
 #SBATCH --time=48:00:00
 #SBATCH --no-requeue
@@ -20,8 +20,8 @@
 #--constraint="scratch&work"
 #SBATCH --partition=general
 #Number of nodes and MPI tasks per node:
-#SBATCH --nodes= 1
-#SBATCH --ntasks= 28
+#SBATCH --nodes=1
+#SBATCH --ntasks=28
 #SBATCH --exclude=i01r01c01s01
 #SBATCH --exclude=i01r10c05s07
 #SBATCH --exclude=i04r01c03s12
