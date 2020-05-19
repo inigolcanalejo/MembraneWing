@@ -1,7 +1,7 @@
   Files/IO ------------------------------------------------------: -
-                                            Primary grid filename: 
+                                            Primary grid filename:
                                         Boundary mapping filename: /gpfs/work/pr27ce/di73jef2/TAU/JPiquee/2D_Fall/WKA_Modell/airfoil_Structured.cntl
-                                              Restart-data prefix: 
+                                              Restart-data prefix:
                                   2D offset vector (0 / x=1,y=2,z=3): 0
   Bounding Box --------------------------------------------------: -
                                  Bounding x coordinate range (3D): (none)
@@ -25,7 +25,7 @@
                    Create surface zone for quadrilateral elements: (none)
   Output Control ------------------------------------------------: -
                                                     Output format: tecplot
-                                            # Output format: ensight_gold                                                    
+                                            # Output format: ensight_gold
                                                       Ascii (0/1): 1
                                                         Precision: 9
                                              Title of output file: (none)
@@ -44,9 +44,9 @@
                                           BDF field format (8/16): 8
                                           BDF coordinate frame CP: (none)
                           BDF basic coordinate frame for frame CP: (none)
-                          BDF points defining coordinate frame CP: 0 0 0 0 0 1 1 0 1 
+                          BDF points defining coordinate frame CP: 0 0 0 0 0 1 1 0 1
                                           BDF coordinate frame CD: (none)
                           BDF basic coordinate frame for frame CD: (none)
-                          BDF points defining coordinate frame CD: 0 0 0 0 0 1 1 0 1 
+                          BDF points defining coordinate frame CD: 0 0 0 0 0 1 1 0 1
                                           BDF scale data entry ID: (none)
-                                      BDF scale reference lengths: 1 1 1 
+                                      BDF scale reference lengths: 1 1 1

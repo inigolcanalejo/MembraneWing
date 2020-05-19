@@ -1,7 +1,8 @@
-                                            Primary grid filename: 
+  Files/IO ------------------------------------------------------: -
 Primary grid filename:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big/Mesh/airfoil_Structured_scaliert.grid.def.2 
 Boundary mapping filename:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big/airfoil_Structured.cntl.mod 
 Restart-data prefix:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big/Outputs/airfoilSol.pval.unsteady_i=203_t=1.01500e+00 
+                                  2D offset vector (0 / x=1,y=2,z=3): 0
   Bounding Box --------------------------------------------------: -
                                  Bounding x coordinate range (3D): (none)
                                  Bounding y coordinate range (3D): (none)
@@ -24,7 +25,7 @@ Restart-data prefix:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/krato
                    Create surface zone for quadrilateral elements: (none)
   Output Control ------------------------------------------------: -
                                                     Output format: tecplot
-                                            # Output format: ensight_gold                                                    
+                                            # Output format: ensight_gold
                                                       Ascii (0/1): 1
                                                         Precision: 9
                                              Title of output file: (none)
@@ -43,9 +44,9 @@ Restart-data prefix:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/krato
                                           BDF field format (8/16): 8
                                           BDF coordinate frame CP: (none)
                           BDF basic coordinate frame for frame CP: (none)
-                          BDF points defining coordinate frame CP: 0 0 0 0 0 1 1 0 1 
+                          BDF points defining coordinate frame CP: 0 0 0 0 0 1 1 0 1
                                           BDF coordinate frame CD: (none)
                           BDF basic coordinate frame for frame CD: (none)
-                          BDF points defining coordinate frame CD: 0 0 0 0 0 1 1 0 1 
+                          BDF points defining coordinate frame CD: 0 0 0 0 0 1 1 0 1
                                           BDF scale data entry ID: (none)
-                                      BDF scale reference lengths: 1 1 1 
+                                      BDF scale reference lengths: 1 1 1
