@@ -75,9 +75,9 @@
  Files/IO --------------------------------------------------------: -
                                                                   : -
                                          Boundary mapping filename: (thisfile)
-                                             Primary grid filename: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos_big/Mesh/airfoil_Structured_scaliert.grid
-                                                       Grid prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos_big/Mesh/dg
-                                               Output files prefix: /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/run_tau_from_kratos_big/Outputs/airfoilSol
+                                             Primary grid filename: /work/piquee/MembraneWing/run_tau_from_kratos_big/Mesh/airfoil_Structured_scaliert.grid
+                                                       Grid prefix: /work/piquee/MembraneWing/run_tau_from_kratos_big/Mesh/dg
+                                               Output files prefix: /work/piquee/MembraneWing/run_tau_from_kratos_big/Outputs/airfoilSol
                                                Restart-data prefix: (none)
                                                                   : -
                                    Surface output description file: (thisfile)
@@ -226,7 +226,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                   Unsteady physical time step size: 0.005
                                      Unsteady physical time offset: 0
                              Unsteady computational time step size: -1
-                                      Unsteady physical time steps: 15
+                                      Unsteady physical time steps: 3
                            Unsteady inner iterations per time step: 20
                   Minimum number of inner iterations per time step: 1
                                     Unsteady implicit scheme order: 2
@@ -355,3 +355,6 @@ Chimera component output (Tecplot, Ensight Gold) (0/1): 0
  -----------------------------------------------------
  Updates
  -----------------------------------------------------
+Restart-data prefix: /work/piquee/MembraneWing/run_tau_from_kratos_big/Outputs/Rigid/sol.medium.Alpha.06.pval.unsteady_i=200_t=1.00000e+00
+Surface output filename: /work/piquee/MembraneWing/run_tau_from_kratos_big/Outputs/Rigid/sol.medium.Alpha.06.surface.pval.unsteady_i=200_t=1.00000e+00 
+
