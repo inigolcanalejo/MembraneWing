@@ -171,10 +171,10 @@
 							          : -
  Output options --------------------------------------------------: -
                                                                   : -
-                                                     Output period: 200
+                                                     Output period: 1
                                                Field output values: v_p_rho_cp_Ptot_mach_vort_Nk_heli_Hn_l2_Q_velgrad_xyzgeod_vxyzgeod
                                                                   : -
-                                             Surface output period: 200
+                                             Surface output period: 1
                                              Surface output values: p_rho_cp_cfxyz_yplus_fnormal_xyzgeod_vxyzgeod
 							          : -
  Monitoring ------------------------------------------------------: -
@@ -300,51 +300,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                    #Vortex generator modeling (0/1): 0
                                                                   : -
 ###########################################################################################
-# Rigid-Body Motion parameters
-###########################################################################################
 
-							 Type of grid movement: deformed+rigid
-						     Motion hierarchy filename: (thisfile)
-						   Motion description filename: (thisfile) 
-					      		Extended motion monitoring (0/1): 1
-                					Initialize deformation (0/1): 1
-
-#Motion Hierarchy Definition ----------------------------------------------------------
-
-                                 Node name: MEMBRANE
-                      Node reference frame: inertial
-                  Node controls grid block: 1
-                Node motion description id: pitch 
-                hdf end 
-
-#Motion Description Definition ----------------------------------------------------------
-
-                           Motion description id: pitch
-                                Type of movement: external
-             Evaluate forces and moments at node: MEMBRANE
-               Origin of local coordinate system: 0.125 0.0 0.0
-#          Degree of Fourier series for rotation: 1
-#                 Reduced frequency for rotation: 0.0 0.6 0.0       
-#             Reduced frequency reference length: 1.0 1.0 1.0
-#  Fourier coefficients for rotation (sin) pitch: 0.0 2.51
-                      mdf end
-
- -----------------------------------------------------
-     Output Control ----------------------------------: -
-					Output format: tecplot
-		      Tecplot ascii output precision : 6
-					  Ascii (0/1): 1
-					    Precision: 6
-					Tecplot title: interfaceData.dat
-Chimera component output (Tecplot, Ensight Gold) (0/1): 0
-	     Tecio separate grid and solution (0/1/2): 0
-		   	     Tecio format szplt (0/1): 0
-
-###########################################################################################
-
-###########################################################################################
-# RBF
-###########################################################################################
   -----------------------------------------------------
  Parameters for RBF surface deflection generation in netcdf format
  -----------------------------------------------------
@@ -402,5 +358,5 @@ Chimera component output (Tecplot, Ensight Gold) (0/1): 0
  					Finished time steps: 200
 ###########################################################################################
 
-Restart-data prefix: /work/piquee/MembraneWing/kratos_fsi_big/Outputs/Rigid/sol.medium.Alpha.06.pval.unsteady_i=200_t=1.00000e+00
-Surface output filename: /work/piquee/MembraneWing/kratos_fsi_big/Outputs/Rigid/sol.medium.Alpha.06.surface.pval.unsteady_i=200_t=1.00000e+00 
+Restart-data prefix: /work/piquee/MembraneWing/kratos_fsi_big/Restart/Rigid/sol.medium.Alpha.06.pval.unsteady_i=200_t=1.00000e+00
+Surface output filename: /work/piquee/MembraneWing/kratos_fsi_big/Restart/Rigid/sol.medium.Alpha.06.surface.pval.unsteady_i=200_t=1.00000e+00 

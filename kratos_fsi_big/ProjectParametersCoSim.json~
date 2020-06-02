@@ -2,7 +2,7 @@
     "problem_data" :
     {
         "start_time" : 1.0,
-        "end_time" : 1.075,
+        "end_time" : 1.025,
         "echo_level" : 2,
         "print_colors" : true,
         "parallel_type" : "OpenMP"
@@ -34,7 +34,8 @@
                         "from_solver"      : "TAU",
                         "from_solver_data" : "Interface_force",
                         "data_transfer_operator" : "mapper",
-                        "data_transfer_operator_options" : []
+                        "data_transfer_operator_options" : [],
+                        "before_data_transfer_operations" : ["rotate_fluid_loads"]
                     }
                 ],
                 "output_data_list": [
@@ -47,6 +48,22 @@
                 ]
             }
         ],
+        "coupling_operations" : {
+            "rotate_fluid_loads" : {
+                "type"           : "rotate_fluid_forces",
+                "solver"         : "TAU",
+                "data_name"      : "Interface_force",
+                "axis_of_rotation" : [0, 1, 0],
+                "echo_level"     : 2
+            },
+            "rotate_structure_displacements" : {
+                "type"           : "rotate_structure_disp",
+                "solver"         : "structure",
+                "data_name"      : "Interface_disp",
+                "axis_of_rotation" : [0, 1, 0],
+                "echo_level"     : 2
+            }
+        },
         "solvers" :
         {
             "TAU":
@@ -54,7 +71,7 @@
                 "type" : "solver_wrappers.external.tau_wrapper",
                 "echo_level": 2,
                 "solver_wrapper_settings" : {
-                    "start_external_solver": true,
+                    "start_external_solver": false,
                     "external_solver_start_command": "python",
                     "path_to_tau": "/work/piquee/Softwares/TAU/TAU_2016.2/2016.2.0/bin/py_turb1eq/tau.py",
                     "tau_input_file":"airfoil_Structured.cntl",

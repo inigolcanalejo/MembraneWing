@@ -1,7 +1,7 @@
   Files/IO ------------------------------------------------------: -
-Primary grid filename:/work/piquee/MembraneWing/kratos_fsi_big/Mesh/airfoil_Structured_scaliert.grid.def.2 
-Boundary mapping filename:/work/piquee/MembraneWing/kratos_fsi_big/airfoil_Structured.cntl.mod 
-Restart-data prefix:/work/piquee/MembraneWing/kratos_fsi_big/Outputs/airfoilSol.pval.deform_i=203_t=1.01500e+00 
+Primary grid filename:/work/piquee/MembraneWing/kratos_fsi_big/Mesh/airfoil_Structured_scaliert.grid.def.4 
+Boundary mapping filename:/work/piquee/MembraneWing/kratos_fsi_big/airfoil_Structured_rotation.cntl.mod 
+Restart-data prefix:/work/piquee/MembraneWing/kratos_fsi_big/Outputs/airfoilSol.pval.deform_i=205_t=1.02500e+00 
                                   2D offset vector (0 / x=1,y=2,z=3): 0
   Bounding Box --------------------------------------------------: -
                                  Bounding x coordinate range (3D): (none)
