@@ -3,5 +3,5 @@
     "kratos_path" : "/work/piquee/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/",
     "echo_level"  : 1,
     "start_step"  : 200,
-    "rotate"  : false
+    "rotate"  : true
 }
