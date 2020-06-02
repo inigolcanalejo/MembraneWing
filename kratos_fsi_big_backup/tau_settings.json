@@ -1,0 +1,7 @@
+{
+    "tau_path"    : "/work/piquee/Softwares/TAU/TAU_2016.2/2016.2.0/bin/",
+    "kratos_path" : "/work/piquee/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/",
+    "echo_level"  : 1,
+    "start_step"  : 200
+
+}
