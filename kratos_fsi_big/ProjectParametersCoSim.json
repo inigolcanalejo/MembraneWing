@@ -2,7 +2,7 @@
     "problem_data" :
     {
         "start_time" : 1.0,
-        "end_time" : 1.025,
+        "end_time" : 1.015,
         "echo_level" : 2,
         "print_colors" : true,
         "parallel_type" : "OpenMP"
@@ -35,7 +35,7 @@
                         "from_solver_data" : "Interface_force",
                         "data_transfer_operator" : "mapper",
                         "data_transfer_operator_options" : [],
-                        "before_data_transfer_operations" : ["rotate_fluid_loads"]
+                        "before_data_transfer_operations" : []
                     }
                 ],
                 "output_data_list": [
@@ -44,7 +44,7 @@
                         "to_solver"      : "TAU",
                         "to_solver_data" : "Interface_disp",
                         "data_transfer_operator" : "mapper",
-                        "after_data_transfer_operations" : ["rotate_structure_displacements"]
+                        "after_data_transfer_operations" : []
                     }
                 ]
             }
