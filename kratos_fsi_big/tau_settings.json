@@ -1,6 +1,6 @@
 {
     "start_step"  : 200,
-    "tau_path"    : "/hppfs/work/pn69ni/di73jef3/Softwares/TAU/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/",
+    "tau_path"    : "/hppfs/work/pn69ni/di73jef3/Softwares/TAU/taudir_release.2018.1.0_TMC_impi_1.6_netcdf_4_SPMUC_python_likeHW/bin/",
     "kratos_path" : "/hppfs/work/pn69ni/di73jef3/Softwares/Kratos/applications/CoSimulationApplication/python_scripts/helpers/",
     "echo_level"  : 1,
     "rotate"  : false

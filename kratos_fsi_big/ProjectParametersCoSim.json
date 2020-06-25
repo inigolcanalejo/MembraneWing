@@ -72,9 +72,9 @@
                 "type" : "solver_wrappers.external.tau_wrapper",
                 "echo_level": 2,
                 "solver_wrapper_settings" : {
-                    "start_external_solver": true,
+                    "start_external_solver": false,
                     "external_solver_start_command": "python",
-                    "path_to_tau": "/hppfs/work/pn69ni/di73jef3/Softwares/TAU/taubin_svn19618.OPENMPI1.6.4_Python2.7.5/bin/py_turb1eq/tau.py",
+                    "path_to_tau": "/hppfs/work/pn69ni/di73jef3/Softwares/TAU/taudir_release.2018.1.0_TMC_impi_1.6_netcdf_4_SPMUC_python_likeHW/bin/py_turb1eq/tau.py",
                     "tau_input_file":"airfoil_Structured.cntl",
                     "tau_log_file": "log_TAU.out",
                     "controlling_external_solver": true,
