@@ -1,0 +1,4 @@
+Signal 15: Write data & exit after timestep
+ERROR:
+Signal received: Exit after writing inner-iteration restart
+

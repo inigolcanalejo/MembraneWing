@@ -111,6 +111,9 @@
                                                                   : -
                                        Type of partitioning (name): private
                             Use parallel initial partitioner (0/1): 0
+                                                 #Number of domains: 3
+                                    #Number of primary grid domains: 3
+                                           #Smooth partitions (0/1): 0
                                                                   : -
 # MPI--------------------------------------------------------------: -
 #                                       MPI-rank optimization (0/1): 1
@@ -226,7 +229,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                   Unsteady physical time step size: 0.005
                                      Unsteady physical time offset: 0
                              Unsteady computational time step size: -1
-                                      Unsteady physical time steps: 15
+                                      Unsteady physical time steps: 3
                            Unsteady inner iterations per time step: 5
                   Minimum number of inner iterations per time step: 1
                                     Unsteady implicit scheme order: 2

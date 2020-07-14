@@ -1,0 +1,1869 @@
+
+DLR Tau-Code, Python-Interface, Version Release.2016.2.0 compiled on Feb  2 2017 (from exported [libs: exported])
+
+Executing script </work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.py>
+
+
+initialized MotionExternal class
+external motion mode of TAU activated
+
+**************************************************
+* Restart from stepnumber: 200
+**************************************************
+
+MotionExternalHandler::PushMotion(): Pushing motion data on local stack
+
+**************************************************
+* Inital Motionstring: 0.0 0.0 0.0 0.0 0.0 0.0 0 0.0 0.0 0.0 0.0 0.0
+**************************************************
+
+**************************************************
+* PREPROCESSOR
+**************************************************
+
+Implemented boundary treatments:
+--------------------------------
+  axisymmetry wedge plane                    
+  symmetry plane                             
+  axisymmetry axis                           
+  farfield                                   
+  supersonic inflow                          
+  supersonic outflow                         
+  reservoir-pressure inflow                  
+  exit-pressure outflow                      
+  dirichlet                                  
+  euler wall                                 
+  sharp edge                                 
+  viscous wall                               
+  engine exhaust                             
+  engine inflow                              
+  heat exchanger inflow                      
+  heat exchanger outflow                     
+  actuator exhaust                           
+  actuator inflow                            
+  chimera                                    
+  actuation                                  
+  mirror plane                               
+  periodic plane                             
+
+Implemented grid metrics:
+  Cell_Vertex                               
+  Cell_Centered                             
+
+Implemented types of agglomeration: 
+  private                                   
+  MGridGen                                  
+  Directional_MGridGen                      
+
+Reading parameter file '/work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl'
+
+Preprocessor parameters:
+  Files/IO ------------------------------------------------------: -
+                                        Boundary mapping filename: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                            Primary grid filename: /work/piquee/rotation_wing_Rebecca/rigid/grid/airfoil_Structured_scaliert.grid
+                                                      Grid prefix: /work/piquee/rotation_wing_Rebecca/rigid/grid/dg
+                                                  Old grid prefix: (none)
+                                                                 : -
+                                       Read partitioning filename: (none)
+                                             Write graph filename: (none)
+  Parameter -----------------------------------------------------: -
+                                       Number of multigrid levels: 3
+                                                     Output level: 5
+                                                      Grid metric: Cell_Vertex
+  Runtime optimisation ------------------------------------------: -
+                            Cache-coloring (0/max_faces in color): 100000
+                                     Bandwidth optimisation (0/1): 1
+                               2D offset vector (0 / x=1,y=2,z=3): 0
+                                      Compute lusgs mapping (0/1): 1
+  Agglomeration -------------------------------------------------: -
+                                            Type of agglomeration: private
+                                                                 : -
+                                            Agglomeration version: 0
+                                     Enhanced agglomeration (0/1): 0
+                                              Point fusing reward: 1.2
+                                       Structured grid coarsening: 0
+                                      Surface agglomeration ratio: 0
+                                   Wallnormal agglomeration ratio: 0
+                                                                 : -
+                                  Type of coarsening for MGridGen: 4
+                                  Type of refinement for MGridGen: 6
+                        Minsize for the coarse graph for MGridGen: 1
+                        Maxsize for the coarse graph for MGridGen: 4
+  Extras --------------------------------------------------------: -
+                                       Sharp edge angle (degrees): 0
+                                 Control volume edge weight (0/1): 1
+                                          Consider wall roughness: global
+                                            Global wall roughness: 0
+                                               Roughness filename: (none)
+                                    Compute exact whirlflux (0/1): 0
+                                                Axisymmetry (0/1): 0
+                                      Axisymmetry axial direction: 1 0 0 
+                                     Axisymmetry radial direction: 0 0 1 
+                                            Project wall distance: 0
+                                                Line search (0/1): 0
+                                    Write lines into a file (0/1): 0
+                             Threshold parameter for aspect ratio: 4
+  Partitioning --------------------------------------------------: -
+                                                Number of domains: 3
+                                      Type of partitioning (name): private
+  Theta not for Tau ---------------------------------------------: -
+                    Preprocessing for incompressible solver (0/1): 0
+                                 Output shifted points grid (0/1): 0
+                Correct metric for boundary control volumes (0/1): 1
+               Project boundary control volumes coordinates (0/1): 1
+                   Translation factor for shifted boundary points: 1
+                                       Compute parent faces (0/1): 0
+  Logfile control -----------------------------------------------: -
+                       Enable logfile output on all domains (0/1): 0
+-----------------------------------------------------
+Reading boundary mapping: file '/work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl'
+
+Preprocessor boundary parameters
+  ---------------------------------------------------------------: -
+                                                              Map: 0
+                                                             Type: viscous wall
+                                                          Subtype: turbulent
+                                          Constant wall roughness: 0
+                                                          Markers: 2
+                                                         Partname: 
+                                                             Name: MEMBRANE
+                                               Multigrid priority: 1
+  block end
+  ---------------------------------------------------------------: -
+                                                              Map: 1
+                                                             Type: farfield
+                                                          Subtype: 
+                                                          Markers: 3
+                                                         Partname: 
+                                                             Name: INLET
+                                               Multigrid priority: 0
+  block end
+  ---------------------------------------------------------------: -
+                                                              Map: 2
+                                                             Type: exit-pressure outflow
+                                                          Subtype: 
+                                                          Markers: 4
+                                                         Partname: 
+                                                             Name: OUTLET
+                                               Multigrid priority: 0
+  block end
+  ---------------------------------------------------------------: -
+                                                              Map: 3
+                                                             Type: symmetry plane
+                                                          Subtype: 
+                                                          Markers: 5
+                                                         Partname: 
+                                                             Name: SYM1
+                                               Multigrid priority: 0
+  block end
+  ---------------------------------------------------------------: -
+                                                              Map: 4
+                                                             Type: symmetry plane
+                                                          Subtype: 
+                                                          Markers: 6
+                                                         Partname: 
+                                                             Name: SYM2
+                                               Multigrid priority: 0
+  block end
+-----------------------------------------------------
+Start parallel grid partitioner
+
+Parameters:
+  Files/IO ------------------------------------------------------: -
+                                        Boundary mapping filename: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                            Primary grid filename: /work/piquee/rotation_wing_Rebecca/rigid/grid/airfoil_Structured_scaliert.grid
+                                              Restart-data prefix: /work/piquee/rotation_wing_Rebecca/rigid/solutions/sol.medium.Alpha.06.pval.unsteady_i=200_t=1.00000e+00
+                                                     Output level: 5
+  Partitioning --------------------------------------------------: -
+                                      Type of partitioning (name): private
+                           Use parallel initial partitioner (0/1): 0
+                                   Number of primary grid domains: 3
+                               2D offset vector (0 / x=1,y=2,z=3): 0
+                                 Preserve wall normal piles (0/1): 1
+                                                Limit pile search: 0
+  Zoltan parameters ---------------------------------------------: -
+                                       Zoltan imbalance tolerance: 1.01
+                                       Zoltan partitioning method: hypergraph
+                                     Zoltan partitioning approach: partition
+  Logfile control -----------------------------------------------: -
+                       Enable logfile output on all domains (0/1): 0
+Read primgrid /work/piquee/rotation_wing_Rebecca/rigid/grid/airfoil_Structured_scaliert.grid_domain_0
+Partitions are already balanced ==> leaving Partitioner
+-----------------------------------------------------
+-----------------------------------------------------
+Boundary mapping for this grid:        treatment-name: map  triangles/quads
+                                         viscous wall:   0   162
+                                             farfield:   1   162
+                                exit-pressure outflow:   2   No matching element! 
+                                       symmetry plane:   3   19116
+                                       symmetry plane:   4   18998
+-----------------------------------------------------
+Computing dual grid
+  for the cell vertex grid metric
+Computing multigrid level 2
+Computing multigrid level 3
+Wall distances for grid level 1
+  Updates in loop: 76819 4089 2883 2544 2299 2495 2063 1926 1794 1701 1670 1615 1578 1530 1447 1366 1327 1301 1227 1278 1201 1258 1184 1224 1156 1204 1170 1303 1233 1182 1334 1345 1192 1094 1194 1828 1214 1106 991 971 2658 2512 916 858 817 775 750 804 803 631 2653 2728 634 605 584 551 520 493 499 468 427 405 387 370 357 344 328 304 288 284 283 279 266 252 244 334 174 173 176 177 180 184 184 190 194 196 200 202 204 207 208 211 210 213 212 215 216 218 220 219 219 224 224 224 227 228 228 227 227 253 235 245 235 229 238 233 227 223 223 223 0
+Wall distances for grid level 2
+  Updates in loop: 20860 4762 2986 2430 2167 1353 1956 1824 994 932 1476 1438 1865 1129 1631 948 834 734 622 528 417 351 684 579 507 161 137 127 166 152 21 138 124 88 46 0
+Wall distances for grid level 3
+  Updates in loop: 4631 1265 585 497 554 565 332 270 224 306 268 189 91 6 0
+Check dual grids
+-----------------------------------------------------
+    Multigrid level 1
+    points ................................: 38675
+    faces .................................: 95474
+    min point neighbors ...................: 3
+    max point neighbors ...................: 5
+    volume ................................: 0.0779807
+    max. inner surface integral ...........: No inner points exist !
+    max. boundary surface integral ........: 1.57914e-14
+    at point / position ...................: 19559 (0.190338 1.56999e-24 -0.0103316)
+    min, max surface ratio ................: 1 1
+    faces in              symmetry plane ..: 19159
+    faces in              symmetry plane ..: 19040
+    faces in                    farfield ..: 321
+    faces in                viscous wall ..: 321
+-----------------------------------------------------
+Domain decomposition
+-----------------------------------------------------
+Coloring and sorting the inner faces
+free preprocessing data
+
+**************************************************
+* SOLVER
+**************************************************
+
+Signal handling
+  Signal 15: Write data & exit after time step
+  Signal 12: Write data after time step
+
+-----------------------------------------------------
+Implemented solver boundary treatments:
+   0: axisymmetry wedge plane                   
+   1: symmetry plane                            
+   2: axisymmetry axis                          
+   3: farfield                                  
+   4: supersonic outflow                        
+   5: supersonic inflow                         
+   6: reservoir-pressure inflow                 
+   7: exit-pressure outflow                     
+   8: dirichlet                                 
+   9: actuation                                 
+  10: engine exhaust                            
+  11: engine inflow                             
+  12: euler wall                                
+  13: sharp edge                                
+  14: viscous wall                              
+  15: chimera                                   
+  16: actuator inflow                           
+  17: actuator exhaust                          
+  18: heat exchanger inflow                     
+  19: heat exchanger outflow                    
+  20: mirror plane                              
+  21: periodic plane                            
+
+-----------------------------------------------------
+Implemented 1-Equation Turbulence Model(s):
+  SAO:          Spalart-Allmaras model, old version of SA-noft2 w.r.t S-tilde
+  SAE:          Spalart-Allmaras model with Edwards modification (SA-Edwards)
+  SA-Standard:  Standard Spalart-Allmaras model, including ft2-term (SA)
+  SA-noft2:     Spalart-Allmaras model, without ft2-term
+  SA-neg:       Negative Spalart-Allmaras model
+
+Implemented initialization types:
+  walldist 
+  direct 
+
+Implemented SA boundary conditions:
+  smooth
+  rough
+
+Implemented vortical correction functions:
+  flower 
+  sarc 
+
+-----------------------------------------------------
+Implemented relaxation solvers:
+  Runge_Kutta
+  Backward_Euler
+
+Implemented linear relaxation solvers:
+  Runge_Kutta
+  Runge_Kutta_adjoint
+  Backward_Euler
+
+Implemented inviscid flux discretization types:
+  Upwind
+  Central
+
+Implemented upwind fluxes:
+  Van_Leer
+  AUSMDV
+  AUSMP
+  Roe
+  AUSM_Van_Leer
+  EFM
+  MAPS+
+
+Implemented central dissipation fluxes:
+  Scalar_dissipation                        
+  Matrix_dissipation                        
+
+Implemented central convective meanflow fluxes:
+  Average_of_flux                           
+  Flux_of_average                           
+  Skew_symmetric_kok                        
+
+Implemented central convective turbulence fluxes:
+  Average_of_flux                           
+  Flux_of_average                           
+  AUSMDV                                    
+  Roe                                       
+  Roe2nd                                    
+
+Implemented versions of cell stretching coefficient:
+  TAU                                       
+  HyperFlex                                 
+  HyperFlex_II                              
+
+Implemented smoothers:
+  Point_explicit                            
+  Upwind_implicit                           
+
+Implemented grid movement types:
+          static: Grid does not move
+           rigid: Rigid body motion
+        deformed: Deforming grid
+  deformed+rigid: Deforming grid combined with rigid body motion
+
+Implemented unsteady time stepping schemes:
+          (none): Unsteady time stepping is off
+            dual: Dual time stepping scheme
+          global: Global time stepping scheme
+
+Implemented functions for computation of flow statistics:
+            mean: compute mean values of rho, u, v, w, p, mue_turb, mue_lam
+        variance: compute <u'u'>, <v'v'>, <w'w'>, <u'v'>, <u'w'>, <v'w'>, <p'p'>
+     meanvelgrad: compute mean velocity gradients and mean pressure gradient
+        meanturb: compute mean values of turbulence variables (depends on turbulence model)
+             des: compute mean des state, i.e. fd, hybrid scale, l_rans/l_hybrid
+
+-----------------------------------------------------
+Implemented "Field output values":
+             gid for output of the global point id
+              cp for output of the pressure coefficient
+            Ptot for output of the total pressure
+          apsimP for output of the apsim pressure
+            temp for output of the temperature
+            mach for output of the Mach number
+            mean for output of the mean flow variables
+     meanvelgrad for output of the mean velocity gradient
+        meanturb for output of the mean turbulence values
+        mean-des for output of the mean des values
+         mean-cp for output of the mean and rms pressure coefficient
+ residual-stress for output of the residual turbulent stresses
+        variance for output of the variances of flow variables
+           imach for output of the isentropic Mach number
+         muetmue for output of the ratio muet mue
+   rs-boussinesq for output of the specific Reynolds stresses (Boussinesq)
+             des for output of the length +(des),-(Rans)
+      turbfilter for output of the LES/DES filter widths
+      test-iddes for output of the output for testing iddes
+         rotcorr for output of the rotational correction indicators
+             sas for output of the Von Karman Length  
+      divergence for output of the divergence of vel
+        testgrad for output of the test gradients
+          dscale for output of the dissipation scaling
+            Rrho for output of the density residual
+           Rrhov for output of the momentum residual
+           RrhoE for output of the residual of rho times energy
+         Rrhonue for output of the residual of rho nuetilde (1EQ)
+          strain for output of the strainrate
+            vort for output of the vorticity
+              Nk for output of the kinematic vorticity
+            heli for output of the helicity
+              Hn for output of the normalized helicity
+              l2 for output of the lambda2-criterion
+               Q for output of the second invariant Q
+          rotxyz for output of the rotation components
+           wdist for output of the wall-distance
+          wrough for output of the wall-roughness
+         wnormal for output of the wall-normal
+          domain for output of the point domain no 
+         xyzgeod for output of the coordinates in geodesic system
+        vxyzgeod for output of the velocity in geodesic system
+         xyzbody for output of the coordinates in body-fixed system
+        vxyzbody for output of the velocity in body-fixed system
+         xyzaero for output of the coordinates in aerodynamic system
+        vxyzaero for output of the velocity in aerodynamic system
+      vxyzmoving for output of the velocity in moving system
+      vxyzmvgeod for output of the velocity in moving geod. system
+             xyz for output of the grid coordinates
+          xyzold for output of the old grid coordinates
+         xyzoold for output of the oold grid coordinates
+          volume for output of the cv volume
+       oldvolume for output of the cv volume
+      ooldvolume for output of the cv volume
+            wxyz for output of the grid velocity
+        wxyzgeod for output of the grid velocity in geod. system
+         entropy for output of the normalized entropy difference
+         gradrho for output of the density gradient
+           gradu for output of the x_velocity gradient
+           gradv for output of the y_velocity gradient
+           gradw for output of the z_velocity gradient
+           gradp for output of the pressure gradient
+            visc for output of the laminar viscosity
+           kappa for output of the thermal conductivity
+        momentum for output of the momentum
+               H for output of the total enthalpy
+            rhoE for output of the density times total energy
+          Kn-rho for output of the Knudsen number (gradrho)
+        Kn-tau-q for output of the Knudsen number (stress, heat flux)
+             mfp for output of the mean free path
+       carbuncle for output of the carbuncle switch indicator
+           blank for output of the chimera blanked points
+          ipzone for output of the chimera interpolated points
+        notfound for output of the chimera points not found
+            hole for output of the chimera blanking state
+         holeold for output of the old chimera blanking state
+        holeoold for output of the oold chimera blanking state
+
+-----------------------------------------------------
+Implemented "Surface output values":
+             xyz for output of the grid coordinates
+         restart for output of the variables used to restart
+             rho for output of the density
+               v for output of the velocity
+               p for output of the pressure
+            temp for output of the temperature
+            mean for output of the mean flow variables
+         mean-cp for output of the mean and rms pressure coefficient
+         mean-cf for output of the mean skin friction
+        variance for output of the variances of flow variables
+            mach for output of the Mach number
+              cp for output of the pressure coeff
+            Ptot for output of the total pressure
+           clydl for output of the local force coeff. vector
+          cmxyzl for output of the local moment coeff. vector
+         entropy for output of the normalized entropy difference
+          apsimP for output of the apsim pressure
+       acd-raysc for output of the acd ray scaling factor
+       acd-chlen for output of the acd chord length
+       acd-twist for output of the acd blade twist
+        acd-vrot for output of the acd rotational velocity
+      acd-alphai for output of the acd ind angle of attack
+       acd-alpha for output of the acd eff angle of attack
+          acd-cl for output of the acd coefficient of lift
+          acd-cd for output of the acd coefficient of drag
+     acd-secload for output of the acd tau sectional load
+     acd-dsk-xyz for output of the acd disk point coords
+ acd-dsk-secload for output of the acd disk sectional load
+ acd-dsk-srfload for output of the acd disk surface load
+   acd-dsk-force for output of the acd disk discrete force
+ acd-bld-secload for output of the acd blade sectional load
+     acd-bld-vel for output of the acd blade velocity
+             htc for output of the heat transfer coefficient
+           imach for output of the isentropic Mach number
+              ch for output of the Stanton number
+          heatfl for output of the wall heat flux
+            visc for output of the laminar viscosity
+            fxyz for output of the force vector
+        fxyzgeod for output of the force vector in geodesic system
+              cf for output of the skin friction
+           cfxyz for output of the skin friction vector
+       cfxyzgeod for output of the skin friction vector in geod. system
+           yplus for output of the y+ values
+          krplus for output of the k_r+ values
+          wrough for output of the wall-roughness
+          cpharm for output of the harmonics of pressure coeff.
+          cfharm for output of the harmonics of skin friction  
+            eddy for output of the eddy viscosity
+              sa for output of the Spalart Allmaras viscosity
+         xyzgeod for output of the coordinates in geodesic system
+        vxyzgeod for output of the velocity in geodesic system
+         xyzbody for output of the coordinates in body-fixed system
+        vxyzbody for output of the velocity in body-fixed system
+         xyzaero for output of the coordinates in aerodynamic system
+        vxyzaero for output of the velocity in aerodynamic system
+      vxyzmoving for output of the velocity in moving system
+      vxyzmvgeod for output of the velocity in moving geod. system
+          volume for output of the cv volume
+            wxyz for output of the grid velocity
+        wxyzgeod for output of the grid velocity in geod. system
+        momentum for output of the momentum
+               H for output of the total enthalpy
+            rhoE for output of the density times total energy
+        massflux for output of the mass flux
+           blank for output of the chimera blanked points
+          ipzone for output of the chimera interpolated points
+        vxyzedge for output of the boundary layer edge velocities
+        bldatasw for output of the boundary layer data streamwise
+        bldatacf for output of the boundary layer data cross flow
+          ltflag for output of the laminar turbulent flag
+          blinfo for output of the boundary layer information
+         bldelta for output of the boundary layer thicknesses
+         fnormal for output of the boundary normal vector
+
+-----------------------------------------------------
+Implemented "Plane output values":
+             xyz for output of the grid coordinates
+            temp for output of the temperature
+               v for output of the velocity components
+               p for output of the pressure
+             rho for output of the density
+              cp for output of the pressure coeff
+            Ptot for output of the total pressure
+              pl for output of the pressure loss
+         entropy for output of the normalized entropy difference
+              cf for output of the skin friction
+           cfxyz for output of the skin friction vector
+           cfabs for output of the abs. skin friction
+           yplus for output of the y+ values
+            psi1 for output of the adjoint variable 1 (density)
+            psi2 for output of the adjoint variable 2 (u)
+            psi3 for output of the adjoint variable 3 (v)
+            psi4 for output of the adjoint variable 4 (w)
+            psi5 for output of the adjoint variable 5 (pressure)
+
+-----------------------------------------------------
+Implemented monitoring values (to be separated by '_').
+Monitoring values that can be used for Cauchy convergence control (CC)
+are indicated by an "X" in the second column:
+    KEY                CC COMMENT
+  Rrho                    root mean square of density residual
+  Rrhovx                  root mean square of x-component of momentum residual
+  Rrhovy                  root mean square of y-component of momentum residual
+  Rrhovz                  root mean square of z-component of momentum residual
+  RrhoE                   root mean square of density times energy residual
+  Rrhonue                 root mean square of rho nuetilde residual
+  Max-Rrho                maximum norm of rho residual
+  X-max-Rrho              grid x-coordinate of Max-Rrho
+  Y-max-Rrho              grid y-coordinate of Max-Rrho
+  Z-max-Rrho              grid z-coordinate of Max-Rrho
+  Max-Rrho-global         global maximum norm of density residual over all domains
+  Max-Rrhonue             maximum norm of rho nuetilde residual
+  X-max-Rrhonue           grid x-coordinate of Max-Rrhonue
+  Y-max-Rrhonue           grid y-coordinate of Max-Rrhonue
+  Z-max-Rrhonue           grid z-coordinate of Max-Rrhonue
+  Res-GMRES               total linear residual from GMRES solver
+  C-lift               X  lift-coefficient 
+  C-lift-p             X  pressure part of C-lift
+  C-lift-v             X  viscous part of C-lift
+  C-drag               X  drag-coefficient
+  C-drag-p             X  pressure part of C-drag
+  C-drag-v             X  viscous part of C-drag
+  C-sidef              X  coeff of sideforce
+  C-sidef-p            X  pressure part of C-sidef
+  C-sidef-v            X  viscous part of C-sidef
+  C-mx                 X  rolling moment coefficient
+  C-mx-p               X  pressure part of rolling moment coefficient
+  C-mx-v               X  viscous part of rolling moment coefficient
+  C-my                 X  pitching moment coefficient
+  C-my-p               X  pressure part of pitching moment coefficient
+  C-my-v               X  viscous part of pitching moment coefficient
+  C-mz                 X  yawing moment coefficient
+  C-mz-p               X  pressure part of yawing moment coefficient
+  C-mz-v               X  viscous part of yawing moment coefficient
+  C-fx                 X  force-coefficient (x-component)
+  C-fx-p               X  pressure part of force-coefficient (x-component)
+  C-fx-v               X  viscous part of force-coefficient (x-component)
+  C-fy                 X  force-coefficient (y-component)
+  C-fy-p               X  pressure part of force-coefficient (y-component)
+  C-fy-v               X  viscous part of force-coefficient (y-component)
+  C-fz                 X  force-coefficient (z-component)
+  C-fz-p               X  pressure part of force-coefficient (z-component)
+  C-fz-v               X  viscous part of force-coefficient (z-component)
+  Fx                   X  x-component of force [N]
+  Fx-p                 X  pressure part of x-component of force [N]
+  Fx-v                 X  viscous part of x-component of force [N]
+  Fy                   X  y-component of force [N]
+  Fy-p                 X  pressure part of y-component of force [N]
+  Fy-v                 X  viscous part of y-component of force [N]
+  Fz                   X  z-component of force [N]
+  Fz-p                 X  pressure part of z-component of force [N]
+  Fz-v                 X  viscous part of z-component of force [N]
+  Mx                   X  x-component of moment [Nm]
+  Mx-p                 X  pressure part of x-component of moment [Nm]
+  Mx-v                 X  viscous part of x-component of moment [Nm]
+  My                   X  y-component of moment [Nm]
+  My-p                 X  pressure part of y-component of moment [Nm]
+  My-v                 X  viscous part of y-component of moment [Nm]
+  Mz                   X  z-component of moment [Nm]
+  Mz-p                 X  pressure part of z-component of moment [Nm]
+  Mz-v                 X  viscous part of z-component of moment [Nm]
+  Min-mach             X  minimum Machnumber in field
+  X-min-mach              grid x-coordinate of Min-mach
+  Y-min-mach              grid y-coordinate of Min-mach
+  Z-min-mach              grid z-coordinate of Min-mach
+  Max-mach             X  maximum Machnumber in field
+  X-max-mach              grid x-coordinate of Max-mach
+  Y-max-mach              grid y-coordinate of Max-mach
+  Z-max-mach              grid z-coordinate of Max-mach
+  Heatflow             X  total heatflow [W]
+  Res-heat                heatflux-increment
+  Min-y+               X  minimum value of y+
+  X-min-y+                grid x-coordinate of Min-y+
+  Y-min-y+                grid y-coordinate of Min-y+
+  Z-min-y+                grid z-coordinate of Min-y+
+  Max-y+               X  maximum value of y+
+  X-max-y+                grid x-coordinate of Max-y+
+  Y-max-y+                grid y-coordinate of Max-y+
+  Z-max-y+                grid z-coordinate of Max-y+
+  Min-kr                  minimum value of kr
+  X-min-kr                grid x-coordinate of Min-kr
+  Y-min-kr                grid y-coordinate of Min-kr
+  Z-min-kr                grid z-coordinate of Min-kr
+  Max-kr                  maximum value of kr
+  X-max-kr                grid x-coordinate of Max-kr
+  Y-max-kr                grid y-coordinate of Max-kr
+  Z-max-kr                grid z-coordinate of Max-kr
+  Min-kr+                 minimum value of kr+
+  X-min-kr+               grid x-coordinate of Min-kr+
+  Y-min-kr+               grid y-coordinate of Min-kr+
+  Z-min-kr+               grid z-coordinate of Min-kr+
+  Max-kr+                 maximum value of kr+
+  X-max-kr+               grid x-coordinate of Max-kr+
+  Y-max-kr+               grid y-coordinate of Max-kr+
+  Z-max-kr+               grid z-coordinate of Max-kr+
+  act-area                Area actuation bdry
+  act-targ-mf             Actuation target massflow
+  act-pres                Actuation bdry pressure
+  Min-eddyv            X  min dim-less eddy viscosity
+  X-min-eddyv             grid x-coordinate of Min-eddyv
+  Y-min-eddyv             grid y-coordinate of Min-eddyv
+  Z-min-eddyv             grid z-coordinate of Min-eddyv
+  Max-eddyv            X  max dim-less eddy viscosity
+  X-max-eddyv             grid x-coordinate of Max-eddyv
+  Y-max-eddyv             grid y-coordinate of Max-eddyv
+  Z-max-eddyv             grid z-coordinate of Max-eddyv
+  Min-k                X  min kinetic energy
+  X-min-k                 grid x-coordinate of Min-k
+  Y-min-k                 grid y-coordinate of Min-k
+  Z-min-k                 grid z-coordinate of Min-k
+  Max-k                X  max kinetic energy
+  X-max-k                 grid x-coordinate of Max-k
+  Y-max-k                 grid y-coordinate of Max-k
+  Z-max-k                 grid z-coordinate of Max-k
+  Min-k2               X  min 2nd turb. quantity
+  X-min-k2                grid x-coordinate of Min-k2
+  Y-min-k2                grid y-coordinate of Min-k2
+  Z-min-k2                grid z-coordinate of Min-k2
+  Max-k2               X  max 2nd turb. quantity
+  X-max-k2                grid x-coordinate of Max-k2
+  Y-max-k2                grid y-coordinate of Max-k2
+  Z-max-k2                grid z-coordinate of Max-k2
+  Max-mtm              X  max eddy-viscosity/laminar-viscosity
+  X-max-mtm               grid x-coordinate of Max-mtm
+  Y-max-mtm               grid y-coordinate of Max-mtm
+  Z-max-mtm               grid z-coordinate of Max-mtm
+  Angle-a                 angle of attack alpha
+  Angle-b                 yaw angle beta
+  Sideslip                sideslip angle beta
+  Farf-vx                 farfield vx
+  Farf-vz                 farfield vz
+  Mtm-2t                  number of pseudo time steps (unsteady)
+  Alpha(t)                pitch amplitude
+  H(t)                    heave amplitude [grid unit]
+  dalpha-dt               pitch angular velocity
+  dh-dt                   heave velocity [grid unit/s]
+  S-k-e                   structural kinetic energy
+  T/tperiod               time normalized with period length
+  Phi                     rotation angle phi
+  Psi                     rotation angle psi
+  Xi                      rotation angle xi
+  Trans-x                 translation in x direction [grid unit]
+  Trans-y                 translation in y direction [grid unit]
+  Trans-z                 translation in z direction [grid unit]
+  Farf-mach               effective farfield Mach number at origin
+  Farf-alpha              effective farfield angle of attack alpha at origin [deg]
+  Farf-beta               effective farfield angle of attack beta at origin [deg]
+  les-dt               X  timescale resolution of des
+  les-percent          X  % of des points
+  hybcentpercent       X  % of fluxes computed with pure central
+  vort-center-x           center of vorticity (x)
+  vort-center-y           center of vorticity (y)
+  vort-center-z           center of vorticity (z)
+  vort-total           X  total vorticity
+  dudx                 X  dudx
+  dvdy                 X  dvdy
+  dwdz                 X  dwdz
+  total-ke             X  total ke
+  mean-dissip1         X  molecular dissipation
+  rmsu                 X  rms u
+  rmsv                 X  rms v
+  rmsw                 X  rms w
+  rmsp                 X  rms pressure
+  skew                 X  velocity derivative skewness
+  kurt                 X  normalized velocity derivative kurtosis
+  Taylor-f             X  Longitudinal Taylor length scale
+  Taylor-g             X  Transverse Taylor length scale
+  Taylor-Re            X  Re based on Taylor scale
+  L2n-vc               X  L2 norm of vortical correction
+  Max-vc               X  Max value of vortical correction
+  Min-vc               X  Min value of vortical correction
+  Res-lift                cl-increment
+  Res-drag                cd-increment
+  R-time                  Total CPU time (real)
+  U-time                  Total CPU time (user)
+  Rhs-time                CPU time for one compute_residual() call.
+  Norm-time               Normalized CPU time (real)
+  dJ/da-1                 Adjoint & Primal: Partial dJ/da
+  dJ/da-2                 Adjoint: psi * partial dR/da, Primal: Partial dJ/dW * dW/da
+  dJ/da                   Adjoint & Primal: derivative of cost fn wrt design var.
+  Sens                 X  Functional sensitivity
+  Freqdom-Cl-Amp          Freqdom: Amplitude of CL
+  Freqdom-Cl-Phase        Freqdom: Phase shift of CL
+  Freqdom-Cd-Amp          Freqdom: Amplitude of CD
+  Freqdom-Cd-Phase        Freqdom: Phase shift of CD
+  Freqdom-Cmx-Amp         Freqdom: Amplitude shift of CM_X
+  Freqdom-Cmx-Phase       Freqdom: Phase shift of CM_X
+  Freqdom-Cmy-Amp         Freqdom: Amplitude shift of CM_Y
+  Freqdom-Cmy-Phase       Freqdom: Phase shift of CM_Y
+  Freqdom-Cmz-Amp         Freqdom: Amplitude shift of CM_Z
+  Freqdom-Cmz-Phase       Freqdom: Phase shift of CM_Z
+-----------------------------------------------------
+
+Solver parameters:
+  Files/IO ------------------------------------------------------: -
+                                              Restart-data prefix: /work/piquee/rotation_wing_Rebecca/rigid/solutions/sol.medium.Alpha.06.pval.unsteady_i=200_t=1.00000e+00
+                                        Boundary mapping filename: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                              Output files prefix: /work/piquee/rotation_wing_Rebecca/rigid/solutions/airfoilSol
+                                  Profile output description file: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                    Plane output description file: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                  Surface output description file: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                    Field output description file: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                                                 : -
+                                 Automatic parameter update (0/1): 1
+                            Automatic parameter update mode (0/1): 0
+                                      Accumulate queue time (0/1): 0
+                                                     Output level: 5
+  Timestepping Start/Stop ---------------------------------------: -
+                                                    Output period: 1
+                                         Maximal time step number: 25000
+                                                 Minimum residual: 1e-16
+  Memory management ---------------------------------------------: -
+                                            Increase memory (0/1): 1
+  Geometry ------------------------------------------------------: -
+                                                       Grid scale: 1
+                                          Reference relation area: 0.005
+                             Reference length (pitching momentum): 0.01
+                       Reference length (rolling/yawing momentum): 0.5
+                                              Origin coordinate x: 0
+                                              Origin coordinate y: 0
+                                              Origin coordinate z: 0
+  Perfect gas thermodynamic -------------------------------------: -
+                                                   Gas constant R: 287.06
+                                               Gas constant gamma: 1.4
+  Transport coefficients ----------------------------------------: -
+                                                  Reynolds number: 650000
+                                                   Prandtl number: 0.72
+                                              Sutherland constant: 110.4
+                                   Sutherland reference viscosity: 1.716e-05
+                                 Sutherland reference temperature: 273
+  References ----------------------------------------------------: -
+                                                Reference density: 1.17853479142531
+                                            Reference temperature: 293.15
+                                               Reference pressure: 99175.634316963
+                                                  Reynolds length: 0.5
+                                            Reference Mach number: 0.0583
+                                               Reference velocity: 20.0107728484682
+                                         Reference outer pressure: 99175.634316963
+  Variables -----------------------------------------------------: -
+                                        Fix negative values (0/1): 0
+                                                  Minimal density: 1e-12
+                                                 Minimal pressure: 1e-12
+                                                   Minimal energy: 1e-12
+                  Infinite swept wing with 2D offset vector (0/1): 0
+  Flowfield initialization --------------------------------------: -
+                                      Init total conditions (0/1): 0
+  Solver IO parameters ------------------------------------------: -
+                              Write pointdata dimensionless (0/1): 0
+              Reference system of forces and moments (tau/ln9300): tau
+                       Output scaling factor of translation (xyz): 1 1 1 
+  Universal -----------------------------------------------------: -
+                                                      Solver type: Flow
+  Monitoring ----------------------------------------------------: -
+                                            Monitor history (0/1): 1
+                                   Residual monitoring type (0/1): 1
+                                                Monitoring values: C-lift_C-drag_C-mx_C-my_Max-mach_Max-eddyv_Max-y+
+                                        Global monitoring (0/1/2): 1
+                         Residual evaluation for monitoring (0/1): 1
+                              Recompute freestream residual (0/1): 0
+                            Flux-consistent force integrals (0/1): 0
+                                   Monitoring significant figures: 3_3_3_3_3_3_3
+                            Extended coefficient monitoring (0/1): 0
+  Logfile control -----------------------------------------------: -
+                       Enable logfile output on all domains (0/1): 0
+  Flux main -----------------------------------------------------: -
+                                Inviscid flux discretization type: Central
+                                 Viscous flux type TSL/Full (0/1): 1
+                                      Mixed inviscid fluxes (0/1): 0
+  Central flux --------------------------------------------------: -
+                                       Central dissipation scheme: Matrix_dissipation
+                                 Central convective meanflow flux: Average_of_flux
+                            Scaling of central scheme dissipation: Standard
+                               Central convective turbulence flux: Average_of_flux
+                                2nd order dissipation coefficient: 0.5
+                        Inverse 4th order dissipation coefficient: 64
+                           Version of cell stretching coefficient: HyperFlex
+                            Use modified dissipation for 2D (0/1): 0
+                                     Use temperature sensor (0/1): 0
+                              Temperature switch weighting factor: 2
+  Matrix Dissipation --------------------------------------------: -
+                                 Pressure switch weighting factor: 1
+                Minimum artificial dissipation for acoustic waves: 0.2
+                      Minimum artificial dissipation for velocity: 0.2
+                  Couple mean flow and turbulence equations (0/1): 0
+                                        Hartens entropy fix (0/1): 0
+  Gradients -----------------------------------------------------: -
+                                      Reconstruction of gradients: Green_Gauss
+  Relaxation ----------------------------------------------------: -
+                                                Relaxation solver: Backward_Euler
+                                 Hold static velocity field (0/1): 0
+  Backward Euler ------------------------------------------------: -
+                                                    Linear solver: Lusgs
+                                    Implicit overrelaxation omega: 1.5
+                                     Implicit overrelaxation beta: 1
+                 Turbulence model equations eigenvalue correction: 0.15
+  LUSGS ---------------------------------------------------------: -
+                                               Sgs stages maximum: 3
+Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
+  Multigrid -----------------------------------------------------: -
+                                          MG description filename: 3w++
+                                        Multigrid indicator (0/1): 0
+                                    SG start up steps (fine grid): 0
+          SG start up steps (fine grid) in initial unsteady phase: 0
+Perform SG start up steps (fine grid) every unsteady timestep (0/1): 0
+                         Turbulence equations use multigrid (0/1): 1
+       Use source terms in coarse grid turbulence equations (0/1): 0
+                Use face gradient correction on coarse grid (0/1): 0
+                   Set boundary fluxes for forcing function (0/1): 0
+               Skip dissipation update for forcing function (0/1): 0
+  Full multigrid ------------------------------------------------: -
+                                            Multigrid start level: 1
+                          Maximal time step number (coarse grids): 30
+                                  Minimum residual (coarse grids): 0.001
+                  Full multigrid central scheme first-order (0/1): 1
+  Timestepsize --------------------------------------------------: -
+                                                       CFL number: 10
+                                        CFL number (coarse grids): 2.5
+                                        CFL number (large grad p): 2.5
+                                       Time step smoothing factor: 0
+  Smoother ------------------------------------------------------: -
+                                                Residual smoother: Point_explicit
+                                              Correction smoother: Point_explicit
+                                        Correction smooth epsilon: 0.2
+                                          Residual smooth epsilon: 0.2002
+                                       Correction smoothing steps: 2
+                                         Residual smoothing steps: 2
+  Implicit Smoother ---------------------------------------------: -
+                                               Initial CFL number: 5
+                                                 Final CFL number: 25
+                           Start up steps with initial CFL number: 10
+                                   Increase factor for CFL number: 2
+                      Relaxation coefficient for implicit systems: 1
+                   Evaluate preconditioner first stage only (0/1): 0
+                         Threshold parameter for convective waves: 1
+                     Linear solution method for implicit smoother: Block_symmetric_gauss_seidel
+                   Number of sweeps for iterative solution method: 5
+                  Solve turbulence equations weakly coupled (0/1): 0
+                              Ratio solving steps turbulence/mean: 5
+                                    Initial CFL number turbulence: 5
+                                      Final CFL number turbulence: 25
+                Start up steps with initial CFL number turbulence: 10
+                        Increase factor for CFL number turbulence: 2
+           Relaxation coefficient for implicit systems turbulence: 1
+        Evaluate preconditioner first stage only turbulence (0/1): 0
+          Linear solution method for implicit smoother turbulence: Symmetric_gauss_seidel
+        Number of sweeps for iterative solution method turbulence: 5
+  Preconditioning -----------------------------------------------: -
+                                                  Preconditioning: (none)
+                                                    Cut-off value: 1
+                                            Spatial cut-off value: 1
+  Turbulence ----------------------------------------------------: -
+                                                  Turbulence mode: RANS
+                                           Ratio Prandtl lam/turb: 0.8
+                                        General ratio mue-t/mue-l: 0.5
+                                        Maximum limit mue-t/mue-l: 20000
+                                      General turbulent intensity: 0.1
+                                           Reference bl-thickness: 0
+                                         Turbulence model version: SA
+                                                Positivity scheme: 1
+                                            EARSM expansion order: 1
+                                   Vortical flow correction (0/1): 0
+                                   Turbulence initialization type: walldist
+                                  Vortex generator modeling (0/1): 0
+  SA models -----------------------------------------------------: -
+                                                 SA model version: SAE
+                                       SA boundary condition type: smooth
+  Cauchy convergence control ------------------------------------: -
+                                   Use Cauchy convergence control: absolute
+                             Cauchy convergence control variables: C-lift_C-drag_C-mx_C-my_Max-eddyv
+                             Error for Cauchy convergence control: 1e-05 1e-05 1e-05 1e-05 1e-05 
+                         Number of samples for Cauchy convergence: 50
+                            Factor for dynamic Cauchy convergence: 0.05
+  Chimera -------------------------------------------------------: -
+                                            Primary grid filename: /work/piquee/rotation_wing_Rebecca/rigid/grid/airfoil_Structured_scaliert.grid
+                          Suppress error on orphaned points (0/1): 0
+                      Apply Chimera nearest neighbor search (0/1): 0
+                     Extend valid Chimera nearest neighbors (0/1): 0
+    Smooth interpolation data for Chimera nearest neighbors (0/1): 0
+                              Apply Chimera wall projection (0/1): 0
+                                    Mismatch of overlapping walls: 0
+                       Remove overlap for loads integration (0/1): 0
+                                        Surface element tolerance: 0
+                                     Surface kink detection angle: 30
+                           Surface kink detection angle tolerance: 15
+                                 Chimera new implementation (0/1): 1
+                        Apply Chimera automatic holecutting (0/1): 0
+                     Apply Chimera automatic shrink overlap (0/1): 0
+                           Chimera automatic shrink maximum value: 15
+                           Chimera automatic shrink overlap width: 5
+  Extra field output values -------------------------------------: -
+                                              Field output values: v_p_rho_cp_Ptot_mach_vort_Nk_heli_Hn_l2_Q_velgrad_xyzgeod_vxyzgeod
+  Surface output parameters -------------------------------------: -
+                                            Surface output values: p_rho_cp_cfxyz_yplus_fnormal_xyzgeod_vxyzgeod
+                                            Surface output period: 1
+  Cutting plane parameters --------------------------------------: -
+                                              Plane output values: xyz_cp_cf_yplus
+                                              Plane output period: 200
+                                                 Number of planes: 0
+                                                  Plane support x: -
+                                                  Plane support y: -
+                                                  Plane support z: -
+                                                   Plane normal x: -
+                                                   Plane normal y: -
+                                                   Plane normal z: -
+
+Profile parameters:
+                                               Number of profiles: 0
+                                            Profile output period: 0
+                                            Profile every n steps: 1
+                                            Profile output values: xyz_v_p
+                                        Wall boundary point (0/1): -
+                                                Profile support x: -
+                                                Profile support y: -
+                                                Profile support z: -
+                                                 Profile normal x: -
+                                                 Profile normal y: -
+                                                 Profile normal z: -
+                                                    Profile range: -
+  Dual time -----------------------------------------------------: -
+                                           Unsteady time stepping: dual
+                   Unsteady activate inner iteration output (0/1): 1
+                            Unsteady show pseudo time steps (0/1): 1
+                                 Unsteady physical time step size: 0.005
+                                    Unsteady physical time offset: 0
+                            Unsteady computational time step size: -1
+                               Unsteady normalized time step size: -1
+                                     Unsteady physical time steps: 1
+                          Unsteady inner iterations per time step: 300
+                 Minimum number of inner iterations per time step: 1
+                                   Unsteady implicit scheme order: 2
+                                     Unsteady extrapolation order: 0
+                               Compute harmonics on surface (0/1): 1
+  Moving grid ---------------------------------------------------: -
+                                            Type of grid movement: rigid
+                                      Motion description filename: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                        Motion hierarchy filename: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                                 Extended motion monitoring (0/1): 1
+                                 Geometric conservation law (0/1): 1
+                                     Initialize deformation (0/1): 1
+  Flow time averaging -------------------------------------------: -
+                                          Compute flow statistics: (none)
+                                            Reset flow statistics: mean_variance_meanvelgrad
+                              Moving average sampling window size: 0
+  ---------------------------------------------------------------: -
+                                                        Node name: MEMBRANE
+                                             Node reference frame: inertial
+                                         Node controls grid block: 1 
+                                       Node motion description id: pitch
+                                              hdf end
+  ---------------------------------------------------------------: -
+                                  Number of time steps per period: 1
+                              Evaluate forces and moments at node: MEMBRANE
+                  Velocity visualization in moving system at node: MEMBRANE
+  ---------------------------------------------------------------: -
+                                            Motion description id: pitch
+                                                 Type of movement: external
+                                Origin of local coordinate system: 0.125 0 0 
+                                           Hinge - specify vector: 0 0 0 
+                                Degree of polynomial for rotation: 0
+                             Degree of polynomial for translation: 0
+                            Degree of Fourier series for rotation: 0
+                         Degree of Fourier series for translation: 0
+                                   Reduced frequency for rotation: 0 0 0 
+                                Reduced frequency for translation: 0 0 0 
+                               Reduced frequency reference length: 1 1 1 
+                                              Initial phase shift: 0 0 0 
+                        Polynomial coefficients for translation x: 0 
+                        Polynomial coefficients for translation y: 0 
+                        Polynomial coefficients for translation z: 0 
+                         Polynomial coefficients for rotation yaw: 0 
+                       Polynomial coefficients for rotation pitch: 0 
+                        Polynomial coefficients for rotation roll: 0 
+                     Fourier coefficients for translation (cos) x: 0 
+                     Fourier coefficients for translation (cos) y: 0 
+                     Fourier coefficients for translation (cos) z: 0 
+                     Fourier coefficients for translation (sin) x: 0 
+                     Fourier coefficients for translation (sin) y: 0 
+                     Fourier coefficients for translation (sin) z: 0 
+                      Fourier coefficients for rotation (cos) yaw: 0 
+                    Fourier coefficients for rotation (cos) pitch: 0 
+                     Fourier coefficients for rotation (cos) roll: 0 
+                      Fourier coefficients for rotation (sin) yaw: 0 
+                    Fourier coefficients for rotation (sin) pitch: 0 
+                     Fourier coefficients for rotation (sin) roll: 0 
+                           Hinge - reduced frequency for rotation: 0
+                       Hinge - reduced frequency reference length: 1
+                     Hinge - polynomial coefficients for rotation: 0 
+                  Hinge - Fourier coefficients for rotation (cos): 0 
+                  Hinge - Fourier coefficients for rotation (sin): 0 
+                                              mdf end
+ ------------------------------------------------------------------------------
+  Motion parameters and reference scales for the
+  most restrictive case 
+ 
+    reference angle ...................:    57.296 [deg/rad]
+    reference length...................:       0.5 [m]
+    reference time ....................: 0.0017236 [s]
+    velocity  .........................:    20.011 [m/s]
+     
+     
+    max. reduced frequency ............:         0
+
+
+                                   :  (Numerics)  (Physical)
+    T (period interval)................: infinity  infinity
+ ------------------------------------------------------------------------------
+  Disturbance velocities ----------------------------------------: -
+     Geodesic origin for vertical disturbance velocity file (xyz): 0 0 0 
+                Delta for vertical disturbance velocity file (xy): 1 1 
+             Nx, Ny for vertical disturbance velocity output file: 1 1 
+                  Geodesic initial x coordinate for vertical gust: 0
+                    Geodesic vertical gust extension (ymin, ymax): -1.79769313486232e+308 1.79769313486232e+308 
+                                        Vertical gust wave length: 1
+                                          Vertical gust amplitude: 0
+                                              Vertical gust shape: 1-cos
+                                         Number of vertical gusts: 1
+      Geodesic origin for lateral disturbance velocity file (xyz): 0 0 0 
+                 Delta for lateral disturbance velocity file (xz): 1 1 
+              Nx, Nz for lateral disturbance velocity output file: 1 1 
+                   Geodesic initial x coordinate for lateral gust: 0
+                     Geodesic lateral gust extension (zmin, zmax): -1.79769313486232e+308 1.79769313486232e+308 
+                                         Lateral gust wave length: 1
+                                           Lateral gust amplitude: 0
+                                               Lateral gust shape: 1-cos
+                                          Number of lateral gusts: 1
+                     Disturbance velocity output file name prefix: (none)
+                                  Geodesic gust translation speed: 0
+                           Gust amplitude scale factor for output: 1
+  Extra grid velocities -----------------------------------------: -
+         Consider extra grid velocities provided via stream (0/1): 0
+  Memory management ---------------------------------------------: -
+                                            Increase memory (0/1): 1
+  APSIM parameters ----------------------------------------------: -
+                                                 APSIM input file: (none)
+                                              APSIM output prefix: (none)
+  Nearest wall data parameters ----------------------------------: -
+                                  Compute nearest wall data (0/1): 0
+                                            Project wall distance: 0
+                                            Primary grid filename: /work/piquee/rotation_wing_Rebecca/rigid/grid/airfoil_Structured_scaliert.grid
+  Transition module parameters ----------------------------------: -
+                               Transition module description file: /work/piquee/rotation_wing_Rebecca/rigid/Membrane_rotation.cntl
+                             Set transition at solver start (0/1): 0
+                                    Transition prescription (0/1): 0
+                                      Transition prediction (0/1): 0
+
+Solver boundary parameter:
+  ---------------------------------------------------------------: -
+                                                             Type: symmetry plane
+                                                          Markers: 5
+                                         Write surface data (0/1): 0
+                                      Cutting plane allowed (0/1): 0
+  ---------------------------------------------------------------: -
+                                                             Type: symmetry plane
+                                                          Markers: 6
+                                         Write surface data (0/1): 0
+                                      Cutting plane allowed (0/1): 0
+  ---------------------------------------------------------------: -
+                                                             Type: farfield
+                                                          Markers: 3
+                                                             Name: INLET
+                                   Unified flux formulation (0/1): 0
+                                                                 : -
+                                       Constant alpha/clift (0/1): 0
+                                                   Targeted clift: 0
+                                                Adjustment factor: 0.01
+                                            Lift iteration period: 20
+                                             Lift iteration start: 200
+                                                                 : -
+                                          Vortex correction (0/1): 0
+                                                     Chord length: 0
+                                                                 : -
+                                     Monitor farfield state (0/1): 1
+                                          Monitor mass flow (0/1): 0
+                                           Monitor momentum (0/1): 0
+                                              Set gradients (0/1): 0
+                                         Write surface data (0/1): 0
+                                      Cutting plane allowed (0/1): 0
+                                             Modify farfield file: (none)
+                                                                 : -
+                                                          Density: 1.17853479142531
+                                                      Mach number: 0.0583
+                                                         Velocity: 20.0107728484682
+                                              Angle beta (degree): 0
+                                             Angle alpha (degree): 4
+                                          Sideslip angle (degree): 0
+                                                      Temperature: 293.15
+                                                Ratio mue-t/mue-l: 0.5
+  ---------------------------------------------------------------: -
+                                                             Type: exit-pressure outflow
+                                                          Markers: 4
+                                                             Name: OUTLET
+                                                    Exit pressure: 99175.634316963
+                                    Match measured pressure (0/1): 0
+                                                Measured pressure: 99175.634316963
+                                          Measurement coordinates: 0 0 0 
+                                 Matching adjustment factor [0,1]: 0.5
+                                        Matching iteration period: 150
+                                         Matching iteration start: 750
+                                          Monitor mass flow (0/1): 1
+                                           Monitor momentum (0/1): 0
+                                           Monitor pressure (0/1): 0
+                                            Monitor impulse (0/1): 0
+                                     Monitor farfield state (0/1): 0
+                                         Write surface data (0/1): 0
+                                      Cutting plane allowed (0/1): 0
+  ---------------------------------------------------------------: -
+                                                          Markers: 2
+                                                             Type: viscous wall
+                                                          Subtype: turbulent
+                                                             Name: MEMBRANE
+                                                                 : -
+                                          Use wall function (0/1): 0
+                                             Temperature filename: (none)
+                                                                 : -
+                                                Moving wall (0/1): 0
+                                                Moving wall omega: 0 0 0 
+                                                Moving wall trans: 0 0 0 
+                                               Moving wall origin: 0 0 0 
+                                                                 : -
+                                             Monitor forces (0/1): 1
+                                     Monitor farfield state (0/1): 0
+                                          Monitor mass flow (0/1): 0
+                                          Monitor heat flow (0/1): 0
+                                              Set gradients (0/1): 0
+                                         Write surface data (0/1): 1
+                                      Cutting plane allowed (0/1): 1
+                                        Monitor drag forces (0/1): 0
+                                        Monitor lift forces (0/1): 0
+                                           Calculate fluxes (0/1): 0
+                                                                 : -
+                                            Apply mass flux (0/1): 0
+                                               Effusion mass flux: 0
+                                    Coolant reservoir temperature: -293.15
+                                                                 : -
+                                                        Heat flux: adiabatic
+                                             Heat flux evaluation: gradient
+                                       Heat flux correction (0/1): 0
+                                                      Temperature: 293.15
+                                             Prescribed heat flux: 0
+                                                       Emissivity: 0.8
+                                            Reservoir temperature: 293.15
+                                           Conduction coefficient: 0
+
+-----------------------------------------------------
+Active turbulence model: Spalart Allmaras model
+ Constants: Karmann 0.410 cb1 0.1355 cb2 0.6220 sigm 0.6667 cv1 7.1
+            cv2 5.00 cw1 3.24 cw2 0.30 cw3 2.00
+
+Active boundary condition: smooth
+
+Active transition management: Limit production in laminar flagged regions
+
+Active initialization type: walldist
+
+Active Cauchy convergence control for 5 variables:
+  VARIABLE             TOLERANCE
+  C-lift               1.000000e-05
+  C-drag               1.000000e-05
+  C-mx                 1.000000e-05
+  C-my                 1.000000e-05
+  Max-eddyv            1.000000e-05
+High memory initialisation to reduce CPU-time
+Unsteady simulation: Using approximate whirl fluxes
+Note: For turbomachinery and helicopter applications it is recommended to use exact whirl fluxes instead of approximate whirl fluxes!
+To use exact whirl fluxes restart preprocessing with 'Compute exact whirlflux (0/1): 1'.
+MotionExternalDelegate::InitExchange(): Performing initial motion exchange
+
+MotionExternalHandler::_PassMotionToTau(): Updating motion data of node <MEMBRANE> in TAU from local stack
+
+MotionExternalHandler::PushMotion(): Pushing motion data on local stack
+
+Read variables from file </work/piquee/rotation_wing_Rebecca/rigid/solutions/sol.medium.Alpha.06.pval.unsteady_i=200_t=1.00000e+00.domain_0>
+
+UNSTEADY restart from COMPLETED time step 200 (inner iteration 40000) of previous UNSTEADY run.
+
+**************************************************
+* time step 201
+**************************************************
+
+**************************************************
+* time 1.005
+**************************************************
+
+MotionExternalHandler::UpdateMotion(): Updating motion data on local stack for node <MEMBRANE>
+MotionExternalDelegate::InitExchange(): Performing initial motion exchange
+
+MotionExternalHandler::_PassMotionToTau(): Updating motion data of node <MEMBRANE> in TAU from local stack
+
+ ------------------------------------------------------------------------------
+Motion parameters for Node 1 :
+  Node name.............................:  MEMBRANE
+  Parent-node name......................:  inertial
+  Deflection angles (roll, pitch, yaw)..:  0.0000e+00  0.0000e+00  0.0000e+00 [deg]
+  Angular velocity (body-fixed frame)...:  0.0000e+00  0.0000e+00  0.0000e+00 [rad/s]
+  Translational velocity (geod. frame)..:  0.0000e+00  0.0000e+00  0.0000e+00 [m/s]
+  Location of origin (geod. frame)......:  0.0000e+00  0.0000e+00  0.0000e+00 [m]
+
+ ------------------------------------------------------------------------------
+
+MotionExternalHandler::PushMotion(): Pushing motion data on local stack
+
+**************************************************
+* time step 201
+**************************************************
+Initial residual  2.592e-06
+
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 200 physical timesteps 1061.500 1064.267 seconds.
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 40000 inner iterations 1061.500 1064.267 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+
+Mainloop on level 1:
+ Level 1  _  _                   
+ Level 2  _   \_       _        /
+ Level 3  _     \_____/ \______/ 
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40001|  1.000e+00|  8.23e-01| -6.97e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  1.63e+02|   1.18931e+00|
+!      40002|  9.192e-01|  8.23e-01| -6.97e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  1.65e+02|   1.18929e+00|
+!      40003|  8.478e-01|  8.23e-01| -6.97e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  1.72e+02|   1.18922e+00|
+!      40004|  9.040e-01|  8.23e-01| -6.97e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  1.78e+02|   1.18912e+00|
+!      40005|  1.376e+00|  8.23e-01| -6.99e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  1.85e+02|   1.18898e+00|
+!      40006|  1.859e+00|  8.23e-01| -7.01e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  1.92e+02|   1.18881e+00|
+!      40007|  2.002e+00|  8.23e-01| -7.03e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  1.97e+02|   1.18863e+00|
+!      40008|  1.984e+00|  8.23e-01| -7.02e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.02e+02|   1.18842e+00|
+!      40009|  2.145e+00|  8.23e-01| -7.01e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.06e+02|   1.18821e+00|
+!      40010|  2.219e+00|  8.23e-01| -6.99e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  2.09e+02|   1.18798e+00|
+!      40011|  1.966e+00|  8.23e-01| -6.98e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  2.12e+02|   1.18776e+00|
+!      40012|  1.666e+00|  8.23e-01| -6.98e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  2.14e+02|   1.18754e+00|
+!      40013|  1.488e+00|  8.23e-01| -6.99e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.16e+02|   1.18733e+00|
+!      40014|  1.426e+00|  8.23e-01| -6.99e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.18e+02|   1.18712e+00|
+!      40015|  1.469e+00|  8.23e-01| -7.00e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  2.19e+02|   1.18692e+00|
+!      40016|  1.507e+00|  8.23e-01| -7.00e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  2.20e+02|   1.18673e+00|
+!      40017|  1.520e+00|  8.23e-01| -7.00e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  2.21e+02|   1.18656e+00|
+!      40018|  1.556e+00|  8.23e-01| -7.01e-03|  8.21e-03| -1.16e+00|  9.66e-02|  1.24e+00|  2.21e+02|   1.18639e+00|
+!      40019|  1.579e+00|  8.23e-01| -7.01e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.22e+02|   1.18623e+00|
+!      40020|  1.524e+00|  8.23e-01| -7.01e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.22e+02|   1.18609e+00|
+!      40021|  1.381e+00|  8.23e-01| -7.01e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.21e+02|   1.18595e+00|
+!      40022|  1.206e+00|  8.23e-01| -7.00e-03|  8.21e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.21e+02|   1.18582e+00|
+!      40023|  1.080e+00|  8.23e-01| -7.01e-03|  8.20e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.21e+02|   1.18571e+00|
+!      40024|  1.039e+00|  8.22e-01| -7.01e-03|  8.20e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.20e+02|   1.18559e+00|
+!      40025|  1.059e+00|  8.22e-01| -7.01e-03|  8.20e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.19e+02|   1.18549e+00|
+!      40026|  1.122e+00|  8.22e-01| -7.02e-03|  8.20e-03| -1.15e+00|  9.66e-02|  1.24e+00|  2.18e+02|   1.18539e+00|
+!      40027|  1.243e+00|  8.22e-01| -7.03e-03|  8.19e-03| -1.14e+00|  9.66e-02|  1.24e+00|  2.18e+02|   1.18530e+00|
+!      40028|  1.455e+00|  8.21e-01| -7.05e-03|  8.19e-03| -1.14e+00|  9.66e-02|  1.24e+00|  2.17e+02|   1.18522e+00|
+!      40029|  1.773e+00|  8.20e-01| -7.07e-03|  8.18e-03| -1.13e+00|  9.66e-02|  1.24e+00|  2.16e+02|   1.18514e+00|
+!      40030|  2.193e+00|  8.19e-01| -7.10e-03|  8.17e-03| -1.12e+00|  9.66e-02|  1.24e+00|  2.15e+02|   1.18506e+00|
+!      40031|  2.711e+00|  8.18e-01| -7.15e-03|  8.16e-03| -1.11e+00|  9.66e-02|  1.24e+00|  2.13e+02|   1.18499e+00|
+!      40032|  3.325e+00|  8.17e-01| -7.20e-03|  8.14e-03| -1.09e+00|  9.66e-02|  1.24e+00|  2.12e+02|   1.18492e+00|
+!      40033|  4.032e+00|  8.15e-01| -7.28e-03|  8.12e-03| -1.08e+00|  9.66e-02|  1.24e+00|  2.11e+02|   1.18485e+00|
+!      40034|  4.827e+00|  8.12e-01| -7.38e-03|  8.10e-03| -1.05e+00|  9.66e-02|  1.24e+00|  2.10e+02|   1.18478e+00|
+!      40035|  5.707e+00|  8.10e-01| -7.50e-03|  8.08e-03| -1.02e+00|  9.66e-02|  1.24e+00|  2.09e+02|   1.18472e+00|
+!      40036|  6.671e+00|  8.07e-01| -7.66e-03|  8.04e-03| -9.87e-01|  9.66e-02|  1.24e+00|  2.08e+02|   1.18466e+00|
+!      40037|  7.711e+00|  8.03e-01| -7.84e-03|  8.01e-03| -9.47e-01|  9.66e-02|  1.24e+00|  2.06e+02|   1.18461e+00|
+!      40038|  8.813e+00|  7.99e-01| -8.06e-03|  7.97e-03| -9.01e-01|  9.66e-02|  1.24e+00|  2.05e+02|   1.18455e+00|
+!      40039|  9.952e+00|  7.95e-01| -8.31e-03|  7.92e-03| -8.48e-01|  9.66e-02|  1.24e+00|  2.04e+02|   1.18450e+00|
+!      40040|  1.110e+01|  7.90e-01| -8.59e-03|  7.87e-03| -7.90e-01|  9.66e-02|  1.24e+00|  2.03e+02|   1.18444e+00|
+!      40041|  1.222e+01|  7.85e-01| -8.91e-03|  7.82e-03| -7.27e-01|  9.66e-02|  1.24e+00|  2.01e+02|   1.18439e+00|
+!      40042|  1.328e+01|  7.79e-01| -9.25e-03|  7.77e-03| -6.58e-01|  9.66e-02|  1.24e+00|  2.00e+02|   1.18434e+00|
+!      40043|  1.425e+01|  7.73e-01| -9.63e-03|  7.71e-03| -5.85e-01|  9.66e-02|  1.24e+00|  1.99e+02|   1.18430e+00|
+!      40044|  1.512e+01|  7.67e-01| -1.00e-02|  7.65e-03| -5.09e-01|  9.66e-02|  1.24e+00|  1.98e+02|   1.18425e+00|
+!      40045|  1.587e+01|  7.61e-01| -1.04e-02|  7.59e-03| -4.32e-01|  9.66e-02|  1.24e+00|  1.97e+02|   1.18421e+00|
+!      40046|  1.648e+01|  7.55e-01| -1.08e-02|  7.52e-03| -3.54e-01|  9.66e-02|  1.24e+00|  1.96e+02|   1.18417e+00|
+!      40047|  1.693e+01|  7.49e-01| -1.12e-02|  7.47e-03| -2.77e-01|  9.66e-02|  1.24e+00|  1.94e+02|   1.18413e+00|
+!      40048|  1.721e+01|  7.44e-01| -1.16e-02|  7.41e-03| -2.02e-01|  9.66e-02|  1.24e+00|  1.93e+02|   1.18409e+00|
+!      40049|  1.730e+01|  7.38e-01| -1.20e-02|  7.36e-03| -1.33e-01|  9.66e-02|  1.24e+00|  1.92e+02|   1.18405e+00|
+!      40050|  1.720e+01|  7.33e-01| -1.23e-02|  7.31e-03| -6.91e-02|  9.66e-02|  1.24e+00|  1.91e+02|   1.18401e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  14.172  14.953 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40051|  1.691e+01|  7.29e-01| -1.26e-02|  7.26e-03| -1.32e-02|  9.66e-02|  1.24e+00|  1.90e+02|   1.18398e+00|
+!      40052|  1.643e+01|  7.26e-01| -1.29e-02|  7.23e-03|  3.35e-02|  9.66e-02|  1.24e+00|  1.89e+02|   1.18395e+00|
+!      40053|  1.579e+01|  7.23e-01| -1.31e-02|  7.20e-03|  6.98e-02|  9.66e-02|  1.24e+00|  1.88e+02|   1.18392e+00|
+!      40054|  1.503e+01|  7.21e-01| -1.32e-02|  7.18e-03|  9.46e-02|  9.66e-02|  1.24e+00|  1.87e+02|   1.18389e+00|
+!      40055|  1.419e+01|  7.19e-01| -1.33e-02|  7.17e-03|  1.07e-01|  9.66e-02|  1.24e+00|  1.86e+02|   1.18386e+00|
+!      40056|  1.334e+01|  7.19e-01| -1.33e-02|  7.16e-03|  1.07e-01|  9.67e-02|  1.24e+00|  1.85e+02|   1.18383e+00|
+!      40057|  1.257e+01|  7.20e-01| -1.32e-02|  7.17e-03|  9.44e-02|  9.67e-02|  1.24e+00|  1.84e+02|   1.18381e+00|
+!      40058|  1.197e+01|  7.21e-01| -1.30e-02|  7.18e-03|  6.92e-02|  9.67e-02|  1.24e+00|  1.83e+02|   1.18378e+00|
+!      40059|  1.163e+01|  7.23e-01| -1.28e-02|  7.21e-03|  3.20e-02|  9.67e-02|  1.24e+00|  1.82e+02|   1.18376e+00|
+!      40060|  1.160e+01|  7.26e-01| -1.25e-02|  7.24e-03| -1.61e-02|  9.67e-02|  1.24e+00|  1.81e+02|   1.18374e+00|
+!      40061|  1.189e+01|  7.30e-01| -1.22e-02|  7.27e-03| -7.41e-02|  9.67e-02|  1.24e+00|  1.81e+02|   1.18372e+00|
+!      40062|  1.245e+01|  7.34e-01| -1.18e-02|  7.32e-03| -1.41e-01|  9.67e-02|  1.24e+00|  1.80e+02|   1.18370e+00|
+!      40063|  1.319e+01|  7.39e-01| -1.14e-02|  7.37e-03| -2.14e-01|  9.67e-02|  1.24e+00|  1.79e+02|   1.18368e+00|
+!      40064|  1.403e+01|  7.44e-01| -1.09e-02|  7.42e-03| -2.92e-01|  9.67e-02|  1.24e+00|  1.78e+02|   1.18367e+00|
+!      40065|  1.488e+01|  7.50e-01| -1.04e-02|  7.47e-03| -3.74e-01|  9.67e-02|  1.24e+00|  1.77e+02|   1.18365e+00|
+!      40066|  1.566e+01|  7.55e-01| -9.89e-03|  7.53e-03| -4.57e-01|  9.67e-02|  1.24e+00|  1.77e+02|   1.18364e+00|
+!      40067|  1.632e+01|  7.61e-01| -9.38e-03|  7.59e-03| -5.40e-01|  9.67e-02|  1.24e+00|  1.76e+02|   1.18363e+00|
+!      40068|  1.679e+01|  7.67e-01| -8.88e-03|  7.65e-03| -6.21e-01|  9.67e-02|  1.24e+00|  1.75e+02|   1.18361e+00|
+!      40069|  1.706e+01|  7.72e-01| -8.39e-03|  7.70e-03| -6.99e-01|  9.67e-02|  1.24e+00|  1.74e+02|   1.18360e+00|
+!      40070|  1.709e+01|  7.78e-01| -7.94e-03|  7.76e-03| -7.71e-01|  9.67e-02|  1.24e+00|  1.74e+02|   1.18359e+00|
+!      40071|  1.688e+01|  7.83e-01| -7.51e-03|  7.81e-03| -8.38e-01|  9.67e-02|  1.24e+00|  1.73e+02|   1.18358e+00|
+!      40072|  1.642e+01|  7.87e-01| -7.13e-03|  7.85e-03| -8.97e-01|  9.67e-02|  1.24e+00|  1.73e+02|   1.18358e+00|
+!      40073|  1.573e+01|  7.91e-01| -6.79e-03|  7.89e-03| -9.48e-01|  9.67e-02|  1.24e+00|  1.72e+02|   1.18357e+00|
+!      40074|  1.484e+01|  7.95e-01| -6.50e-03|  7.93e-03| -9.91e-01|  9.67e-02|  1.24e+00|  1.72e+02|   1.18356e+00|
+!      40075|  1.378e+01|  7.98e-01| -6.26e-03|  7.96e-03| -1.03e+00|  9.67e-02|  1.24e+00|  1.71e+02|   1.18355e+00|
+!      40076|  1.261e+01|  8.00e-01| -6.07e-03|  7.98e-03| -1.05e+00|  9.67e-02|  1.24e+00|  1.71e+02|   1.18355e+00|
+!      40077|  1.138e+01|  8.02e-01| -5.94e-03|  8.00e-03| -1.07e+00|  9.67e-02|  1.24e+00|  1.70e+02|   1.18354e+00|
+!      40078|  1.017e+01|  8.03e-01| -5.86e-03|  8.01e-03| -1.08e+00|  9.67e-02|  1.24e+00|  1.70e+02|   1.18354e+00|
+!      40079|  9.059e+00|  8.04e-01| -5.83e-03|  8.02e-03| -1.08e+00|  9.67e-02|  1.24e+00|  1.69e+02|   1.18354e+00|
+!      40080|  8.151e+00|  8.04e-01| -5.84e-03|  8.02e-03| -1.07e+00|  9.67e-02|  1.24e+00|  1.69e+02|   1.18353e+00|
+!      40081|  7.531e+00|  8.03e-01| -5.90e-03|  8.02e-03| -1.06e+00|  9.67e-02|  1.24e+00|  1.68e+02|   1.18353e+00|
+!      40082|  7.254e+00|  8.03e-01| -5.99e-03|  8.01e-03| -1.05e+00|  9.68e-02|  1.24e+00|  1.68e+02|   1.18353e+00|
+!      40083|  7.304e+00|  8.01e-01| -6.12e-03|  8.00e-03| -1.03e+00|  9.68e-02|  1.24e+00|  1.67e+02|   1.18353e+00|
+!      40084|  7.603e+00|  8.00e-01| -6.27e-03|  7.98e-03| -1.00e+00|  9.68e-02|  1.24e+00|  1.67e+02|   1.18353e+00|
+!      40085|  8.042e+00|  7.98e-01| -6.45e-03|  7.96e-03| -9.73e-01|  9.68e-02|  1.24e+00|  1.67e+02|   1.18353e+00|
+!      40086|  8.522e+00|  7.96e-01| -6.64e-03|  7.94e-03| -9.44e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18353e+00|
+!      40087|  8.967e+00|  7.94e-01| -6.84e-03|  7.92e-03| -9.14e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18353e+00|
+!      40088|  9.325e+00|  7.91e-01| -7.05e-03|  7.90e-03| -8.83e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18353e+00|
+!      40089|  9.566e+00|  7.89e-01| -7.25e-03|  7.88e-03| -8.52e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18353e+00|
+!      40090|  9.673e+00|  7.87e-01| -7.46e-03|  7.85e-03| -8.23e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18353e+00|
+!      40091|  9.641e+00|  7.84e-01| -7.65e-03|  7.83e-03| -7.95e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18354e+00|
+!      40092|  9.472e+00|  7.82e-01| -7.83e-03|  7.81e-03| -7.69e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18354e+00|
+!      40093|  9.176e+00|  7.80e-01| -7.99e-03|  7.79e-03| -7.45e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18354e+00|
+!      40094|  8.769e+00|  7.78e-01| -8.14e-03|  7.77e-03| -7.24e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18354e+00|
+!      40095|  8.268e+00|  7.77e-01| -8.27e-03|  7.76e-03| -7.05e-01|  9.68e-02|  1.24e+00|  1.66e+02|   1.18355e+00|
+!      40096|  7.699e+00|  7.75e-01| -8.37e-03|  7.74e-03| -6.89e-01|  9.69e-02|  1.24e+00|  1.66e+02|   1.18355e+00|
+!      40097|  7.088e+00|  7.74e-01| -8.46e-03|  7.73e-03| -6.77e-01|  9.69e-02|  1.24e+00|  1.66e+02|   1.18355e+00|
+!      40098|  6.467e+00|  7.73e-01| -8.53e-03|  7.72e-03| -6.67e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18356e+00|
+!      40099|  5.872e+00|  7.73e-01| -8.57e-03|  7.71e-03| -6.59e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18356e+00|
+!      40100|  5.341e+00|  7.72e-01| -8.60e-03|  7.71e-03| -6.55e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18356e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  14.311  14.298 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40101|  4.910e+00|  7.72e-01| -8.61e-03|  7.71e-03| -6.53e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18357e+00|
+!      40102|  4.609e+00|  7.72e-01| -8.60e-03|  7.71e-03| -6.53e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18357e+00|
+!      40103|  4.451e+00|  7.72e-01| -8.58e-03|  7.71e-03| -6.56e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18357e+00|
+!      40104|  4.426e+00|  7.72e-01| -8.54e-03|  7.71e-03| -6.60e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18358e+00|
+!      40105|  4.505e+00|  7.72e-01| -8.50e-03|  7.72e-03| -6.66e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18358e+00|
+!      40106|  4.645e+00|  7.73e-01| -8.44e-03|  7.72e-03| -6.73e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18358e+00|
+!      40107|  4.807e+00|  7.73e-01| -8.38e-03|  7.73e-03| -6.82e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18359e+00|
+!      40108|  4.956e+00|  7.74e-01| -8.31e-03|  7.73e-03| -6.91e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18359e+00|
+!      40109|  5.067e+00|  7.75e-01| -8.24e-03|  7.74e-03| -7.01e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18359e+00|
+!      40110|  5.121e+00|  7.76e-01| -8.17e-03|  7.75e-03| -7.11e-01|  9.69e-02|  1.24e+00|  1.65e+02|   1.18360e+00|
+!      40111|  5.110e+00|  7.76e-01| -8.10e-03|  7.76e-03| -7.21e-01|  9.69e-02|  1.24e+00|  1.64e+02|   1.18360e+00|
+!      40112|  5.027e+00|  7.77e-01| -8.03e-03|  7.77e-03| -7.31e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18360e+00|
+!      40113|  4.874e+00|  7.78e-01| -7.97e-03|  7.77e-03| -7.40e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18361e+00|
+!      40114|  4.658e+00|  7.79e-01| -7.91e-03|  7.78e-03| -7.49e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18361e+00|
+!      40115|  4.387e+00|  7.79e-01| -7.86e-03|  7.79e-03| -7.57e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18361e+00|
+!      40116|  4.077e+00|  7.80e-01| -7.81e-03|  7.79e-03| -7.65e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18361e+00|
+!      40117|  3.746e+00|  7.80e-01| -7.76e-03|  7.80e-03| -7.71e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18362e+00|
+!      40118|  3.417e+00|  7.81e-01| -7.73e-03|  7.80e-03| -7.77e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18362e+00|
+!      40119|  3.115e+00|  7.81e-01| -7.70e-03|  7.81e-03| -7.82e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18362e+00|
+!      40120|  2.866e+00|  7.81e-01| -7.67e-03|  7.81e-03| -7.85e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18362e+00|
+!      40121|  2.692e+00|  7.82e-01| -7.66e-03|  7.81e-03| -7.88e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18362e+00|
+!      40122|  2.604e+00|  7.82e-01| -7.65e-03|  7.81e-03| -7.90e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18363e+00|
+!      40123|  2.599e+00|  7.82e-01| -7.64e-03|  7.81e-03| -7.90e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18363e+00|
+!      40124|  2.659e+00|  7.82e-01| -7.64e-03|  7.81e-03| -7.90e-01|  9.70e-02|  1.24e+00|  1.64e+02|   1.18363e+00|
+!      40125|  2.757e+00|  7.82e-01| -7.65e-03|  7.81e-03| -7.90e-01|  9.70e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40126|  2.868e+00|  7.82e-01| -7.66e-03|  7.81e-03| -7.89e-01|  9.70e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40127|  2.973e+00|  7.82e-01| -7.67e-03|  7.81e-03| -7.87e-01|  9.70e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40128|  3.057e+00|  7.82e-01| -7.68e-03|  7.81e-03| -7.85e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40129|  3.110e+00|  7.81e-01| -7.70e-03|  7.81e-03| -7.82e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40130|  3.130e+00|  7.81e-01| -7.72e-03|  7.81e-03| -7.80e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40131|  3.115e+00|  7.81e-01| -7.74e-03|  7.80e-03| -7.77e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40132|  3.069e+00|  7.81e-01| -7.75e-03|  7.80e-03| -7.74e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40133|  2.995e+00|  7.81e-01| -7.77e-03|  7.80e-03| -7.71e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40134|  2.900e+00|  7.80e-01| -7.79e-03|  7.80e-03| -7.68e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40135|  2.792e+00|  7.80e-01| -7.81e-03|  7.79e-03| -7.66e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40136|  2.680e+00|  7.80e-01| -7.82e-03|  7.79e-03| -7.63e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40137|  2.571e+00|  7.80e-01| -7.84e-03|  7.79e-03| -7.61e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40138|  2.473e+00|  7.80e-01| -7.85e-03|  7.79e-03| -7.59e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40139|  2.390e+00|  7.79e-01| -7.86e-03|  7.78e-03| -7.57e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40140|  2.325e+00|  7.79e-01| -7.88e-03|  7.78e-03| -7.55e-01|  9.71e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40141|  2.276e+00|  7.79e-01| -7.88e-03|  7.78e-03| -7.54e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40142|  2.241e+00|  7.79e-01| -7.89e-03|  7.78e-03| -7.53e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40143|  2.213e+00|  7.79e-01| -7.90e-03|  7.78e-03| -7.52e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40144|  2.188e+00|  7.79e-01| -7.90e-03|  7.78e-03| -7.51e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40145|  2.161e+00|  7.79e-01| -7.91e-03|  7.78e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40146|  2.127e+00|  7.79e-01| -7.91e-03|  7.78e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40147|  2.083e+00|  7.79e-01| -7.91e-03|  7.78e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40148|  2.030e+00|  7.79e-01| -7.91e-03|  7.77e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40149|  1.968e+00|  7.79e-01| -7.91e-03|  7.77e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40150|  1.897e+00|  7.79e-01| -7.91e-03|  7.77e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  14.526  14.505 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40151|  1.822e+00|  7.79e-01| -7.91e-03|  7.77e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40152|  1.746e+00|  7.79e-01| -7.90e-03|  7.77e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18363e+00|
+!      40153|  1.673e+00|  7.79e-01| -7.90e-03|  7.77e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40154|  1.608e+00|  7.79e-01| -7.90e-03|  7.77e-03| -7.50e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40155|  1.554e+00|  7.79e-01| -7.89e-03|  7.77e-03| -7.51e-01|  9.72e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40156|  1.515e+00|  7.79e-01| -7.89e-03|  7.77e-03| -7.51e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40157|  1.489e+00|  7.79e-01| -7.89e-03|  7.77e-03| -7.51e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40158|  1.477e+00|  7.79e-01| -7.89e-03|  7.77e-03| -7.51e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40159|  1.475e+00|  7.79e-01| -7.88e-03|  7.77e-03| -7.52e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40160|  1.477e+00|  7.79e-01| -7.88e-03|  7.77e-03| -7.52e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40161|  1.480e+00|  7.79e-01| -7.88e-03|  7.77e-03| -7.52e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40162|  1.480e+00|  7.79e-01| -7.88e-03|  7.77e-03| -7.52e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40163|  1.471e+00|  7.79e-01| -7.88e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40164|  1.453e+00|  7.79e-01| -7.88e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40165|  1.424e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40166|  1.384e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40167|  1.334e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40168|  1.277e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40169|  1.215e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40170|  1.154e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.53e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40171|  1.097e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.54e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40172|  1.047e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.54e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40173|  1.010e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.54e-01|  9.73e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40174|  9.869e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40175|  9.781e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40176|  9.820e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40177|  9.954e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40178|  1.014e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.55e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40179|  1.035e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.55e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40180|  1.054e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.55e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40181|  1.068e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.55e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40182|  1.075e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.56e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40183|  1.076e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.56e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40184|  1.070e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.56e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40185|  1.057e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.56e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40186|  1.038e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.56e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40187|  1.016e+00|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40188|  9.912e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40189|  9.663e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40190|  9.425e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40191|  9.211e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40192|  9.029e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40193|  8.883e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40194|  8.772e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40195|  8.690e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40196|  8.631e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40197|  8.585e-01|  7.79e-01| -7.87e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40198|  8.545e-01|  7.79e-01| -7.88e-03|  7.77e-03| -7.57e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40199|  8.504e-01|  7.79e-01| -7.88e-03|  7.77e-03| -7.57e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40200|  8.456e-01|  7.79e-01| -7.88e-03|  7.77e-03| -7.57e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  13.625  13.613 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40201|  8.399e-01|  7.79e-01| -7.88e-03|  7.77e-03| -7.57e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40202|  8.332e-01|  7.79e-01| -7.88e-03|  7.77e-03| -7.57e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40203|  8.256e-01|  7.79e-01| -7.88e-03|  7.77e-03| -7.57e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40204|  8.175e-01|  7.79e-01| -7.88e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40205|  8.092e-01|  7.79e-01| -7.89e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40206|  8.011e-01|  7.79e-01| -7.89e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40207|  7.934e-01|  7.79e-01| -7.89e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40208|  7.864e-01|  7.79e-01| -7.89e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40209|  7.800e-01|  7.79e-01| -7.89e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40210|  7.740e-01|  7.79e-01| -7.90e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40211|  7.682e-01|  7.79e-01| -7.90e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40212|  7.622e-01|  7.79e-01| -7.90e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40213|  7.556e-01|  7.79e-01| -7.90e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40214|  7.481e-01|  7.79e-01| -7.90e-03|  7.77e-03| -7.56e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40215|  7.394e-01|  7.79e-01| -7.90e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40216|  7.294e-01|  7.79e-01| -7.91e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40217|  7.182e-01|  7.79e-01| -7.91e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40218|  7.060e-01|  7.79e-01| -7.91e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40219|  6.933e-01|  7.79e-01| -7.91e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40220|  6.804e-01|  7.79e-01| -7.91e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40221|  6.682e-01|  7.79e-01| -7.91e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40222|  6.571e-01|  7.79e-01| -7.91e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40223|  6.477e-01|  7.79e-01| -7.92e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40224|  6.407e-01|  7.79e-01| -7.92e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40225|  6.363e-01|  7.79e-01| -7.92e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40226|  6.345e-01|  7.79e-01| -7.92e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40227|  6.352e-01|  7.79e-01| -7.92e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40228|  6.381e-01|  7.79e-01| -7.92e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40229|  6.425e-01|  7.79e-01| -7.92e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40230|  6.477e-01|  7.79e-01| -7.93e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40231|  6.532e-01|  7.79e-01| -7.93e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40232|  6.582e-01|  7.79e-01| -7.93e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40233|  6.623e-01|  7.79e-01| -7.93e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40234|  6.650e-01|  7.79e-01| -7.93e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40235|  6.661e-01|  7.79e-01| -7.93e-03|  7.77e-03| -7.55e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40236|  6.654e-01|  7.79e-01| -7.93e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40237|  6.629e-01|  7.79e-01| -7.94e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40238|  6.588e-01|  7.79e-01| -7.94e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40239|  6.534e-01|  7.79e-01| -7.94e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40240|  6.467e-01|  7.79e-01| -7.94e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40241|  6.393e-01|  7.79e-01| -7.94e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40242|  6.314e-01|  7.79e-01| -7.94e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40243|  6.233e-01|  7.79e-01| -7.94e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40244|  6.153e-01|  7.79e-01| -7.95e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40245|  6.078e-01|  7.79e-01| -7.95e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40246|  6.007e-01|  7.79e-01| -7.95e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40247|  5.944e-01|  7.79e-01| -7.95e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40248|  5.888e-01|  7.79e-01| -7.95e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40249|  5.840e-01|  7.79e-01| -7.95e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40250|  5.800e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  13.755  13.737 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40251|  5.767e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40252|  5.740e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40253|  5.719e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40254|  5.703e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40255|  5.693e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40256|  5.686e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40257|  5.683e-01|  7.79e-01| -7.96e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40258|  5.682e-01|  7.79e-01| -7.97e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40259|  5.684e-01|  7.79e-01| -7.97e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40260|  5.687e-01|  7.79e-01| -7.97e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40261|  5.690e-01|  7.79e-01| -7.97e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40262|  5.693e-01|  7.79e-01| -7.97e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40263|  5.694e-01|  7.79e-01| -7.97e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40264|  5.693e-01|  7.79e-01| -7.97e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40265|  5.690e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40266|  5.682e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40267|  5.672e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40268|  5.657e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40269|  5.639e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40270|  5.618e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40271|  5.594e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40272|  5.569e-01|  7.79e-01| -7.98e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40273|  5.542e-01|  7.79e-01| -7.99e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40274|  5.516e-01|  7.79e-01| -7.99e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40275|  5.490e-01|  7.79e-01| -7.99e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40276|  5.465e-01|  7.79e-01| -7.99e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40277|  5.442e-01|  7.79e-01| -7.99e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40278|  5.422e-01|  7.79e-01| -7.99e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18362e+00|
+!      40279|  5.403e-01|  7.79e-01| -7.99e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40280|  5.387e-01|  7.79e-01| -8.00e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40281|  5.373e-01|  7.79e-01| -8.00e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40282|  5.359e-01|  7.79e-01| -8.00e-03|  7.77e-03| -7.54e-01|  9.75e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40283|  5.347e-01|  7.79e-01| -8.00e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40284|  5.334e-01|  7.79e-01| -8.00e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40285|  5.321e-01|  7.79e-01| -8.00e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40286|  5.308e-01|  7.79e-01| -8.00e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40287|  5.294e-01|  7.79e-01| -8.01e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40288|  5.278e-01|  7.79e-01| -8.01e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40289|  5.261e-01|  7.79e-01| -8.01e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40290|  5.243e-01|  7.79e-01| -8.01e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40291|  5.224e-01|  7.79e-01| -8.01e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40292|  5.205e-01|  7.79e-01| -8.01e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40293|  5.186e-01|  7.79e-01| -8.01e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40294|  5.166e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40295|  5.147e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40296|  5.129e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40297|  5.112e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40298|  5.096e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40299|  5.080e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+!      40300|  5.066e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  14.587  14.583 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+        Time|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+| 1.00500e+00|  5.066e-01|  7.79e-01| -8.02e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18361e+00|
+Output file </work/piquee/rotation_wing_Rebecca/rigid/solutions/airfoilSol.pval.unsteady_i=201_t=1.00500e+00.domain_0> written
+Output file </work/piquee/rotation_wing_Rebecca/rigid/solutions/airfoilSol.surface.pval.unsteady_i=201_t=1.00500e+00.domain_0> written
+
+**************************************************
+* time step 202
+**************************************************
+
+**************************************************
+* time 1.01
+**************************************************
+
+MotionExternalHandler::UpdateMotion(): Updating motion data on local stack for node <MEMBRANE>
+MotionExternalDelegate::InitExchange(): Performing initial motion exchange
+
+MotionExternalHandler::_PassMotionToTau(): Updating motion data of node <MEMBRANE> in TAU from local stack
+
+ ------------------------------------------------------------------------------
+Motion parameters for Node 1 :
+  Node name.............................:  MEMBRANE
+  Parent-node name......................:  inertial
+  Deflection angles (roll, pitch, yaw)..:  0.0000e+00  0.0000e+00  0.0000e+00 [deg]
+  Angular velocity (body-fixed frame)...:  0.0000e+00  0.0000e+00  0.0000e+00 [rad/s]
+  Translational velocity (geod. frame)..:  0.0000e+00  0.0000e+00  0.0000e+00 [m/s]
+  Location of origin (geod. frame)......:  0.0000e+00  0.0000e+00  0.0000e+00 [m]
+
+ ------------------------------------------------------------------------------
+
+MotionExternalHandler::PushMotion(): Pushing motion data on local stack
+
+**************************************************
+* time step 202
+**************************************************
+Initial residual  3.315e-04
+
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 1 physical timesteps  84.976  85.688 seconds.
+---------------------------------------------------------------------------------------------------------------------
+
+Mainloop on level 1:
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40301|  1.000e+00|  7.79e-01| -8.03e-03|  7.77e-03| -7.54e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18358e+00|
+!      40302|  1.561e+00|  7.79e-01| -8.03e-03|  7.77e-03| -7.53e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18325e+00|
+!      40303|  5.027e+00|  7.78e-01| -8.02e-03|  7.76e-03| -7.47e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18292e+00|
+!      40304|  1.021e+01|  7.76e-01| -8.03e-03|  7.74e-03| -7.28e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18259e+00|
+!      40305|  1.498e+01|  7.74e-01| -8.08e-03|  7.71e-03| -6.99e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18226e+00|
+!      40306|  1.838e+01|  7.70e-01| -8.17e-03|  7.68e-03| -6.62e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18195e+00|
+!      40307|  2.058e+01|  7.67e-01| -8.28e-03|  7.64e-03| -6.22e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18164e+00|
+!      40308|  2.240e+01|  7.63e-01| -8.41e-03|  7.61e-03| -5.79e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18135e+00|
+!      40309|  2.400e+01|  7.60e-01| -8.54e-03|  7.57e-03| -5.34e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18107e+00|
+!      40310|  2.522e+01|  7.56e-01| -8.69e-03|  7.53e-03| -4.88e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18080e+00|
+!      40311|  2.604e+01|  7.52e-01| -8.86e-03|  7.49e-03| -4.41e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18054e+00|
+!      40312|  2.665e+01|  7.48e-01| -9.05e-03|  7.45e-03| -3.94e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18030e+00|
+!      40313|  2.724e+01|  7.44e-01| -9.26e-03|  7.41e-03| -3.45e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.18007e+00|
+!      40314|  2.783e+01|  7.40e-01| -9.47e-03|  7.37e-03| -2.97e-01|  9.74e-02|  1.24e+00|  1.63e+02|   1.17985e+00|
+!      40315|  2.833e+01|  7.35e-01| -9.69e-03|  7.32e-03| -2.49e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17965e+00|
+!      40316|  2.864e+01|  7.31e-01| -9.91e-03|  7.28e-03| -2.00e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17946e+00|
+!      40317|  2.878e+01|  7.26e-01| -1.01e-02|  7.23e-03| -1.52e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17927e+00|
+!      40318|  2.883e+01|  7.22e-01| -1.03e-02|  7.19e-03| -1.04e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17910e+00|
+!      40319|  2.891e+01|  7.18e-01| -1.05e-02|  7.15e-03| -5.65e-02|  9.74e-02|  1.24e+00|  1.64e+02|   1.17894e+00|
+!      40320|  2.904e+01|  7.13e-01| -1.07e-02|  7.10e-03| -9.39e-03|  9.74e-02|  1.24e+00|  1.64e+02|   1.17879e+00|
+!      40321|  2.923e+01|  7.09e-01| -1.08e-02|  7.06e-03|  3.67e-02|  9.74e-02|  1.24e+00|  1.64e+02|   1.17865e+00|
+!      40322|  2.945e+01|  7.05e-01| -1.10e-02|  7.02e-03|  8.16e-02|  9.74e-02|  1.24e+00|  1.64e+02|   1.17851e+00|
+!      40323|  2.970e+01|  7.01e-01| -1.11e-02|  6.98e-03|  1.25e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17838e+00|
+!      40324|  2.997e+01|  6.97e-01| -1.13e-02|  6.94e-03|  1.67e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17826e+00|
+!      40325|  3.025e+01|  6.93e-01| -1.14e-02|  6.90e-03|  2.06e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17814e+00|
+!      40326|  3.053e+01|  6.89e-01| -1.15e-02|  6.86e-03|  2.44e-01|  9.74e-02|  1.24e+00|  1.64e+02|   1.17803e+00|
+!      40327|  3.077e+01|  6.86e-01| -1.17e-02|  6.82e-03|  2.80e-01|  9.74e-02|  1.24e+00|  1.65e+02|   1.17793e+00|
+!      40328|  3.092e+01|  6.82e-01| -1.18e-02|  6.79e-03|  3.15e-01|  9.74e-02|  1.24e+00|  1.65e+02|   1.17783e+00|
+!      40329|  3.095e+01|  6.79e-01| -1.19e-02|  6.76e-03|  3.47e-01|  9.74e-02|  1.24e+00|  1.65e+02|   1.17774e+00|
+!      40330|  3.087e+01|  6.76e-01| -1.20e-02|  6.73e-03|  3.78e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17765e+00|
+!      40331|  3.069e+01|  6.73e-01| -1.21e-02|  6.70e-03|  4.08e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17756e+00|
+!      40332|  3.045e+01|  6.70e-01| -1.22e-02|  6.67e-03|  4.36e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17748e+00|
+!      40333|  3.018e+01|  6.67e-01| -1.23e-02|  6.64e-03|  4.63e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17740e+00|
+!      40334|  2.988e+01|  6.65e-01| -1.24e-02|  6.62e-03|  4.87e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17733e+00|
+!      40335|  2.954e+01|  6.62e-01| -1.24e-02|  6.59e-03|  5.10e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17726e+00|
+!      40336|  2.916e+01|  6.60e-01| -1.25e-02|  6.57e-03|  5.31e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17719e+00|
+!      40337|  2.871e+01|  6.58e-01| -1.25e-02|  6.55e-03|  5.50e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17713e+00|
+!      40338|  2.817e+01|  6.57e-01| -1.26e-02|  6.54e-03|  5.65e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17707e+00|
+!      40339|  2.754e+01|  6.56e-01| -1.26e-02|  6.53e-03|  5.77e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17701e+00|
+!      40340|  2.685e+01|  6.55e-01| -1.26e-02|  6.52e-03|  5.85e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17696e+00|
+!      40341|  2.610e+01|  6.54e-01| -1.25e-02|  6.51e-03|  5.88e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17690e+00|
+!      40342|  2.534e+01|  6.54e-01| -1.24e-02|  6.51e-03|  5.86e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17686e+00|
+!      40343|  2.460e+01|  6.54e-01| -1.23e-02|  6.51e-03|  5.77e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17681e+00|
+!      40344|  2.389e+01|  6.55e-01| -1.22e-02|  6.52e-03|  5.63e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17677e+00|
+!      40345|  2.324e+01|  6.56e-01| -1.20e-02|  6.53e-03|  5.42e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17672e+00|
+!      40346|  2.263e+01|  6.58e-01| -1.18e-02|  6.55e-03|  5.15e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17668e+00|
+!      40347|  2.209e+01|  6.60e-01| -1.16e-02|  6.57e-03|  4.82e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17665e+00|
+!      40348|  2.163e+01|  6.62e-01| -1.13e-02|  6.59e-03|  4.44e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17661e+00|
+!      40349|  2.127e+01|  6.65e-01| -1.11e-02|  6.62e-03|  4.00e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17658e+00|
+!      40350|  2.103e+01|  6.68e-01| -1.07e-02|  6.66e-03|  3.52e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17655e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  14.889  15.024 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40351|  2.092e+01|  6.71e-01| -1.04e-02|  6.69e-03|  3.00e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17652e+00|
+!      40352|  2.094e+01|  6.75e-01| -1.01e-02|  6.73e-03|  2.45e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17649e+00|
+!      40353|  2.107e+01|  6.79e-01| -9.76e-03|  6.77e-03|  1.88e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17646e+00|
+!      40354|  2.129e+01|  6.83e-01| -9.41e-03|  6.81e-03|  1.29e-01|  9.75e-02|  1.24e+00|  1.65e+02|   1.17644e+00|
+!      40355|  2.152e+01|  6.88e-01| -9.05e-03|  6.86e-03|  6.96e-02|  9.75e-02|  1.24e+00|  1.65e+02|   1.17642e+00|
+!      40356|  2.170e+01|  6.92e-01| -8.69e-03|  6.90e-03|  1.02e-02|  9.75e-02|  1.24e+00|  1.66e+02|   1.17640e+00|
+!      40357|  2.177e+01|  6.96e-01| -8.34e-03|  6.94e-03| -4.84e-02|  9.75e-02|  1.24e+00|  1.66e+02|   1.17638e+00|
+!      40358|  2.164e+01|  7.00e-01| -7.98e-03|  6.98e-03| -1.06e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17636e+00|
+!      40359|  2.130e+01|  7.04e-01| -7.64e-03|  7.02e-03| -1.60e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17634e+00|
+!      40360|  2.072e+01|  7.08e-01| -7.31e-03|  7.06e-03| -2.12e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17632e+00|
+!      40361|  1.991e+01|  7.11e-01| -7.00e-03|  7.10e-03| -2.61e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17631e+00|
+!      40362|  1.891e+01|  7.15e-01| -6.71e-03|  7.13e-03| -3.05e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17629e+00|
+!      40363|  1.777e+01|  7.17e-01| -6.45e-03|  7.16e-03| -3.44e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17628e+00|
+!      40364|  1.655e+01|  7.20e-01| -6.23e-03|  7.19e-03| -3.78e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17627e+00|
+!      40365|  1.532e+01|  7.22e-01| -6.03e-03|  7.21e-03| -4.06e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17626e+00|
+!      40366|  1.413e+01|  7.24e-01| -5.88e-03|  7.23e-03| -4.28e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17625e+00|
+!      40367|  1.305e+01|  7.25e-01| -5.77e-03|  7.24e-03| -4.44e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17624e+00|
+!      40368|  1.209e+01|  7.26e-01| -5.69e-03|  7.25e-03| -4.54e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17623e+00|
+!      40369|  1.130e+01|  7.27e-01| -5.66e-03|  7.26e-03| -4.58e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17622e+00|
+!      40370|  1.068e+01|  7.27e-01| -5.66e-03|  7.26e-03| -4.58e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17622e+00|
+!      40371|  1.023e+01|  7.27e-01| -5.69e-03|  7.26e-03| -4.52e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17621e+00|
+!      40372|  9.952e+00|  7.26e-01| -5.74e-03|  7.25e-03| -4.42e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17621e+00|
+!      40373|  9.850e+00|  7.26e-01| -5.82e-03|  7.25e-03| -4.28e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40374|  9.923e+00|  7.24e-01| -5.92e-03|  7.24e-03| -4.11e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40375|  1.016e+01|  7.23e-01| -6.04e-03|  7.22e-03| -3.92e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40376|  1.052e+01|  7.22e-01| -6.16e-03|  7.21e-03| -3.71e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40377|  1.095e+01|  7.20e-01| -6.30e-03|  7.19e-03| -3.48e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40378|  1.140e+01|  7.18e-01| -6.44e-03|  7.18e-03| -3.25e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40379|  1.179e+01|  7.17e-01| -6.58e-03|  7.16e-03| -3.01e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40380|  1.207e+01|  7.15e-01| -6.72e-03|  7.14e-03| -2.78e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40381|  1.222e+01|  7.13e-01| -6.86e-03|  7.13e-03| -2.56e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40382|  1.222e+01|  7.11e-01| -6.99e-03|  7.11e-03| -2.34e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40383|  1.207e+01|  7.10e-01| -7.12e-03|  7.09e-03| -2.14e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40384|  1.180e+01|  7.08e-01| -7.24e-03|  7.08e-03| -1.96e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40385|  1.143e+01|  7.07e-01| -7.34e-03|  7.07e-03| -1.80e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40386|  1.101e+01|  7.06e-01| -7.43e-03|  7.05e-03| -1.66e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40387|  1.055e+01|  7.05e-01| -7.51e-03|  7.04e-03| -1.54e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40388|  1.008e+01|  7.04e-01| -7.57e-03|  7.04e-03| -1.44e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40389|  9.633e+00|  7.03e-01| -7.61e-03|  7.03e-03| -1.37e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17618e+00|
+!      40390|  9.211e+00|  7.02e-01| -7.64e-03|  7.02e-03| -1.31e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40391|  8.832e+00|  7.02e-01| -7.66e-03|  7.02e-03| -1.28e-01|  9.75e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40392|  8.507e+00|  7.02e-01| -7.67e-03|  7.02e-03| -1.26e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40393|  8.243e+00|  7.02e-01| -7.66e-03|  7.02e-03| -1.27e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40394|  8.047e+00|  7.02e-01| -7.64e-03|  7.02e-03| -1.28e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40395|  7.918e+00|  7.02e-01| -7.61e-03|  7.02e-03| -1.31e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17619e+00|
+!      40396|  7.851e+00|  7.02e-01| -7.58e-03|  7.02e-03| -1.35e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40397|  7.831e+00|  7.02e-01| -7.53e-03|  7.03e-03| -1.40e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40398|  7.836e+00|  7.03e-01| -7.48e-03|  7.03e-03| -1.46e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40399|  7.836e+00|  7.03e-01| -7.43e-03|  7.03e-03| -1.53e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40400|  7.804e+00|  7.04e-01| -7.38e-03|  7.04e-03| -1.59e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  14.169  14.151 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40401|  7.719e+00|  7.04e-01| -7.32e-03|  7.04e-03| -1.66e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40402|  7.573e+00|  7.05e-01| -7.27e-03|  7.05e-03| -1.73e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17620e+00|
+!      40403|  7.369e+00|  7.05e-01| -7.21e-03|  7.05e-03| -1.80e-01|  9.76e-02|  1.24e+00|  1.66e+02|   1.17621e+00|
+!      40404|  7.121e+00|  7.06e-01| -7.16e-03|  7.06e-03| -1.87e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17621e+00|
+!      40405|  6.849e+00|  7.06e-01| -7.11e-03|  7.06e-03| -1.93e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17621e+00|
+!      40406|  6.571e+00|  7.07e-01| -7.07e-03|  7.07e-03| -1.99e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17621e+00|
+!      40407|  6.305e+00|  7.07e-01| -7.03e-03|  7.07e-03| -2.04e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17621e+00|
+!      40408|  6.062e+00|  7.07e-01| -7.00e-03|  7.08e-03| -2.09e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17621e+00|
+!      40409|  5.849e+00|  7.08e-01| -6.97e-03|  7.08e-03| -2.13e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17621e+00|
+!      40410|  5.670e+00|  7.08e-01| -6.95e-03|  7.08e-03| -2.16e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17621e+00|
+!      40411|  5.526e+00|  7.08e-01| -6.93e-03|  7.08e-03| -2.18e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17622e+00|
+!      40412|  5.416e+00|  7.08e-01| -6.91e-03|  7.08e-03| -2.20e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17622e+00|
+!      40413|  5.340e+00|  7.08e-01| -6.90e-03|  7.08e-03| -2.21e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17622e+00|
+!      40414|  5.300e+00|  7.08e-01| -6.89e-03|  7.08e-03| -2.21e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17622e+00|
+!      40415|  5.295e+00|  7.08e-01| -6.89e-03|  7.08e-03| -2.21e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17622e+00|
+!      40416|  5.322e+00|  7.08e-01| -6.89e-03|  7.08e-03| -2.20e-01|  9.76e-02|  1.23e+00|  1.66e+02|   1.17622e+00|
+!      40417|  5.376e+00|  7.08e-01| -6.89e-03|  7.08e-03| -2.19e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40418|  5.445e+00|  7.08e-01| -6.90e-03|  7.08e-03| -2.18e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40419|  5.515e+00|  7.08e-01| -6.91e-03|  7.08e-03| -2.16e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40420|  5.572e+00|  7.08e-01| -6.92e-03|  7.07e-03| -2.14e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40421|  5.602e+00|  7.08e-01| -6.93e-03|  7.07e-03| -2.12e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40422|  5.598e+00|  7.08e-01| -6.94e-03|  7.07e-03| -2.10e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40423|  5.557e+00|  7.07e-01| -6.95e-03|  7.07e-03| -2.08e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40424|  5.482e+00|  7.07e-01| -6.96e-03|  7.07e-03| -2.05e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40425|  5.379e+00|  7.07e-01| -6.97e-03|  7.06e-03| -2.03e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40426|  5.258e+00|  7.07e-01| -6.99e-03|  7.06e-03| -2.01e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40427|  5.126e+00|  7.07e-01| -7.00e-03|  7.06e-03| -1.99e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40428|  4.991e+00|  7.06e-01| -7.00e-03|  7.06e-03| -1.97e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40429|  4.857e+00|  7.06e-01| -7.01e-03|  7.05e-03| -1.96e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40430|  4.727e+00|  7.06e-01| -7.02e-03|  7.05e-03| -1.94e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40431|  4.602e+00|  7.06e-01| -7.02e-03|  7.05e-03| -1.93e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40432|  4.482e+00|  7.06e-01| -7.03e-03|  7.05e-03| -1.92e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40433|  4.368e+00|  7.06e-01| -7.03e-03|  7.05e-03| -1.91e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17622e+00|
+!      40434|  4.259e+00|  7.06e-01| -7.03e-03|  7.05e-03| -1.90e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40435|  4.156e+00|  7.06e-01| -7.03e-03|  7.05e-03| -1.90e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40436|  4.057e+00|  7.06e-01| -7.03e-03|  7.04e-03| -1.90e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40437|  3.961e+00|  7.06e-01| -7.02e-03|  7.04e-03| -1.90e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40438|  3.867e+00|  7.06e-01| -7.02e-03|  7.04e-03| -1.90e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40439|  3.772e+00|  7.06e-01| -7.02e-03|  7.04e-03| -1.90e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40440|  3.673e+00|  7.06e-01| -7.01e-03|  7.04e-03| -1.91e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40441|  3.569e+00|  7.06e-01| -7.01e-03|  7.04e-03| -1.91e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40442|  3.462e+00|  7.06e-01| -7.00e-03|  7.04e-03| -1.92e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40443|  3.355e+00|  7.06e-01| -6.99e-03|  7.04e-03| -1.92e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40444|  3.250e+00|  7.06e-01| -6.99e-03|  7.04e-03| -1.93e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40445|  3.154e+00|  7.06e-01| -6.98e-03|  7.04e-03| -1.93e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40446|  3.068e+00|  7.06e-01| -6.97e-03|  7.04e-03| -1.94e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40447|  2.994e+00|  7.06e-01| -6.97e-03|  7.04e-03| -1.95e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40448|  2.933e+00|  7.06e-01| -6.96e-03|  7.04e-03| -1.95e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40449|  2.883e+00|  7.06e-01| -6.96e-03|  7.04e-03| -1.96e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40450|  2.843e+00|  7.06e-01| -6.95e-03|  7.04e-03| -1.96e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+---------------------------------------------------------------------------------------------------------------------
+ Elapsed Time for the last 50 inner iterations  14.023  14.014 seconds (wallclock in solver and total user time, respectively).
+---------------------------------------------------------------------------------------------------------------------
+ Origin x,y,z: 0, 0, 0 [grid units]  0, 0, 0 [m]
+---------------------------------------------------------------------------------------------------------------------
+ Lift/Drag Reference Area: 0.005 [grid units] 0.005 [m^2]
+---------------------------------------------------------------------------------------------------------------------
+ Time scheme: DUAL_TIME
+---------------------------------------------------------------------------------------------------------------------
+        Iter|       Rrho|    C-lift|    C-drag|      C-mx|      C-my|  Max-mach|    Max-y+| Max-eddyv|    MF(OUTLET)|
+---------------------------------------------------------------------------------------------------------------------
+!      40451|  2.809e+00|  7.06e-01| -6.95e-03|  7.04e-03| -1.97e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40452|  2.781e+00|  7.06e-01| -6.94e-03|  7.04e-03| -1.97e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40453|  2.756e+00|  7.06e-01| -6.94e-03|  7.04e-03| -1.98e-01|  9.76e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40454|  2.733e+00|  7.06e-01| -6.93e-03|  7.04e-03| -1.98e-01|  9.75e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40455|  2.711e+00|  7.06e-01| -6.93e-03|  7.04e-03| -1.99e-01|  9.75e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+!      40456|  2.688e+00|  7.06e-01| -6.92e-03|  7.04e-03| -1.99e-01|  9.75e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+Signal 15: Write data & exit after timestep
+For immediate output within dual-time inner iterations set 
+"Unsteady activate inner iteration output (0/1): 1"
+!      40457|  2.664e+00|  7.06e-01| -6.92e-03|  7.04e-03| -1.99e-01|  9.75e-02|  1.23e+00|  1.65e+02|   1.17621e+00|
+Output file </work/piquee/rotation_wing_Rebecca/rigid/solutions/airfoilSol.pval.inner_restart_i=201_t=1.01000e+00.domain_0> written
+Output file </work/piquee/rotation_wing_Rebecca/rigid/solutions/airfoilSol.surface.pval.inner_restart_i=201_t=1.01000e+00.domain_0> written
+ERROR:
+Signal received: Exit after writing inner-iteration restart
+
+
+********************************************************************************
+******************TAU-PYTHON INTERPRETER FINISHED SUCCESSFULLY******************
+********************************************************************************

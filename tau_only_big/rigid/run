@@ -1,0 +1,119 @@
+#!/bin/bash
+
+#===============================================================================
+#
+# - Set path to your TAU directory and the corresponding binaries
+# - define abbreviations for required TAU modules
+#
+#===============================================================================
+TAUhome=/work/piquee/Softwares/TAU/TAU_2016.2/2016.2.0
+TAUbin=$TAUhome/bin
+
+mpirun_bin=/work/piquee/Softwares/openmpi_1.6.4/bin
+
+dir=/work/piquee/rotation_wing_Rebecca/rigid
+
+subg=$TAUbin/ptau3d.subgrids
+t2p=$TAUbin/tau2plt
+tau=$TAUbin/tau.turb1eq
+prep=$TAUbin/ptau3d.preprocessing
+gather=$TAUbin/gather
+
+
+if [ $# != 1 ]; then
+  echo ""
+  echo "+======================================================+"
+  echo "| Please provide Number of processor cores two be used |"
+  echo "| as command line argument!!                           |"
+  echo "+======================================================+"
+  echo ""
+  exit
+fi
+
+#===============================================================================
+#
+# Define
+# - number of processes to be used
+# - name of TAU controlfile
+# - name of TAU-Python script for first simulation
+#
+#===============================================================================
+np=3
+parafile=$dir/Membrane_rotation.cntl
+scriptfile=$dir/Membrane_rotation.py
+#===============================================================================
+#
+# - Clean working directory
+# - Change to working directory and copy required TAU control file and 
+#   script to working directory
+#
+#===============================================================================
+#rm work/*
+#cd work
+#cp /input/$parafile .
+#cp /input/*.py .
+
+#===============================================================================
+#
+# Perform partitioning
+#
+#===============================================================================
+if ( test $np -gt 1 )
+then
+   echo " " >> $parafile
+   echo "                              Number of domains: $np" >> $parafile
+   echo "                 Number of primary grid domains: $np" >> $parafile
+   echo " " >> $parafile
+
+   $subg $parafile
+fi
+
+#===============================================================================
+#
+# Run steady test case and gather solution.
+# - The solution files have to be gathered, because they are used for 
+#   the creation of the input file for the 'modified' farfield boundary.
+#
+#===============================================================================
+$mpirun_bin/mpirun -np $np $TAUbin/py_turb1eq/tau.py $scriptfile $parafile out_steady use_mpi
+###$gather $parafile
+
+#===============================================================================
+#
+# Run unsteady test case.
+# - Specify the required TAU-Python script.
+# - At the beginning of each physcal time step, a modified farfield file
+#   is created (see script file).
+#
+#===============================================================================
+
+###$mpirun_bin/mpirun -np $np $TAUbin/py_turb1eq/tau.py $scriptfile_unsteady $parafile out_unsteady use_mpi
+
+#imax=50
+#i=0
+#while ( test $i -le $imax )
+#do
+#   mpirun -np $np $tau $scriptfile $parafile out_unsteady_$i use mpi
+#   i=`expr $i + 1`
+#   echo $i > iter
+#done
+
+#===============================================================================
+#
+# Run post processing steps to create a movie.
+# - Change to directory plot.
+# - Create a list of all solution files of unsteady run.
+# - Convert the solution files to tescplot format using the python 
+#   script convert.py. Maybe the Path to the tau2plt binary has to be adjusted
+#   in the script.
+# - Create a tecplot file of the temporal history (one entry of the monitoring
+#   variables for each time step.
+# - Create additional data required for the movie.
+#
+#===============================================================================
+###cd ../plot
+###grep "../sol/sol.pval.unsteady" ../work/$parafile > list
+###python convert.py
+###python maketime.py ../work/out_unsteady.Python-Interface.stdout time.dat
+###python create-timestamps.py
+
