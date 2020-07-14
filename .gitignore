@@ -4,6 +4,7 @@ airfoil_Structured.cntl.mod
 log_TAU_neu_1.out.Python-Interface.stdout
 airfoilSol*
 log*
+3d/Mesh/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
