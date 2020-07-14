@@ -1,0 +1,37 @@
+BeginZE /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/models_structure/big/conforming_mesh_big3_punkt_vorne_separate.gid/conforming_mesh_big3_punkt_vorne_separate.vv
+   x -0.0488973855972290039 0.540876686573028564
+   y 0.356654882431030273 -0.222466036677360535
+   z -0.542541146278381348 0.531218171119689941
+   e 0.276444435119628906
+   v -0.511260545879854811 0.141686172761322643 0.373812553403537695
+   r -0.760790284896443403
+   m 0.680378377437591553 0.423908829689025879 -0.597818136215209961 0 -0.713663041591644287 0.197753652930259705 -0.671995997428894043 0 -0.166644290089607239 0.883852243423461914 0.437075376510620117 0 0 0 0 1
+   c 0.26032567024230957 0.00499999988824129105 0.00566149922087788582
+   pd 0
+   pno 0
+   pfo 0
+   pf 4
+   pv 0
+   NowUse 1
+   DrawingType 0
+   LightVector 90 90 150 0
+   OGLShadow(UseShadows) 0
+   OGLShadow(RenderMode) RenderNice
+   OGLShadow(ShadowBias) -0.002
+   OGLShadow(AmbientShadows) 1
+   OGLShadow(UseFBO) 0
+   OGLShadow(FBOSize) 2048
+   OGLShadow(DimmedLightFactor) 0.02
+   OGLStereo(UseStereo) 0
+   OGLStereo(RelativeEyeDistance) 1
+   OGLStereo(FlipEyes) 0
+   OGLStereo(StereoMode) AnaglyphColors
+   OGLStereo(EyeDistance) 0.075
+   OGLStereo(LeftEyeDistance) 1 0 0 1
+   OGLStereo(RightEyeDistance) 0 1 1 1
+EndZE /media/inigo/10740FB2740F9A1C/simulations/MembraneWing/models_structure/big/conforming_mesh_big3_punkt_vorne_separate.gid/conforming_mesh_big3_punkt_vorne_separate.vv
+
+BeginMirror
+   Mirror 0 Angle 0.0 AngleFake -15.0 SizeFactor 2.0 HeightOffset 0.25 Color #d9e5f24d Backlight Off EdgeStyle No Type Scene DrawMode Mirror
+EndMirror
+
