@@ -1,0 +1,7 @@
+{
+    "start_step"  : 0,
+    "tau_path"    : "/home/inigo/software/TAU/TAU_2016.2/2016.2.0/bin/",
+    "kratos_path" : "/home/inigo/software/kratosMerge/Kratos/applications/CoSimulationApplication/python_scripts/helpers/",
+    "echo_level"  : 1,
+    "rotate"  : false
+}
