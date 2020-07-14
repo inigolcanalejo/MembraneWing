@@ -1,6 +1,6 @@
 {
     "problem_data"     : {
-        "problem_name"  : "conforming_mesh_big3",
+        "problem_name"  : "conforming_mesh_big4_two_interfaces",
         "parallel_type" : "OpenMP",
         "echo_level"    : 1,
         "start_time"    : 1.0,
@@ -14,7 +14,7 @@
         "analysis_type"                   : "non_linear",
         "model_import_settings"           : {
             "input_type"     : "mdpa",
-            "input_filename" : "conforming_mesh_big3"
+            "input_filename" : "conforming_mesh_big4_two_interfaces"
         },
         "material_import_settings"        : {
             "materials_filename" : "StructuralMaterials.json"

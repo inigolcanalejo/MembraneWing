@@ -30,9 +30,17 @@
                 "name": "structure",
                 "input_data_list": [
                     {
-                        "data"             : "Interface_force",
+                        "data"             : "Upper_Interface_force",
                         "from_solver"      : "TAU",
-                        "from_solver_data" : "Interface_force",
+                        "from_solver_data" : "Upper_Interface_force",
+                        "data_transfer_operator" : "mapper",
+                        "data_transfer_operator_options" : [],
+                        "before_data_transfer_operations" : []
+                    },
+                    {
+                        "data"             : "Lower_Interface_Force",
+                        "from_solver"      : "TAU",
+                        "from_solver_data" : "Lower_Interface_Force",
                         "data_transfer_operator" : "mapper",
                         "data_transfer_operator_options" : [],
                         "before_data_transfer_operations" : []
@@ -40,9 +48,16 @@
                 ],
                 "output_data_list": [
                     {
-                        "data"           : "Interface_disp",
+                        "data"           : "Upper_Interface_disp",
                         "to_solver"      : "TAU",
-                        "to_solver_data" : "Interface_disp",
+                        "to_solver_data" : "Upper_Interface_disp",
+                        "data_transfer_operator" : "mapper",
+                        "after_data_transfer_operations" : []
+                    },
+                    {
+                        "data"           : "Lower_Interface_disp",
+                        "to_solver"      : "TAU",
+                        "to_solver_data" : "Lower_Interface_disp",
                         "data_transfer_operator" : "mapper",
                         "after_data_transfer_operations" : []
                     }
@@ -86,13 +101,23 @@
                     }
                 },
                 "data" : {
-                    "Interface_disp" : {
-                        "model_part_name"   : "Fluid.Interface",
+                    "Upper_Interface_disp" : {
+                        "model_part_name"   : "Fluid.UpperInterface",
                         "dimension" : 3,
                         "variable_name" : "MESH_DISPLACEMENT"
                     },
-                    "Interface_force" : {
-                        "model_part_name"   : "Fluid.Interface",
+                    "Upper_Interface_force" : {
+                        "model_part_name"   : "Fluid.UpperInterface",
+                        "dimension" : 3,
+                        "variable_name" : "REACTION"
+                    },
+                    "Lower_Interface_disp" : {
+                        "model_part_name"   : "Fluid.LowerInterface",
+                        "dimension" : 3,
+                        "variable_name" : "MESH_DISPLACEMENT"
+                    },
+                    "Lower_Interface_force" : {
+                        "model_part_name"   : "Fluid.LowerInterface",
                         "dimension" : 3,
                         "variable_name" : "REACTION"
                     }
@@ -105,13 +130,23 @@
                     "input_file"  : "ProjectParametersCSM"
                 },
                 "data" : {
-                    "Interface_disp" : {
-                        "model_part_name"   : "Structure",
+                    "Upper_Interface_disp" : {
+                        "model_part_name"   : "Structure.PointLoad3D_Upper_Membrane",
                         "dimension" : 3,
                         "variable_name" : "DISPLACEMENT"
                     },
-                    "Interface_force" : {
-                        "model_part_name"   : "Structure",
+                    "Upper_Interface_force" : {
+                        "model_part_name"   : "Structure.PointLoad3D_Upper_Membrane",
+                        "dimension" : 3,
+                        "variable_name" : "POINT_LOAD"
+                    },
+                    "Lower_Interface_disp" : {
+                        "model_part_name"   : "Structure.PointLoad3D_Lower_Membrane",
+                        "dimension" : 3,
+                        "variable_name" : "DISPLACEMENT"
+                    },
+                    "Lower_Interface_force" : {
+                        "model_part_name"   : "Structure.PointLoad3D_Lower_Membrane",
                         "dimension" : 3,
                         "variable_name" : "POINT_LOAD"
                     }
