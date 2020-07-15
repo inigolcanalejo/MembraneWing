@@ -65,10 +65,10 @@
             "check"         : "DirectorVectorNonZero direction",
             "process_name"  : "AssignVectorByDirectionToConditionProcess",
             "Parameters"    : {
-                "model_part_name" : "Structure.PointLoad3D_PointLoad",
+                "model_part_name" : "Structure.PointLoad3D_PointLoad_Upper_Membrane",
                 "variable_name"   : "POINT_LOAD",
                 "interval"        : [0.0,"End"],
-                "modulus"         : 0.0,
+                "modulus"         : 1e-2,
                 "direction"       : [0.0,0.0,1.0]
             }
         },{
@@ -77,22 +77,10 @@
             "check"         : "DirectorVectorNonZero direction",
             "process_name"  : "AssignVectorByDirectionToConditionProcess",
             "Parameters"    : {
-                "model_part_name" : "Structure.PointLoad3D_Upper_Membrane",
+                "model_part_name" : "Structure.PointLoad3D_PointLoad_Lower_Membrane",
                 "variable_name"   : "POINT_LOAD",
                 "interval"        : [0.0,"End"],
-                "modulus"         : 1e-3,
-                "direction"       : [0.0,0.0,1.0]
-            }
-        },{
-            "python_module" : "assign_vector_by_direction_to_condition_process",
-            "kratos_module" : "KratosMultiphysics",
-            "check"         : "DirectorVectorNonZero direction",
-            "process_name"  : "AssignVectorByDirectionToConditionProcess",
-            "Parameters"    : {
-                "model_part_name" : "Structure.PointLoad3D_Lower_Membrane",
-                "variable_name"   : "POINT_LOAD",
-                "interval"        : [0.0,"End"],
-                "modulus"         : 1e-3,
+                "modulus"         : 1e-2,
                 "direction"       : [0.0,0.0,1.0]
             }
         },{
@@ -103,7 +91,7 @@
                 "model_part_name" : "Structure.SurfacePressure3D_Upper_Membrane",
                 "variable_name"   : "POSITIVE_FACE_PRESSURE",
                 "interval"        : [0.0,"End"],
-                "value"           : 100.0
+                "value"           : 0.0
             }
         },{
             "python_module" : "assign_scalar_variable_to_conditions_process",
@@ -113,20 +101,10 @@
                 "model_part_name" : "Structure.SurfacePressure3D_Lower_Membrane",
                 "variable_name"   : "POSITIVE_FACE_PRESSURE",
                 "interval"        : [0.0,"End"],
-                "value"           : 100.0
+                "value"           : 0.0
             }
         }],
-        "list_other_processes"     : [{
-            "python_module" : "project_vector_on_surface_process",
-            "kratos_module" : "StructuralMechanicsApplication",
-            "Parameters"    : {
-                "model_part_name"  : "Structure",
-                "projection_type"        : "planar",
-                "global_direction"       : [1,0,0],
-                "variable_name"    : "LOCAL_MATERIAL_AXIS_1"
-
-            }
-        }]
+        "list_other_processes"     : []
     },
     "output_processes" : {
         "gid_output" : [{
