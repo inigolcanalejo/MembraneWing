@@ -131,22 +131,22 @@
                 },
                 "data" : {
                     "Upper_Interface_disp" : {
-                        "model_part_name"   : "Structure.PointLoad3D_Upper_Membrane",
+                        "model_part_name"   : "Structure.PointLoad3D_PointLoad_Upper_Membrane",
                         "dimension" : 3,
                         "variable_name" : "DISPLACEMENT"
                     },
                     "Upper_Interface_force" : {
-                        "model_part_name"   : "Structure.PointLoad3D_Upper_Membrane",
+                        "model_part_name"   : "Structure.PointLoad3D_PointLoad_Upper_Membrane",
                         "dimension" : 3,
                         "variable_name" : "POINT_LOAD"
                     },
                     "Lower_Interface_disp" : {
-                        "model_part_name"   : "Structure.PointLoad3D_Lower_Membrane",
+                        "model_part_name"   : "Structure.PointLoad3D_PointLoad_Lower_Membrane",
                         "dimension" : 3,
                         "variable_name" : "DISPLACEMENT"
                     },
                     "Lower_Interface_force" : {
-                        "model_part_name"   : "Structure.PointLoad3D_Lower_Membrane",
+                        "model_part_name"   : "Structure.PointLoad3D_PointLoad_Lower_Membrane",
                         "dimension" : 3,
                         "variable_name" : "POINT_LOAD"
                     }
