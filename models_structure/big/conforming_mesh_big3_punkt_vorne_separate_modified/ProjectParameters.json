@@ -20,7 +20,7 @@
             "materials_filename" : "StructuralMaterials.json"
         },
         "time_stepping"                   : {
-            "time_step" : 1.1
+            "time_step" : 0.5
         },
         "line_search"                     : false,
         "convergence_criterion"           : "residual_criterion",
@@ -67,8 +67,8 @@
             "Parameters"    : {
                 "model_part_name" : "Structure.PointLoad3D_PointLoad_Upper_Membrane",
                 "variable_name"   : "POINT_LOAD",
-                "interval"        : [0.0,"End"],
-                "modulus"         : 1e-2,
+                "interval"        : [0.0,0.6],
+                "modulus"         : 5e-3,
                 "direction"       : [0.0,0.0,1.0]
             }
         },{
@@ -79,8 +79,8 @@
             "Parameters"    : {
                 "model_part_name" : "Structure.PointLoad3D_PointLoad_Lower_Membrane",
                 "variable_name"   : "POINT_LOAD",
-                "interval"        : [0.0,"End"],
-                "modulus"         : 1e-2,
+                "interval"        : [0.0,0.6],
+                "modulus"         : 4e-3,
                 "direction"       : [0.0,0.0,1.0]
             }
         },{
