@@ -5,6 +5,7 @@ log_TAU_neu_1.out.Python-Interface.stdout
 airfoilSol*
 log*
 3d/Mesh/*
+3d_2Membranes/Mesh/*
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
