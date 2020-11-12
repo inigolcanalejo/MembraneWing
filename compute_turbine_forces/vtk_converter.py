@@ -1,5 +1,5 @@
-output_filename = 'airfoilSol.surface.pval.deform_i=3_t=6.9444e-03_subiter=0.MEMBRANE_UP.dat'
-vtk_output_filename = 'airfoilSol.surface.pval.deform_i=3_t=6.9444e-03_subiter=0.MEMBRANE_UP.vtk'
+output_filename = 'airfoilSol.surface.pval.5010.MEMBRANE_UP.dat'
+vtk_output_filename = 'airfoilSol.surface.pval.5010.MEMBRANE_UP.vtk'
 
 import re, sys, json, os
 import numpy as np

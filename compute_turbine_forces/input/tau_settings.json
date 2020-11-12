@@ -1,0 +1,9 @@
+{
+    "tau_path"    : "/home/inigo/software/TAU/taudir_repos.2019.13.08/bin/",
+    "kratos_path" : "/home/inigo/software/kratosMerge/Kratos/applications/CoSimulationApplication/python_scripts/helpers/",
+    "echo_level"  : 1,
+    "start_step"  : 5000,
+    "rotate"  : false,
+    "output_file_pattern" : "airfoilSol.pval.",
+    "strong_coupling" : true
+}
