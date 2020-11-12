@@ -101,10 +101,12 @@ for i in range(len(thrust_up)):
     total_torque.append(torque_up[i] + torque_down[i])
 
 # plotting thrust and torque distributions
-plt.plot(section_y_abs_up, thrust_up, label='Thrust_up [N]')
-plt.plot(section_y_abs_up, torque_up, label='Torque_up [Nm]')
-plt.plot(section_y_abs_up, thrust_down, label='Thrust_down [N]')
-plt.plot(section_y_abs_up, torque_down, label='Torque_down [Nm]')
+plt.title('Torque and Thrust radial distributions')
+plt.xlabel('Radius [m]')
+# plt.plot(section_y_abs_up, thrust_up, label='Thrust_up [N]')
+# plt.plot(section_y_abs_up, torque_up, label='Torque_up [Nm]')
+# plt.plot(section_y_abs_up, thrust_down, label='Thrust_down [N]')
+# plt.plot(section_y_abs_up, torque_down, label='Torque_down [Nm]')
 plt.plot(section_y_abs_up, total_thrust, label='Thrust_total [N]')
 plt.plot(section_y_abs_up, total_torque, label='Torque_total [Nm]')
 plt.legend(loc="upper left")
