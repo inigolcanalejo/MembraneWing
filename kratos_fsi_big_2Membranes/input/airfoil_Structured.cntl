@@ -239,7 +239,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                      Unsteady physical time offset: 0
                              Unsteady computational time step size: -1
                                       Unsteady physical time steps: 5
-                           Unsteady inner iterations per time step: 200
+                           Unsteady inner iterations per time step: 10
                   Minimum number of inner iterations per time step: 1
                                     Unsteady implicit scheme order: 2
                                       Unsteady extrapolation order: 0

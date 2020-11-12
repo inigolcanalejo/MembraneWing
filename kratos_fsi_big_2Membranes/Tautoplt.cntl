@@ -1,7 +1,7 @@
   Files/IO ------------------------------------------------------: -
-Primary grid filename:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big_2Membranes/Mesh/airfoil_Structured_scaliert.grid.def.4 
+Primary grid filename:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big_2Membranes/Mesh/airfoil_Structured_scaliert.grid.def.1 
 Boundary mapping filename:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big_2Membranes/input/airfoil_Structured.cntl.mod 
-Restart-data prefix:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big_2Membranes/Outputs/airfoilSol.pval.unsteady_i=5_t=2.500e-02 
+Restart-data prefix:/media/inigo/10740FB2740F9A1C/simulations/MembraneWing/kratos_fsi_big_2Membranes/Outputs/airfoilSol.pval.unsteady_i=2_t=1.000e-02 
                                   2D offset vector (0 / x=1,y=2,z=3): 0
   Bounding Box --------------------------------------------------: -
                                  Bounding x coordinate range (3D): (none)

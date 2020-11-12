@@ -224,9 +224,9 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                   Unsteady physical time step size: 0.005
                                      Unsteady physical time offset: 0
                              Unsteady computational time step size: -1
-                                      Unsteady physical time steps: 1
-                           Unsteady inner iterations per time step: 10
-                  Minimum number of inner iterations per time step: 10
+                                      Unsteady physical time steps: 5
+                           Unsteady inner iterations per time step: 300
+                  Minimum number of inner iterations per time step: 20
                                     Unsteady implicit scheme order: 2
                                       Unsteady extrapolation order: 0
                        Compute harmonics of global forces (0/1..n): 0
@@ -261,7 +261,7 @@ Lusgs treat rotating frame of reference source terms implicitly (0/1): 0
                                                                   : -
  Central flux ----------------------------------------------------: -
                                                                   : -
-                                        Central dissipation scheme: Matrix_dissipation
+                                        Central dissipation scheme: Scalar_dissipation
                                   Central convective meanflow flux: Average_of_flux
                              Scaling of central scheme dissipation: Standard
                                 Central convective turbulence flux: Average_of_flux
@@ -356,3 +356,4 @@ Chimera component output (Tecplot, Ensight Gold) (0/1): 0
  -----------------------------------------------------
   Field output description file: (thisfile)
   Field output values: cp_mach_visc
+
