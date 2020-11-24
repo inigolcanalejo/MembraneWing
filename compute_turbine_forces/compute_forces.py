@@ -1,19 +1,9 @@
 import re, sys, json, os
 import numpy as np
 import matplotlib.pyplot as plt
+import tau_functions_Steady as TauFunctionsSteady
 
 working_path = os.getcwd() + '/'
-with open(working_path + 'input/tau_settings.json') as json_file:
-    tau_settings = json.load(json_file)
-
-start_step = tau_settings["start_step"]
-tau_path = tau_settings["tau_path"]
-sys.path.append(tau_settings["kratos_path"])
-sys.path.append(tau_path + "py_turb1eq/")
-
-# tau_functions can only be imported after appending kratos' path
-import tau_functions_Steady as TauFunctionsSteady
-import tau_functions as TauFunctions
 
 # This function computes thrust and torque
 def ComputeThrustAndTorque(output_filename):
@@ -146,7 +136,6 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name):
 
     # plt.plot(plot_y, thrust_distribution, label='Thrustl ' + model_name + ' [N/m]')
     plt.plot(plot_y, torque_distribution, label='Torque '  + model_name + ' [N]')
-
 
 ###########################################################################
 # Main script
