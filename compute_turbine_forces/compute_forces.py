@@ -98,6 +98,11 @@ def ComputeThrustAndTorque(output_filename):
 
     return section_thrust_distribution, section_torque_distribution, section_y_abs, total_thrust, total_torque
 
+def WriteRadialDistributionResultsFile(output_filename, force, y):
+    with open(output_filename, 'w') as output_file:
+        for i in range(len(force)):
+            output_file.write('{0:15f} {1:15f}\n'.format(y[i], force[i]))
+
 # Main script CFD Formfound
 step = 19000
 output_file_pattern = 'airfoilSol.pval.'
@@ -116,25 +121,31 @@ thrust_down, torque_down, section_y_abs_down, total_thrust_down, total_torque_do
 thrust_le, torque_le, section_y_abs_le, total_thrust_le, total_torque_le = ComputeThrustAndTorque(output_filename_le)
 thrust_te, torque_te, section_y_abs_te, total_thrust_te, total_torque_te = ComputeThrustAndTorque(output_filename_te)
 
-total_thrust = []
-total_torque = []
+thrust_distribution_formfinding = []
+torque_distribution_formfinding = []
 plot_y = []
 
 number_of_cut_sections = 19
 for i in range(len(thrust_up)-number_of_cut_sections):
     plot_y.append(section_y_abs_up[i])
-    total_thrust.append(thrust_up[i] + thrust_down[i] + thrust_le[i] + thrust_te[i])
-    total_torque.append(torque_up[i] + torque_down[i] + torque_le[i] + torque_te[i])
+    thrust_distribution_formfinding.append(thrust_up[i] + thrust_down[i] + thrust_le[i] + thrust_te[i])
+    torque_distribution_formfinding.append(torque_up[i] + torque_down[i] + torque_le[i] + torque_te[i])
 
-TOTAL_THRUST_FORMFOUND = total_thrust_up + total_thrust_down + total_thrust_le + total_thrust_te
-TOTAL_TORQUE_FORMFOUND = total_torque_up + total_torque_down + total_torque_le + total_torque_te
+# Write radial distribution files to import in latex
+thrust_output_filename_formfound = "thrust_radial_distribution_formfound_cfd.dat"
+torque_output_filename_formfound = "torque_radial_distribution_formfound_cfd.dat"
+WriteRadialDistributionResultsFile(thrust_output_filename_formfound, thrust_distribution_formfinding, plot_y)
+WriteRadialDistributionResultsFile(torque_output_filename_formfound, torque_distribution_formfinding, plot_y)
 
-print('TOTAL_THRUST_FORMFOUND = ', round(TOTAL_THRUST_FORMFOUND,2)*2.0, ' [N]')
-print('TOTAL_TORQUE_FORMFOUND = ', round(TOTAL_TORQUE_FORMFOUND,2)*2.0, ' [Nm]')
+total_thrust_formfinding = total_thrust_up + total_thrust_down + total_thrust_le + total_thrust_te
+total_torque_formfinding = total_torque_up + total_torque_down + total_torque_le + total_torque_te
+
+print('total_thrust_formfinding = ', round(total_thrust_formfinding,2)*2.0, ' [N]')
+print('total_torque_formfinding = ', round(total_torque_formfinding,2)*2.0, ' [Nm]')
 
 ''' test
-print('TOTAL_THRUST_FORMFOUND = ', round(sum(total_thrust),2), ' [N]')
-print('TOTAL_TORQUE_FORMFOUND = ', round(sum(total_torque),2), ' [Nm]')
+print('total_thrust_formfinding = ', round(sum(thrust_distribution_formfinding),2), ' [N]')
+print('total_torque_formfinding = ', round(sum(torque_distribution_formfinding),2), ' [Nm]')
 #'''
 
 
@@ -156,25 +167,76 @@ thrust_down_original, torque_down_original, section_y_abs_down_original, total_t
 thrust_le_original,   torque_le_original,   section_y_abs_le_original,   total_thrust_le_original,    total_torque_le_original   = ComputeThrustAndTorque(output_filename_le)
 thrust_te_original,   torque_te_original,   section_y_abs_te_original,   total_thrust_te_original,    total_torque_te_original   = ComputeThrustAndTorque(output_filename_te)
 
-total_thrust_original = []
-total_torque_original = []
+thrust_distribution_original = []
+torque_distribution_original = []
 plot_y_original = []
 
 number_of_cut_sections = 12
 for i in range(len(thrust_up_original)-number_of_cut_sections):
     plot_y_original.append(section_y_abs_down_original[i])
-    total_thrust_original.append(thrust_up_original[i] + thrust_down_original[i] + thrust_le_original[i] + thrust_te_original[i])
-    total_torque_original.append(torque_up_original[i] + torque_down_original[i] + torque_le_original[i] + torque_te_original[i])
+    thrust_distribution_original.append(thrust_up_original[i] + thrust_down_original[i] + thrust_le_original[i] + thrust_te_original[i])
+    torque_distribution_original.append(torque_up_original[i] + torque_down_original[i] + torque_le_original[i] + torque_te_original[i])
 
-TOTAL_THRUST_ORIGINAL = total_thrust_up_original + total_thrust_down_original + total_thrust_le_original + total_thrust_te_original
-TOTAL_TORQUE_ORIGINAL = total_torque_up_original + total_torque_down_original + total_torque_le_original + total_torque_te_original
+# Write radial distribution files to import in latex
+thrust_output_filename_original = "thrust_radial_distribution_original_cfd.dat"
+torque_output_filename_original = "torque_radial_distribution_original_cfd.dat"
+WriteRadialDistributionResultsFile(thrust_output_filename_original, thrust_distribution_original, plot_y_original)
+WriteRadialDistributionResultsFile(torque_output_filename_original, torque_distribution_original, plot_y_original)
 
-print('TOTAL_THRUST_ORIGINAL = ', round(TOTAL_THRUST_ORIGINAL,2)*2.0, ' [N]')
-print('TOTAL_TORQUE_ORIGINAL = ', round(TOTAL_TORQUE_ORIGINAL,2)*2.0, ' [Nm]')
+total_thrust_original = total_thrust_up_original + total_thrust_down_original + total_thrust_le_original + total_thrust_te_original
+total_torque_original = total_torque_up_original + total_torque_down_original + total_torque_le_original + total_torque_te_original
+
+print('total_thrust_original = ', round(total_thrust_original,2)*2.0, ' [N]')
+print('total_torque_original = ', round(total_torque_original,2)*2.0, ' [Nm]')
 
 ''' test
-print('TOTAL_THRUST_ORIGINAL = ', round(sum(total_thrust_original),2), ' [N]')
-print('TOTAL_TORQUE_ORIGINAL = ', round(sum(total_torque_original),2), ' [Nm]')
+print('total_thrust_original = ', round(sum(thrust_distribution_original),2), ' [N]')
+print('total_torque_original = ', round(sum(torque_distribution_original),2), ' [Nm]')
+#'''
+
+# Main script FSI
+step = 27000
+output_file_pattern = 'airfoilSol.pval.'
+sub_step = 0
+TauFunctionsSteady.ChangeFormat(working_path, step, "MEMBRANE_UP", "MEMBRANE_DOWN", output_file_pattern)
+TauFunctionsSteady.ChangeFormat(working_path, step, "LE_FF", "TE_FF", output_file_pattern)
+
+input_filename = 'Outputs/airfoilSol.surface.pval.27000'
+output_filename_up = input_filename + '.MEMBRANE_UP.dat'
+output_filename_down = input_filename + '.MEMBRANE_DOWN.dat'
+output_filename_le = input_filename + '.LE_FF.dat'
+output_filename_te = input_filename + '.TE_FF.dat'
+
+thrust_up_fsi,   torque_up_fsi,   section_y_abs_up_fsi,   total_thrust_up_fsi,    total_torque_up_fsi   = ComputeThrustAndTorque(output_filename_up)
+thrust_down_fsi, torque_down_fsi, section_y_abs_down_fsi, total_thrust_down_fsi,  total_torque_down_fsi = ComputeThrustAndTorque(output_filename_down)
+thrust_le_fsi,   torque_le_fsi,   section_y_abs_le_fsi,   total_thrust_le_fsi,    total_torque_le_fsi   = ComputeThrustAndTorque(output_filename_le)
+thrust_te_fsi,   torque_te_fsi,   section_y_abs_te_fsi,   total_thrust_te_fsi,    total_torque_te_fsi   = ComputeThrustAndTorque(output_filename_te)
+
+thrust_distribution_fsi = []
+torque_distribution_fsi = []
+plot_y_fsi = []
+
+number_of_cut_sections = 19
+for i in range(len(thrust_up_fsi)-number_of_cut_sections):
+    plot_y_fsi.append(section_y_abs_down_fsi[i])
+    thrust_distribution_fsi.append(thrust_up_fsi[i] + thrust_down_fsi[i] + thrust_le_fsi[i] + thrust_te_fsi[i])
+    torque_distribution_fsi.append(torque_up_fsi[i] + torque_down_fsi[i] + torque_le_fsi[i] + torque_te_fsi[i])
+
+# Write radial distribution files to import in latex
+thrust_output_filename_fsi = "thrust_radial_distribution_fsi_cfd.dat"
+torque_output_filename_fsi = "torque_radial_distribution_fsi_cfd.dat"
+WriteRadialDistributionResultsFile(thrust_output_filename_fsi, thrust_distribution_fsi, plot_y_fsi)
+WriteRadialDistributionResultsFile(torque_output_filename_fsi, torque_distribution_fsi, plot_y_fsi)
+
+TOTAL_THRUST_FSI = total_thrust_up_fsi + total_thrust_down_fsi + total_thrust_le_fsi + total_thrust_te_fsi
+TOTAL_TORQUE_FSI = total_torque_up_fsi + total_torque_down_fsi + total_torque_le_fsi + total_torque_te_fsi
+
+print('TOTAL_THRUST_FSI = ', round(TOTAL_THRUST_FSI,2)*2.0, ' [N]')
+print('TOTAL_TORQUE_FSI = ', round(TOTAL_TORQUE_FSI,2)*2.0, ' [Nm]')
+
+''' test
+print('TOTAL_THRUST_FSI = ', round(sum(total_thrust_FSI),2), ' [N]')
+print('TOTAL_TORQUE_FSI = ', round(sum(total_torque_FSI),2), ' [Nm]')
 #'''
 
 
@@ -183,20 +245,33 @@ plt.title('Torque and Thrust radial distributions')
 plt.xlabel('r/R [-]')
 #plt.xlabel('Radius [m]')
 
+# Thrust
+plt.plot(plot_y, thrust_distribution_formfinding, label='Thrustl Formfinding [N/m]')
+plt.plot(plot_y_original, thrust_distribution_original, label='Thrust NASA [N/m]')
+plt.plot(plot_y_fsi, thrust_distribution_fsi, label='Thrust Membrane Blade [N/m]')
+
+# Torque
+# plt.plot(plot_y, torque_distribution_formfinding, label='Torque_total Formfinding [N]')
+# plt.plot(plot_y_original, torque_distribution_original, label='Torque_total NASA [N]')
+# plt.plot(plot_y_fsi, torque_distribution_fsi, label='Torque Membrane Blade [N]')
+
+plt.legend(loc="upper left")
+plt.show()
+
 # FORMFINDING CFD
 # Thrust
 # plt.plot(section_y_abs_up, thrust_up, label='Thrust_up [N]')
 # plt.plot(section_y_abs_up, thrust_down, label='Thrust_down [N]')
 # plt.plot(section_y_abs_up, thrust_le, label='Thrust_le [N]')
 # plt.plot(section_y_abs_up, thrust_te, label='Thrust_te [N]')
-# plt.plot(plot_y, total_thrust, label='Thrust_total Formfinding [N/m]')
+# plt.plot(plot_y, thrust_distribution_formfinding, label='Thrust_total Formfinding [N/m]')
 
 # Torque
 # plt.plot(section_y_abs_up, torque_up, label='Torque_up [N]')
 # plt.plot(section_y_abs_up, torque_down, label='Torque_down [N]')
 # plt.plot(section_y_abs_up, torque_le, label='Torque_le [N]')
 # plt.plot(section_y_abs_up, torque_te, label='Torque_te [N]')
-plt.plot(plot_y, total_torque, label='Torque_total Formfinding [N]')
+# plt.plot(plot_y, torque_distribution_formfinding, label='Torque_total Formfinding [N]')
 # plt.legend(loc="upper left")
 # plt.show()
 
@@ -206,13 +281,13 @@ plt.plot(plot_y, total_torque, label='Torque_total Formfinding [N]')
 # plt.plot(section_y_abs_up, thrust_down, label='Thrust_down [N]')
 # plt.plot(section_y_abs_up, thrust_le, label='Thrust_le [N]')
 # plt.plot(section_y_abs_up, thrust_te, label='Thrust_te [N]')
-# plt.plot(plot_y_original, total_thrust_original, label='Thrust_total NASA [N/m]')
+# plt.plot(plot_y_original, thrust_distribution_formfinding, label='Thrust_total NASA [N/m]')
 
 # Torque
 # plt.plot(section_y_abs_up, torque_up, label='Torque_up [N]')
 # plt.plot(section_y_abs_up, torque_down, label='Torque_down [N]')
 # plt.plot(section_y_abs_up, torque_le, label='Torque_le [N]')
 # plt.plot(section_y_abs_up, torque_te, label='Torque_te [N]')
-plt.plot(plot_y_original, total_torque_original, label='Torque_total NASA [N]')
-plt.legend(loc="upper left")
-plt.show()
+# plt.plot(plot_y_original, torque_distribution_formfinding, label='Torque_total NASA [N]')
+# plt.legend(loc="upper left")
+# plt.show()
