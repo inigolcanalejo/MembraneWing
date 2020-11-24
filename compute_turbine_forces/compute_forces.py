@@ -90,14 +90,14 @@ def ComputeThrustAndTorque(output_filename):
 
     return sorted_section_thrust, sorted_section_torque, section_y_abs
 
-# Main script
-step = 1
-output_file_pattern = 'airfoilSol.pval.deform_i='
+# Main script CFD Formfound
+step = 19000
+output_file_pattern = 'airfoilSol.pval.'
 sub_step = 0
-TauFunctions.ChangeFormat(working_path, step, "MEMBRANE_UP", "MEMBRANE_DOWN", output_file_pattern, sub_step)
-TauFunctions.ChangeFormat(working_path, step, "LE_FF", "TE_FF", output_file_pattern, sub_step)
+TauFunctionsSteady.ChangeFormat(working_path, step, "MEMBRANE_UP", "MEMBRANE_DOWN", output_file_pattern)
+TauFunctionsSteady.ChangeFormat(working_path, step, "LE_FF", "TE_FF", output_file_pattern)
 
-input_filename = 'Outputs/airfoilSol.surface.pval.deform_i=1_t=2.315e-03_subiter=0'
+input_filename = 'Outputs/airfoilSol.surface.pval.19000'
 output_filename_up = input_filename + '.MEMBRANE_UP.dat'
 output_filename_down = input_filename + '.MEMBRANE_DOWN.dat'
 output_filename_le = input_filename + '.LE_FF.dat'
@@ -115,22 +115,65 @@ for i in range(len(thrust_up)):
     total_thrust.append(thrust_up[i] + thrust_down[i] + thrust_le[i] + thrust_te[i])
     total_torque.append(torque_up[i] + torque_down[i] + torque_le[i] + torque_te[i])
 
+
+# Main script CFD ORIGINAL
+step = 14001
+output_file_pattern = 'airfoilSol.pval.'
+sub_step = 0
+TauFunctionsSteady.ChangeFormat(working_path, step, "MEMBRANE_UP", "MEMBRANE_DOWN", output_file_pattern)
+TauFunctionsSteady.ChangeFormat(working_path, step, "LEADING_EDGE", "TRAILING_EDGE", output_file_pattern)
+
+input_filename = 'Outputs/airfoilSol.surface.pval.14001'
+output_filename_up = input_filename + '.MEMBRANE_UP.dat'
+output_filename_down = input_filename + '.MEMBRANE_DOWN.dat'
+output_filename_le = input_filename + '.LEADING_EDGE.dat'
+output_filename_te = input_filename + '.TRAILING_EDGE.dat'
+
+thrust_up_original, torque_up_original, section_y_abs_up_original = ComputeThrustAndTorque(output_filename_up)
+thrust_down_original, torque_down_original, section_y_abs_down_original = ComputeThrustAndTorque(output_filename_down)
+thrust_le_original, torque_le_original, section_y_abs_le_original = ComputeThrustAndTorque(output_filename_le)
+thrust_te_original, torque_te_original, section_y_abs_te_original = ComputeThrustAndTorque(output_filename_te)
+
+total_thrust_original = []
+total_torque_original = []
+
+for i in range(len(thrust_up_original)):
+    total_thrust_original.append(thrust_up_original[i] + thrust_down_original[i] + thrust_le_original[i] + thrust_te_original[i])
+    total_torque_original.append(torque_up_original[i] + torque_down_original[i] + torque_le_original[i] + torque_te_original[i])
+
+
 # plotting thrust and torque distributions
 plt.title('Torque and Thrust radial distributions')
 plt.xlabel('Radius [m]')
 
-# Thrust
+# Thrust formfinding
 # plt.plot(section_y_abs_up, thrust_up, label='Thrust_up [N]')
 # plt.plot(section_y_abs_up, thrust_down, label='Thrust_down [N]')
 # plt.plot(section_y_abs_up, thrust_le, label='Thrust_le [N]')
 # plt.plot(section_y_abs_up, thrust_te, label='Thrust_te [N]')
-# plt.plot(section_y_abs_up, total_thrust, label='Thrust_total [N]')
+plt.plot(section_y_abs_up, total_thrust, label='Thrust_total Formfinding [N]')
 
-# Torque
-plt.plot(section_y_abs_up, torque_up, label='Torque_up [Nm]')
-plt.plot(section_y_abs_up, torque_down, label='Torque_down [Nm]')
-plt.plot(section_y_abs_up, torque_le, label='Torque_le [Nm]')
-plt.plot(section_y_abs_up, torque_te, label='Torque_te [Nm]')
-plt.plot(section_y_abs_up, total_torque, label='Torque_total [Nm]')
+# Torque formfinding
+# plt.plot(section_y_abs_up, torque_up, label='Torque_up [Nm]')
+# plt.plot(section_y_abs_up, torque_down, label='Torque_down [Nm]')
+# plt.plot(section_y_abs_up, torque_le, label='Torque_le [Nm]')
+# plt.plot(section_y_abs_up, torque_te, label='Torque_te [Nm]')
+# plt.plot(section_y_abs_up, total_torque, label='Torque_total Formfinding [Nm]')
+# plt.legend(loc="upper left")
+# plt.show()
+
+# Thrust formfinding
+# plt.plot(section_y_abs_up, thrust_up, label='Thrust_up [N]')
+# plt.plot(section_y_abs_up, thrust_down, label='Thrust_down [N]')
+# plt.plot(section_y_abs_up, thrust_le, label='Thrust_le [N]')
+# plt.plot(section_y_abs_up, thrust_te, label='Thrust_te [N]')
+plt.plot(section_y_abs_up_original, total_thrust_original, label='Thrust_total NASA [N]')
+
+# Torque formfinding
+# plt.plot(section_y_abs_up, torque_up, label='Torque_up [Nm]')
+# plt.plot(section_y_abs_up, torque_down, label='Torque_down [Nm]')
+# plt.plot(section_y_abs_up, torque_le, label='Torque_le [Nm]')
+# plt.plot(section_y_abs_up, torque_te, label='Torque_te [Nm]')
+# plt.plot(section_y_abs_up_original, total_torque_original, label='Torque_total NASA [Nm]')
 plt.legend(loc="upper left")
 plt.show()
