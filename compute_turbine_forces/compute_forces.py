@@ -96,7 +96,7 @@ def WriteRadialDistributionResultsFile(output_filename, force, y):
             output_file.write('{0:15f} {1:15f}\n'.format(y[i], force[i]))
 
 # This function plots thrust and torque
-def PlotThrustAndTorque(step, le_name, te_name, model_name):
+def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
     output_file_pattern = 'airfoilSol.pval.'
     TauFunctionsSteady.ChangeFormat(working_path, step, "MEMBRANE_UP", "MEMBRANE_DOWN", output_file_pattern)
     TauFunctionsSteady.ChangeFormat(working_path, step, le_name, te_name, output_file_pattern)
@@ -134,36 +134,42 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name):
     print('total_thrust_' + model_name + ' = ', round(total_thrust,2)*2.0, ' [N]')
     print('total_torque_' + model_name + ' = ', round(total_torque,2)*2.0, ' [Nm]')
 
-    # plt.plot(plot_y, thrust_distribution, label='Thrustl ' + model_name + ' [N/m]')
-    plt.plot(plot_y, torque_distribution, label='Torque '  + model_name + ' [N]')
+    axs[0].plot(plot_y, thrust_distribution, label= model_name)
+    axs[1].plot(plot_y, torque_distribution, label= model_name)
 
 ###########################################################################
 # Main script
 ###########################################################################
 
-# Formfound case
-step_formfound = 19000
-le_name_formfound = "LE_FF"
-te_name_formfound = "TE_FF"
-model_name_formfound = "formfound_cfd"
-PlotThrustAndTorque(step_formfound, le_name_formfound, te_name_formfound, model_name_formfound)
+# preparing thrust and torque plots
+fig, axs = plt.subplots(2)
 
 # Original case
 step_original = 14001
 le_name_original = "LEADING_EDGE"
 te_name_original = "TRAILING_EDGE"
 model_name_original = "original_cfd"
-PlotThrustAndTorque(step_original, le_name_original, te_name_original, model_name_original)
+PlotThrustAndTorque(step_original, le_name_original, te_name_original, model_name_original, axs)
+
+# Formfound case
+step_formfound = 19000
+le_name_formfound = "LE_FF"
+te_name_formfound = "TE_FF"
+model_name_formfound = "formfound_cfd"
+PlotThrustAndTorque(step_formfound, le_name_formfound, te_name_formfound, model_name_formfound, axs)
 
 # FSI case
-step_fsi = 27000
+step_fsi = 35000
 le_name_fsi = "LE_FF"
 te_name_fsi = "TE_FF"
 model_name_fsi = "fsi"
-PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi)
+PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
 
 # plotting thrust and torque distributions
-plt.title('Torque and Thrust radial distributions')
-plt.xlabel('r/R [-]')
-plt.legend(loc="upper left")
+fig.suptitle('Thrust and torque radial distributions')
+axs[0].set(ylabel='Thrust [N/m]')
+axs[1].set(ylabel='Torque [N]')
+axs[0].legend(loc="upper left")
+for ax in axs.flat:
+    ax.set(xlabel='r/R [-]')
 plt.show()
