@@ -136,6 +136,18 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
 
     axs[0].plot(plot_y, thrust_distribution, label= model_name)
     axs[1].plot(plot_y, torque_distribution, label= model_name)
+    # axs[0].plot(section_y_abs_up, thrust_up, label= 'thrust_up_' + model_name)
+    # axs[0].plot(section_y_abs_up, thrust_down, label= 'thrust_down' + model_name)
+    # axs[0].plot(section_y_abs_up, thrust_le, label= 'thrust_le' + model_name)
+    # axs[0].plot(section_y_abs_up, thrust_te, label= 'thrust_te' + model_name)
+    # plt.plot(section_y_abs_up, thrust_up, label= 'thrust_up_')
+    # plt.plot(section_y_abs_up, thrust_down, label= 'thrust_down_')
+    # plt.plot(section_y_abs_up, thrust_le, label= 'thrust_le_')
+    # plt.plot(section_y_abs_up, thrust_te, label= 'thrust_te_')
+    # plt.plot(section_y_abs_up, torque_up, label= 'torque_up_')
+    # plt.plot(section_y_abs_up, torque_down, label= 'torque_down_')
+    # plt.plot(section_y_abs_up, torque_le, label= 'torque_le_')
+    # plt.plot(section_y_abs_up, torque_te, label= 'torque_te_')
 
 ###########################################################################
 # Main script
@@ -143,6 +155,7 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
 
 # preparing thrust and torque plots
 fig, axs = plt.subplots(2)
+# axs = 0
 
 # Original case
 step_original = 14001
@@ -170,6 +183,14 @@ fig.suptitle('Thrust and torque radial distributions')
 axs[0].set(ylabel='Thrust [N/m]')
 axs[1].set(ylabel='Torque [N]')
 axs[0].legend(loc="upper left")
+axs[0].grid()
+axs[1].grid()
 for ax in axs.flat:
     ax.set(xlabel='r/R [-]')
 plt.show()
+
+# plotting option 2:
+# plt.title('Thrust and torque radial distributions')
+# plt.legend(loc="upper left")
+# plt.grid()
+# plt.show()
