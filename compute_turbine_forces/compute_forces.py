@@ -1,9 +1,13 @@
-import re, sys, json, os
+import re, sys, json, os, math
 import numpy as np
 import matplotlib.pyplot as plt
 import tau_functions_Steady as TauFunctionsSteady
 
 working_path = os.getcwd() + '/'
+
+rotational_speed_rpm = 72
+rotational_speed_radsec = rotational_speed_rpm * 2.0 * math.pi / 60.0
+print('rotational_speed_radsec = ', rotational_speed_radsec)
 
 # This function computes thrust and torque
 def ComputeThrustAndTorque(output_filename):
@@ -130,9 +134,11 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
 
     total_thrust = total_thrust_up + total_thrust_down + total_thrust_le + total_thrust_te
     total_torque = total_torque_up + total_torque_down + total_torque_le + total_torque_te
+    total_power = total_torque * rotational_speed_radsec
 
     print('total_thrust_' + model_name + ' = ', round(total_thrust,2)*2.0, ' [N]')
     print('total_torque_' + model_name + ' = ', round(total_torque,2)*2.0, ' [Nm]')
+    print('total_power_' + model_name + ' = ', round(total_power * 2.0 / 1000.0,2), ' [kW]')
 
     axs[0].plot(plot_y, thrust_distribution, label= model_name)
     axs[1].plot(plot_y, torque_distribution, label= model_name)
@@ -172,11 +178,23 @@ model_name_formfound = "formfound_cfd"
 PlotThrustAndTorque(step_formfound, le_name_formfound, te_name_formfound, model_name_formfound, axs)
 
 # FSI case
-step_fsi = 35000
+step_fsi = 42000
 le_name_fsi = "LE_FF"
 te_name_fsi = "TE_FF"
 model_name_fsi = "fsi"
 PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
+
+experiment_torque_mean = 796
+experiment_torque_max = 822
+experiment_torque_min = 727
+
+experiment_power_mean = experiment_torque_mean * rotational_speed_radsec
+experiment_power_max  = experiment_torque_max * rotational_speed_radsec
+experiment_power_min  = experiment_torque_min * rotational_speed_radsec
+
+print('total_power_experiment_mean = ', round(experiment_power_mean / 1000.0,2), ' [kW]')
+print('total_power_experiment_max = ', round(experiment_power_max / 1000.0,2), ' [kW]')
+print('total_power_experiment_min = ', round(experiment_power_min / 1000.0,2), ' [kW]')
 
 # plotting thrust and torque distributions
 fig.suptitle('Thrust and torque radial distributions')
