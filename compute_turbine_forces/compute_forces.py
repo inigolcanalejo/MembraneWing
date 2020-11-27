@@ -177,8 +177,29 @@ te_name_formfound = "TE_FF"
 model_name_formfound = "formfound_cfd"
 PlotThrustAndTorque(step_formfound, le_name_formfound, te_name_formfound, model_name_formfound, axs)
 
+# # FSI case
+# step_fsi = 35000
+# le_name_fsi = "LE_FF"
+# te_name_fsi = "TE_FF"
+# model_name_fsi = "fsi_35000"
+# PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
+
+# # FSI case
+# step_fsi = 42000
+# le_name_fsi = "LE_FF"
+# te_name_fsi = "TE_FF"
+# model_name_fsi = "fsi_42000"
+# PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
+
+# # FSI case
+# step_fsi = 48000
+# le_name_fsi = "LE_FF"
+# te_name_fsi = "TE_FF"
+# model_name_fsi = "fsi_48000"
+# PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
+
 # FSI case
-step_fsi = 42000
+step_fsi = 51000
 le_name_fsi = "LE_FF"
 te_name_fsi = "TE_FF"
 model_name_fsi = "fsi"
