@@ -5,9 +5,41 @@ import tau_functions_Steady as TauFunctionsSteady
 
 working_path = os.getcwd() + '/'
 
+# Parameters:
 rotational_speed_rpm = 72
 rotational_speed_radsec = rotational_speed_rpm * 2.0 * math.pi / 60.0
-print('rotational_speed_radsec = ', rotational_speed_radsec)
+print('rotational_speed_radsec = ', round(rotational_speed_radsec,2))
+density = 1.225
+diameter = 10.058
+
+# Reference - Option 1
+thrust_reference = density * pow(rotational_speed_radsec,2) * pow(diameter,4)
+torque_reference = density * pow(rotational_speed_radsec,2) * pow(diameter,5)
+print('thrust_reference = ', round(thrust_reference,2))
+print('torque_reference = ', round(torque_reference,2))
+
+thrust_distribution_reference = density * pow(rotational_speed_radsec,2) * pow(diameter,3)
+torque_distribution_reference = density * pow(rotational_speed_radsec,2) * pow(diameter,4)
+print('thrust_distribution_reference = ', round(thrust_distribution_reference,2))
+print('torque_distribution_reference = ', round(torque_distribution_reference,2))
+
+# Reference - Option 2
+velocity = 41.09
+area = math.pi * pow(diameter*0.5,4)
+thrust_reference = 0.5 * density * pow(velocity,2) * area
+torque_reference = 0.5 * density * pow(velocity,2) * area * diameter
+
+print('thrust_reference = ', round(thrust_reference,2))
+print('torque_reference = ', round(torque_reference,2))
+
+thrust_distribution_reference = 0.5 * density * pow(velocity,2) * area / diameter
+torque_distribution_reference = 0.5 * density * pow(velocity,2) * area
+
+print('thrust_distribution_reference = ', round(thrust_distribution_reference,2))
+print('torque_distribution_reference = ', round(torque_distribution_reference,2))
+
+maximum_thrust = 18.28322735461346
+maximum_torque = 18.75846406884613
 
 # This function computes thrust and torque
 def ComputeThrustAndTorque(output_filename):
@@ -70,6 +102,10 @@ def ComputeThrustAndTorque(output_filename):
     sorted_section_torque = [i for _,i in sorted(zip(section_y_abs,section_torque))]
     section_y_abs.sort()
 
+    # compute total thrust and torque
+    total_thrust = sum(sorted_section_thrust)
+    total_torque = sum(sorted_section_torque)
+
     #'''
     # compute distance between sections
     delta_y = [0.5*(section_y_abs[1]-section_y_abs[0])]
@@ -85,11 +121,9 @@ def ComputeThrustAndTorque(output_filename):
     for i in range(len(sorted_section_thrust)):
         section_thrust_distribution.append(sorted_section_thrust[i]/delta_y[i])
         section_torque_distribution.append(sorted_section_torque[i]/delta_y[i])
+        # section_thrust_distribution.append(sorted_section_thrust[i])
+        # section_torque_distribution.append(sorted_section_torque[i])
     #'''
-
-    # compute total thrust and torque
-    total_thrust = sum(sorted_section_thrust)
-    total_torque = sum(sorted_section_torque)
 
     return section_thrust_distribution, section_torque_distribution, section_y_abs, total_thrust, total_torque
 
@@ -116,6 +150,21 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
     thrust_le, torque_le, section_y_abs_le, total_thrust_le, total_torque_le = ComputeThrustAndTorque(output_filename_le)
     thrust_te, torque_te, section_y_abs_te, total_thrust_te, total_torque_te = ComputeThrustAndTorque(output_filename_te)
 
+    total_thrust = (total_thrust_up + total_thrust_down + total_thrust_le + total_thrust_te)
+    total_torque = (total_torque_up + total_torque_down + total_torque_le + total_torque_te)
+    total_power = total_torque * rotational_speed_radsec
+
+    print('total_thrust_' + model_name + ' = ', round(total_thrust,3)*2.0, ' [-]')
+    print('total_torque_' + model_name + ' = ', round(total_torque,3)*2.0, ' [-]')
+    print('total_power_' + model_name + ' = ', round(total_power * 2.0,3), ' [-]')
+
+    total_thrust_coefficient = (total_thrust_up + total_thrust_down + total_thrust_le + total_thrust_te) / thrust_reference
+    total_torque_coefficient = (total_torque_up + total_torque_down + total_torque_le + total_torque_te) / torque_reference
+
+    print('total_thrust_coefficient_' + model_name + ' = ', round(total_thrust_coefficient,6)*2.0, ' [-]')
+    print('total_torque_coefficient_' + model_name + ' = ', round(total_torque_coefficient,6)*2.0, ' [-]')
+    print('total_power_' + model_name + ' = ', round(total_power * 2.0,3), ' [-]')
+
     thrust_distribution = []
     torque_distribution = []
     plot_y = []
@@ -123,8 +172,11 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
     number_of_cut_sections = 19
     for i in range(len(thrust_up)-number_of_cut_sections):
         plot_y.append(section_y_abs_up[i])
-        thrust_distribution.append(thrust_up[i] + thrust_down[i] + thrust_le[i] + thrust_te[i])
-        torque_distribution.append(torque_up[i] + torque_down[i] + torque_le[i] + torque_te[i])
+        thrust_distribution.append((thrust_up[i] + thrust_down[i] + thrust_le[i] + thrust_te[i])/(thrust_distribution_reference*total_thrust_coefficient*maximum_thrust))
+        torque_distribution.append((torque_up[i] + torque_down[i] + torque_le[i] + torque_te[i])/(torque_distribution_reference*total_torque_coefficient*maximum_torque))
+
+    # print('max_thrust_' + model_name + ' = ', max(thrust_distribution), ' [-]')
+    # print('max_torque_' + model_name + ' = ', max(torque_distribution), ' [-]')
 
     # Write radial distribution files to import in latex
     thrust_output_filename = "thrust_radial_distribution_" + model_name + ".dat"
@@ -132,13 +184,6 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
     WriteRadialDistributionResultsFile(thrust_output_filename, thrust_distribution, plot_y)
     WriteRadialDistributionResultsFile(torque_output_filename, torque_distribution, plot_y)
 
-    total_thrust = total_thrust_up + total_thrust_down + total_thrust_le + total_thrust_te
-    total_torque = total_torque_up + total_torque_down + total_torque_le + total_torque_te
-    total_power = total_torque * rotational_speed_radsec
-
-    print('total_thrust_' + model_name + ' = ', round(total_thrust,2)*2.0, ' [N]')
-    print('total_torque_' + model_name + ' = ', round(total_torque,2)*2.0, ' [Nm]')
-    print('total_power_' + model_name + ' = ', round(total_power * 2.0 / 1000.0,2), ' [kW]')
 
     axs[0].plot(plot_y, thrust_distribution, label= model_name)
     axs[1].plot(plot_y, torque_distribution, label= model_name)
@@ -161,7 +206,6 @@ def PlotThrustAndTorque(step, le_name, te_name, model_name, axs):
 
 # preparing thrust and torque plots
 fig, axs = plt.subplots(2)
-# axs = 0
 
 # Original case
 step_original = 14001
@@ -176,27 +220,6 @@ le_name_formfound = "LE_FF"
 te_name_formfound = "TE_FF"
 model_name_formfound = "formfound_cfd"
 PlotThrustAndTorque(step_formfound, le_name_formfound, te_name_formfound, model_name_formfound, axs)
-
-# # FSI case
-# step_fsi = 35000
-# le_name_fsi = "LE_FF"
-# te_name_fsi = "TE_FF"
-# model_name_fsi = "fsi_35000"
-# PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
-
-# # FSI case
-# step_fsi = 42000
-# le_name_fsi = "LE_FF"
-# te_name_fsi = "TE_FF"
-# model_name_fsi = "fsi_42000"
-# PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
-
-# # FSI case
-# step_fsi = 48000
-# le_name_fsi = "LE_FF"
-# te_name_fsi = "TE_FF"
-# model_name_fsi = "fsi_48000"
-# PlotThrustAndTorque(step_fsi, le_name_fsi, te_name_fsi, model_name_fsi, axs)
 
 # FSI case
 step_fsi = 51000
@@ -219,8 +242,10 @@ print('total_power_experiment_min = ', round(experiment_power_min / 1000.0,2), '
 
 # plotting thrust and torque distributions
 fig.suptitle('Thrust and torque radial distributions')
-axs[0].set(ylabel='Thrust [N/m]')
-axs[1].set(ylabel='Torque [N]')
+# axs[0].set(ylabel='Thrust [N/m]')
+# axs[1].set(ylabel='Torque [N]')
+axs[0].set(ylabel='$\Delta c_T / c_T$ [-]')
+axs[1].set(ylabel='$\Delta c_Q / c_Q$ [-]')
 axs[0].legend(loc="upper left")
 axs[0].grid()
 axs[1].grid()
